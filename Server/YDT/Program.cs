@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Repositories;
+using Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<YDTDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("YDTDb")));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IRavRepository, RavRepository>();
+builder.Services.AddScoped<IRavService, RavService>();
+
+builder.Services.AddScoped<IShiurRepository, ShiurRepository>();
+builder.Services.AddScoped<IShiurService, ShiurService>();
+
+builder.Services.AddScoped<ITopicRepository, TopicRepository>();
+builder.Services.AddScoped<ITopicService, TopicService>();
+
 var app = builder.Build();
 
 

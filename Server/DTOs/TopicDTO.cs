@@ -10,5 +10,6 @@ namespace DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public ICollection<ShiurDTO> Shiurim { get; set; }
     }
 }
