@@ -10,5 +10,6 @@ namespace Repositories
         Task<Topic> GetByIdAsync(int id);
         Task AddAsync(Topic topic);
         Task UpdateAsync(Topic topic);
+        Task DeleteAsync(Topic topic);
     }
 }

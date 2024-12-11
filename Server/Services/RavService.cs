@@ -57,10 +57,22 @@ public class RavService : IRavService
         var rav = await _ravRepository.GetByIdAsync(id);
         if (rav == null) return null;
 
-        _mapper.Map(ravDTO, rav); // Map from DTO to entity to update
+        _mapper.Map(ravDTO, rav); 
 
         await _ravRepository.UpdateAsync(rav);
 
-        return _mapper.Map<RavDTO>(rav); // Map from entity to DTO
+        return _mapper.Map<RavDTO>(rav); 
+    }
+    public async Task DeleteAsync(int id)
+    {
+        var rav = await _ravRepository.GetByIdAsync(id);
+        if (rav != null)
+        {
+            await _ravRepository.DeleteAsync(rav);
+        }
+        else
+        {
+            throw new ArgumentException($"rav with id {id} not found");
+        }
     }
 }

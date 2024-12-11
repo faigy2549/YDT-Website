@@ -13,11 +13,12 @@ namespace DTOs
         public string Title { get; set; }
         public int Year { get; set; }
         public TimeSpan Length { get; set; }
-        public TopicDTO Topic { get; set; } 
-        public int RavId { get; set; }
+        public TopicDTO Topic { get; set; }  // Reference the simplified TopicDTO
+        public RavDTO Rav { get; set; }      // Reference the simplified RavDTO
         public string Description { get; set; }
         public string AudioUrl { get; set; }
     }
+
 }
 
 

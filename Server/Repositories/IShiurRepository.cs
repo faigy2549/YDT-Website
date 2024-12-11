@@ -13,5 +13,6 @@ namespace Repositories
         Task<IEnumerable<Shiur>> GetByRavIdAsync(int ravId);
         Task AddAsync(Shiur shiur);
         Task UpdateAsync(Shiur shiur);
+        Task DeleteAsync(Shiur shiur);
     }
 }

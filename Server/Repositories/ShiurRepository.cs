@@ -56,5 +56,10 @@ namespace Repositories
             _context.Shiurim.Update(shiur);
             await _context.SaveChangesAsync();
         }
+        public async Task DeleteAsync(Shiur shiur)
+        {
+            _context.Shiurim.Remove(shiur);
+            await _context.SaveChangesAsync();
+        }
     }
 }

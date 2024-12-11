@@ -40,5 +40,10 @@ namespace Repositories
             _context.Rabbanim.Update(rav);
             await _context.SaveChangesAsync();
         }
+        public async Task DeleteAsync(Rav rav)
+        {
+            _context.Rabbanim.Remove(rav);
+            await _context.SaveChangesAsync();
+        }
     }
 }

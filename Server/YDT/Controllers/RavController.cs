@@ -55,5 +55,11 @@ namespace YDT.Controllers
             await _ravService.UpdateAsync(id,rav);
             return NoContent();
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _ravService.DeleteAsync(id);
+            return NoContent();
+        }
     }
 }

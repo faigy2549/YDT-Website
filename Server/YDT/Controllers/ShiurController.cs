@@ -67,6 +67,12 @@ namespace YDT.Controllers
             await _shiurService.UpdateAsync(shiur);
             return NoContent();
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _shiurService.DeleteAsync(id);
+            return NoContent();
+        }
     }
 }
 

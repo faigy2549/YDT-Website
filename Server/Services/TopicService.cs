@@ -23,7 +23,7 @@ namespace Services
 
             var topics = await _topicRepository.GetAllAsync();
 
-            return _mapper.Map<IEnumerable<TopicDTO>>(topics);
+            return _mapper.Map<IEnumerable<Topic>,IEnumerable<TopicDTO>>(topics);
         }
 
         public async Task<TopicDTO> GetByIdAsync(int id)
@@ -36,14 +36,30 @@ namespace Services
             return null;
         }
 
-        public Task AddAsync(Topic topic)
+        public Task AddAsync(TopicDTO topic)
         {
-            return _topicRepository.AddAsync(topic);
+            Topic t=_mapper.Map<TopicDTO,Topic>(topic);
+            return _topicRepository.AddAsync(t);
         }
 
-        public Task UpdateAsync(Topic topic)
+        public Task UpdateAsync(TopicDTO topic)
         {
-            return _topicRepository.UpdateAsync(topic);
+            Topic t = _mapper.Map<TopicDTO, Topic>(topic);
+            return _topicRepository.UpdateAsync(t);
         }
+
+        public async Task DeleteAsync(int id)
+        {
+            var topic = await _topicRepository.GetByIdAsync(id); 
+            if (topic != null)
+            {
+                await _topicRepository.DeleteAsync(topic); 
+            }
+            else
+            {
+                throw new ArgumentException($"Topic with id {id} not found");
+            }
+        }
+
     }
 }

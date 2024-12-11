@@ -12,7 +12,6 @@ namespace DTOs
             public string Name { get; set; }
             public string Title { get; set; }
             public string Bio { get; set; }
-            public List<ShiurDTO> Shiurim { get; set; }  // List of Shiur DTOs to represent the associated shiurim
         }
  }
 

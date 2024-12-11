@@ -23,7 +23,9 @@ namespace Repositories
 
         public async Task<Topic> GetByIdAsync(int id)
         {
-            return await _context.Topics.FirstOrDefaultAsync(t => t.Id == id);
+            return await _context.Topics
+                    .Include(t => t.Shiurim)
+                    .FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public async Task AddAsync(Topic topic)
@@ -35,6 +37,11 @@ namespace Repositories
         public async Task UpdateAsync(Topic topic)
         {
             _context.Topics.Update(topic);
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteAsync(Topic topic)
+        {
+            _context.Topics.Remove(topic);
             await _context.SaveChangesAsync();
         }
     }

@@ -11,6 +11,7 @@ namespace Repositories
         Task<Rav> GetByNameAsync(string name);
         Task AddAsync(Rav rav);
         Task UpdateAsync(Rav rav);
+        Task DeleteAsync(Rav rav);
     }
 }
 

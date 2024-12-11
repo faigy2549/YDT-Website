@@ -34,17 +34,24 @@ namespace YDT.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Topic topic)
+        public async Task<IActionResult> Add([FromBody] TopicDTO topic)
         {
             await _topicService.AddAsync(topic);
             return CreatedAtAction(nameof(GetById), new { id = topic.Id }, topic);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Topic topic)
+        public async Task<IActionResult> Update(int id, [FromBody] TopicDTO topic)
         {
             topic.Id = id;
             await _topicService.UpdateAsync(topic);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _topicService.DeleteAsync(id);
             return NoContent();
         }
     }
