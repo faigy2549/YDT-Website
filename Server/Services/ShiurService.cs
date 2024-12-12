@@ -3,6 +3,7 @@ using Repositories;
 using Services;
 using DTOs;
 using AutoMapper;
+using System.Collections.Generic;
 
 namespace Services
 {
@@ -13,45 +14,67 @@ namespace Services
         public ShiurService(IShiurRepository shiurRepository, IMapper mapper)
         {
             _shiurRepository = shiurRepository;
-            _mapper=mapper;
+            _mapper = mapper;
         }
 
-        public Task<IEnumerable<ShiurDTO>> GetAllAsync()
+        public async Task<IEnumerable<ShiurDTO>> GetAllAsync()
         {
             var shiurim = await _shiurRepository.GetAllAsync();
             if (shiurim == null) return null;
 
             return _mapper.Map<IEnumerable<ShiurDTO>>(shiurim);
+          
         }
 
-        public Task<ShiurDTO> GetByIdAsync(int id)
+        public async Task<ShiurDTO> GetByIdAsync(int id)
         {
-            return _shiurRepository.GetByIdAsync(id);
+            var shiur = await _shiurRepository.GetByIdAsync(id);
+            if (shiur == null) return null;
+
+            return _mapper.Map<ShiurDTO>(shiur);
         }
 
-        public Task<IEnumerable<ShiurDTO>> GetByLengthAsync(int minLength, int maxLength)
+        public async Task<IEnumerable<ShiurDTO>> GetByLengthAsync(TimeSpan minLength, TimeSpan maxLength)
         {
-            return _shiurRepository.GetByLengthAsync(minLength, maxLength);
+            var shiurim = await _shiurRepository.GetByLengthAsync(minLength, maxLength);
+            if (shiurim == null) return null;
+
+            return _mapper.Map<IEnumerable<ShiurDTO>>(shiurim);
         }
 
-        public Task<IEnumerable<ShiurDTO>> GetByYearAsync(int year)
+        public async Task<IEnumerable<ShiurDTO>> GetByYearAsync(int year)
         {
-            return _shiurRepository.GetByYearAsync(year);
+            var shiurim = await _shiurRepository.GetByYearAsync(year);
+            if (shiurim == null) return null;
+
+            return _mapper.Map<IEnumerable<ShiurDTO>>(shiurim);
         }
 
-        public Task<IEnumerable<ShiurDTO>> GetByRavIdAsync(int ravId)
+        public async Task<IEnumerable<ShiurDTO>> GetByRavIdAsync(int ravId)
         {
-            return _shiurRepository.GetByRavIdAsync(ravId);
+            
+            var shiurim = await _shiurRepository.GetByRavIdAsync(ravId);
+            if (shiurim == null) return null;
+
+            return _mapper.Map<IEnumerable<ShiurDTO>>(shiurim);
         }
 
-        public Task AddAsync(ShiurDTO shiur)
+        public async Task<ShiurDTO> AddAsync(ShiurDTO shiurdto)
         {
-            return _shiurRepository.AddAsync(shiur);
+            var shiur = _mapper.Map<Shiur>(shiurdto); // Map from DTO to entity
+
+            await _shiurRepository.AddAsync(shiur);
+            return _mapper.Map<ShiurDTO>(shiur);
         }
 
-        public Task UpdateAsync(ShiurDTO shiur)
+        public async Task<ShiurDTO> UpdateAsync(ShiurDTO shiurdto)
         {
-            return _shiurRepository.UpdateAsync(shiur);
+            
+            var shiur =  _mapper.Map<Shiur>(shiurdto); ;
+            if (shiur == null) return null;
+            await _shiurRepository.UpdateAsync(shiur);
+
+            return _mapper.Map<ShiurDTO>(shiur);
         }
         public async Task DeleteAsync(int id)
         {

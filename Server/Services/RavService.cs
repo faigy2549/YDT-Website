@@ -52,12 +52,10 @@ public class RavService : IRavService
     }
 
     // Update an existing Rav (using AutoMapper)
-    public async Task<RavDTO> UpdateAsync(int id, RavDTO ravDTO)
+    public async Task<RavDTO> UpdateAsync( RavDTO ravDTO)
     {
-        var rav = await _ravRepository.GetByIdAsync(id);
+        var rav = _mapper.Map<Rav>(ravDTO);
         if (rav == null) return null;
-
-        _mapper.Map(ravDTO, rav); 
 
         await _ravRepository.UpdateAsync(rav);
 

@@ -1,3 +1,4 @@
+using DTOs;
 using Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -6,13 +7,13 @@ namespace Services
 {
     public interface IShiurService
     {
-        Task<IEnumerable<Shiur>> GetAllAsync();
-        Task<Shiur> GetByIdAsync(int id);
-        Task<IEnumerable<Shiur>> GetByLengthAsync(int minLength, int maxLength);
-        Task<IEnumerable<Shiur>> GetByYearAsync(int year);
-        Task<IEnumerable<Shiur>> GetByRavIdAsync(int ravId);
-        Task AddAsync(Shiur shiur);
-        Task UpdateAsync(Shiur shiur);
+        Task<IEnumerable<ShiurDTO>> GetAllAsync();
+        Task<ShiurDTO> GetByIdAsync(int id);
+        Task<IEnumerable<ShiurDTO>> GetByLengthAsync(TimeSpan minLength, TimeSpan maxLength);
+        Task<IEnumerable<ShiurDTO>> GetByYearAsync(int year);
+        Task<IEnumerable<ShiurDTO>> GetByRavIdAsync(int ravId);
+        Task <ShiurDTO> AddAsync(ShiurDTO shiur);
+        Task<ShiurDTO> UpdateAsync(ShiurDTO shiur);
         Task DeleteAsync(int id);
     }
 }

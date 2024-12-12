@@ -28,11 +28,11 @@ namespace Repositories
             return await _context.Shiurim.Include(s => s.Rav).FirstOrDefaultAsync(s => s.Id == id);
         }
 
-        public async Task<IEnumerable<Shiur>> GetByLengthAsync(int minLength, int maxLength)
+        public async Task<IEnumerable<Shiur>> GetByLengthAsync(TimeSpan minLength, TimeSpan maxLength)
         {
             return await _context.Shiurim
-               .Where(s => s.Length.TotalMinutes >= minLength && s.Length.TotalMinutes <= maxLength)
-                .ToListAsync();
+               .Where(s => s.Length >= minLength && s.Length <= maxLength)
+               .ToListAsync();
         }
 
         public async Task<IEnumerable<Shiur>> GetByYearAsync(int year)

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using DTOs;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,45 +22,88 @@ namespace YDT.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Rav>>> GetAll()
         {
-            var rabbanim = await _ravService.GetAllAsync();
-            return Ok(rabbanim);
+            try
+            {
+                var rabbanim = await _ravService.GetAllAsync();
+                return Ok(rabbanim);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Rav>> GetById(int id)
         {
-            var rav = await _ravService.GetByIdAsync(id);
-            if (rav == null) return NotFound();
-            return Ok(rav);
+            try
+            {
+                var rav = await _ravService.GetByIdAsync(id);
+                if (rav == null) return NotFound();
+                return Ok(rav);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpGet("name/{name}")]
         public async Task<ActionResult<Rav>> GetByName(string name)
         {
-            var rav = await _ravService.GetByNameAsync(name);
-            if (rav == null) return NotFound();
-            return Ok(rav);
+            try
+            {
+                var rav = await _ravService.GetByNameAsync(name);
+                if (rav == null) return NotFound();
+                return Ok(rav);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] RavDTO rav)
         {
-            await _ravService.AddAsync(rav);
-            return CreatedAtAction(nameof(GetById), new { id = rav.Id }, rav);
+            try
+            {
+                await _ravService.AddAsync(rav);
+                return CreatedAtAction(nameof(GetById), new { id = rav.Id }, rav);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] RavDTO rav)
         {
-            rav.Id = id;
-            await _ravService.UpdateAsync(id,rav);
-            return NoContent();
+            try
+            {
+                rav.Id = id;
+                await _ravService.UpdateAsync(rav);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _ravService.DeleteAsync(id);
-            return NoContent();
+            try
+            {
+                await _ravService.DeleteAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services;
+using DTOs;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -18,61 +20,117 @@ namespace YDT.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Shiur>>> GetAll()
+        public async Task<ActionResult<IEnumerable<ShiurDTO>>> GetAll()
         {
-            var shiurim = await _shiurService.GetAllAsync();
-            return Ok(shiurim);
+            try
+            {
+                var shiurim = await _shiurService.GetAllAsync();
+                return Ok(shiurim);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Shiur>> GetById(int id)
+        public async Task<ActionResult<ShiurDTO>> GetById(int id)
         {
-            var shiur = await _shiurService.GetByIdAsync(id);
-            if (shiur == null) return NotFound();
-            return Ok(shiur);
+            try
+            {
+                var shiur = await _shiurService.GetByIdAsync(id);
+                if (shiur == null) return NotFound();
+                return Ok(shiur);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpGet("length")]
-        public async Task<ActionResult<IEnumerable<Shiur>>> GetByLength([FromQuery] int minLength, [FromQuery] int maxLength)
+        public async Task<ActionResult<IEnumerable<ShiurDTO>>> GetByLength([FromQuery] TimeSpan minLength, [FromQuery] TimeSpan maxLength)
         {
-            var shiurim = await _shiurService.GetByLengthAsync(minLength, maxLength);
-            return Ok(shiurim);
+            try
+            {
+                var shiurim = await _shiurService.GetByLengthAsync(minLength, maxLength);
+                return Ok(shiurim);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpGet("year/{year}")]
-        public async Task<ActionResult<IEnumerable<Shiur>>> GetByYear(int year)
+        public async Task<ActionResult<IEnumerable<ShiurDTO>>> GetByYear(int year)
         {
-            var shiurim = await _shiurService.GetByYearAsync(year);
-            return Ok(shiurim);
+            try
+            {
+                var shiurim = await _shiurService.GetByYearAsync(year);
+                return Ok(shiurim);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpGet("rav/{ravId}")]
-        public async Task<ActionResult<IEnumerable<Shiur>>> GetByRavId(int ravId)
+        public async Task<ActionResult<IEnumerable<ShiurDTO>>> GetByRavId(int ravId)
         {
-            var shiurim = await _shiurService.GetByRavIdAsync(ravId);
-            return Ok(shiurim);
+            try
+            {
+                var shiurim = await _shiurService.GetByRavIdAsync(ravId);
+                return Ok(shiurim);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Shiur shiur)
+        public async Task<IActionResult> Add([FromBody] ShiurDTO shiur)
         {
-            await _shiurService.AddAsync(shiur);
-            return CreatedAtAction(nameof(GetById), new { id = shiur.Id }, shiur);
+            try
+            {
+                await _shiurService.AddAsync(shiur);
+                return CreatedAtAction(nameof(GetById), new { id = shiur.Id }, shiur);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Shiur shiur)
+        public async Task<IActionResult> Update(int id, [FromBody] ShiurDTO shiur)
         {
-            shiur.Id = id;
-            await _shiurService.UpdateAsync(shiur);
-            return NoContent();
+            try
+            {
+                shiur.Id = id;
+                await _shiurService.UpdateAsync(shiur);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _shiurService.DeleteAsync(id);
-            return NoContent();
+            try
+            {
+                await _shiurService.DeleteAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
 }
-

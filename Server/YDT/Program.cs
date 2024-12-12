@@ -22,6 +22,8 @@ builder.Services.AddScoped<IShiurService, ShiurService>();
 builder.Services.AddScoped<ITopicRepository, TopicRepository>();
 builder.Services.AddScoped<ITopicService, TopicService>();
 
+
+builder.Host.useNLog();
 var app = builder.Build();
 
 

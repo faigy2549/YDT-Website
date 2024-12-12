@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using DTOs;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,38 +22,73 @@ namespace YDT.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TopicDTO>>> GetAll()
         {
-            var topics = await _topicService.GetAllAsync();
-            return Ok(topics);
+            try
+            {
+                var topics = await _topicService.GetAllAsync();
+                return Ok(topics);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<TopicDTO>> GetById(int id)
         {
-            var topic = await _topicService.GetByIdAsync(id);
-            if (topic == null) return NotFound();
-            return Ok(topic);
+            try
+            {
+                var topic = await _topicService.GetByIdAsync(id);
+                if (topic == null) return NotFound();
+                return Ok(topic);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] TopicDTO topic)
         {
-            await _topicService.AddAsync(topic);
-            return CreatedAtAction(nameof(GetById), new { id = topic.Id }, topic);
+            try
+            {
+                await _topicService.AddAsync(topic);
+                return CreatedAtAction(nameof(GetById), new { id = topic.Id }, topic);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] TopicDTO topic)
         {
-            topic.Id = id;
-            await _topicService.UpdateAsync(topic);
-            return NoContent();
+            try
+            {
+                topic.Id = id;
+                await _topicService.UpdateAsync(topic);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _topicService.DeleteAsync(id);
-            return NoContent();
+            try
+            {
+                await _topicService.DeleteAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
 }

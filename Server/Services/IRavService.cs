@@ -11,7 +11,7 @@ namespace Services
         Task<RavDTO> GetByIdAsync(int id);
         Task<RavDTO> GetByNameAsync(string name);
         Task<RavDTO> AddAsync(RavDTO rav);
-        Task<RavDTO> UpdateAsync(int id,RavDTO rav);
+        Task<RavDTO> UpdateAsync(RavDTO rav);
         Task DeleteAsync(int id);
     }
 }
