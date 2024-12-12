@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using NLog.Web;
 using Repositories;
 using Services;
 
@@ -23,7 +24,7 @@ builder.Services.AddScoped<ITopicRepository, TopicRepository>();
 builder.Services.AddScoped<ITopicService, TopicService>();
 
 
-builder.Host.useNLog();
+builder.Host.UseNLog();
 var app = builder.Build();
 
 
