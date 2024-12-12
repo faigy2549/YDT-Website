@@ -69,7 +69,7 @@ namespace YDT.Controllers
             {
                 topic.Id = id;
                 await _topicService.UpdateAsync(topic);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -83,7 +83,7 @@ namespace YDT.Controllers
             try
             {
                 await _topicService.DeleteAsync(id);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {

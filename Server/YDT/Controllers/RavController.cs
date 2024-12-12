@@ -84,7 +84,7 @@ namespace YDT.Controllers
             {
                 rav.Id = id;
                 await _ravService.UpdateAsync(rav);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -98,7 +98,7 @@ namespace YDT.Controllers
             try
             {
                 await _ravService.DeleteAsync(id);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {

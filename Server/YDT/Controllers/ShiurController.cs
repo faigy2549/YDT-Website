@@ -111,7 +111,7 @@ namespace YDT.Controllers
             {
                 shiur.Id = id;
                 await _shiurService.UpdateAsync(shiur);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -125,7 +125,7 @@ namespace YDT.Controllers
             try
             {
                 await _shiurService.DeleteAsync(id);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {
