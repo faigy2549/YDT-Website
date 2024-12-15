@@ -9,6 +9,49 @@ main {
   flex: 1; 
 }
 footer {
-  flex-shrink: 0; /* Prevents footer from shrinking */
-  margin-top: auto; /* Ensures footer sticks to the bottom */
+  flex-shrink: 0; 
+  margin-top: auto; 
+}
+
+.p-menubar {
+  background-color: transparent; /* Background color of the menu bar */
+  height: 200px; /* Adjust the height as needed */
+  display: flex; /* Flex container for the logo and menu items */
+  align-items: center; /* Center items vertically */
+  padding: 0 20px; /* Add padding for spacing */
+  border-bottom: transparent;
+}
+
+.p-menubar .logo {
+  height: 210px; /* Adjust the height of the logo */
+  width: 160px; /* Adjust the width of the logo */
+  background-color: transparent;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Styling for the Menu Items */
+.p-menubar .p-menubar-root-list {
+  display: flex; /* Align items in a row */
+  gap: 20px; /* Space between items */
+  list-style: none; /* Remove default list styling */
+  margin: 0;
+  padding: 0;
+  margin-left: auto; /* Push menu items to the right */
+}
+
+/* Styling for Menu Links */
+.p-menubar .p-menubar-item-link {
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Adjust font size */
+  font-weight: bold;
+  padding: 10px 15px; /* Adjust padding for clickable area */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover and Active States for Menu Links */
+.p-menubar .p-menubar-item-link:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+  border-radius: 5px; /* Optional: Rounded edges */
 }

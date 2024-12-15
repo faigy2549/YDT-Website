@@ -1,0 +1,70 @@
+/* app.component.css */
+footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 40px 0;
+    text-align: center;
+    flex-shrink: 0; 
+    margin-top: auto; 
+  }
+  
+  footer .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  footer .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    text-align: left;
+  }
+  
+  footer .links > div {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+  }
+  
+  footer .subscribe form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  footer .subscribe input,
+  footer .subscribe button {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  footer .subscribe input {
+    border: 1px solid #34495e;
+  }
+  
+  footer .subscribe button {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: none;
+    cursor: pointer;
+  }
+  
+  footer hr {
+    border-color: #34495e;
+    margin: 20px 0;
+  }
+  
+  footer .footer-text {
+    font-size: 0.9em;
+    text-align: center;
+  }
+  
+  footer a {
+    color: #ecf0f1;
+    text-decoration: underline;
+  }
+  
+  
