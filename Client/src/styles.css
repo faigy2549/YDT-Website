@@ -1,0 +1,15 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* This ensures the main content takes up the available space */
+}
+
+footer {
+  flex-shrink: 0; /* Keeps the footer from shrinking */
+  margin-top: auto; /* Ensures the footer sticks to the bottom */
+}
