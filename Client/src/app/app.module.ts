@@ -6,12 +6,14 @@ import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MenubarModule } from 'primeng/menubar';
+import { ContactComponent } from './components/contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavBarComponent,
     FooterComponent,
+    ContactComponent,
   ],
   imports: [
    BrowserModule,
