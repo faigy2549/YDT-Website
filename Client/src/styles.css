@@ -6,10 +6,9 @@ html, body {
 }
 
 main {
-  flex: 1; /* This ensures the main content takes up the available space */
+  flex: 1; 
 }
-
 footer {
-  flex-shrink: 0; /* Keeps the footer from shrinking */
-  margin-top: auto; /* Ensures the footer sticks to the bottom */
+  flex-shrink: 0; /* Prevents footer from shrinking */
+  margin-top: auto; /* Ensures footer sticks to the bottom */
 }

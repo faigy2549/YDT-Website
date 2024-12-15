@@ -1,31 +1,28 @@
-<html>
-    <body>
-        <main>
-            <router-outlet></router-outlet>
-        </main>
-        <footer style="background-color: #2c3e50; color: #ecf0f1; padding: 40px 0; text-align: center;">
-            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 60px; text-align: left;">
-                    <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-                        <h4><a href="/about" style="color: #ecf0f1; text-decoration: underline;">About Yeshiva Dvar Torah</a></h4>
-                    </div>
-                    <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-                        <h4><a href="/contact" style="color: #ecf0f1; text-decoration: underline;">Contact Us</a></h4>
-                    </div>
-                    <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-                        <h4>Join Mailing List</h4>
-                        <form action="/subscribe" method="post" style="display: flex; flex-direction: column; gap: 10px;">
-                            <input type="email" name="email" placeholder="Enter your email" required style="padding: 10px; border: 1px solid #34495e; border-radius: 5px;">
-                            <button type="submit" style="padding: 10px; background-color: #34495e; color: #ecf0f1; border: none; border-radius: 5px; cursor: pointer;">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-                <hr style="border-color: #34495e; margin: 20px 0;">
-                <div style="font-size: 0.9em; text-align: center;">
-                    <p>&copy; 2024 Yeshiva Dvar Torah (YDT). All rights reserved.</p>
-                    <p>Website by <strong>FD Creations</strong> <a href="#" style="color: #ecf0f1; text-decoration: underline;">Terms of Service</a> | <a href="#" style="color: #ecf0f1; text-decoration: underline;">Privacy Policy</a></p>
-                </div>
+
+<main>
+<router-outlet></router-outlet>
+</main>
+<footer>
+    <div class="content">
+        <div class="links">
+            <div>
+                <h4><a href="/about">About Yeshiva Dvar Torah</a></h4>
             </div>
-        </footer>
-    </body>
-</html>
+            <div>
+                <h4><a href="/contact">Contact Us</a></h4>
+            </div>
+            <div class="subscribe">
+                <h4>Join Mailing List</h4>
+                <form action="/subscribe" method="post">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-text">
+            <p>&copy; 2024 Yeshiva Dvar Torah | Website by <strong>FD Creations</strong></p>
+        </div>
+    </div>
+</footer>
+
