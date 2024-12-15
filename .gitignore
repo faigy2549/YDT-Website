@@ -20,8 +20,9 @@ appsettings.Development.json
 appsettings.Production.json
 
 # Angular build artifacts
-/dist/
-/node_modules/
+dist/
+.angular/
+node_modules/
 /*.js.map
 /*.js
 /*.tsbuildinfo
