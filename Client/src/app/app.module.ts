@@ -7,6 +7,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MenubarModule } from 'primeng/menubar';
 import { ContactComponent } from './components/contact/contact.component';
+import { ShiurimComponent } from './components/shiurim/shiurim.component';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,11 +16,13 @@ import { ContactComponent } from './components/contact/contact.component';
     NavBarComponent,
     FooterComponent,
     ContactComponent,
+    ShiurimComponent,
   ],
   imports: [
    BrowserModule,
    AppRoutingModule,
    MenubarModule,
+   HttpClientModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]
