@@ -1,7 +1,7 @@
 
 export class RavDTO {
-    Id: number = 0;
-    Name: string = "";
-    Title: string = "";
-    Bio: string = "";
+    id: number = 0;
+    name: string = "";
+    title: string = "";
+    bio: string = "";
   }

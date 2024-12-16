@@ -1,9 +1,9 @@
 import { Shiur } from "./Shiur.Model";
 
 export class Rav {
-    Id: number = 0;
-    Name: string = "";
-    Title: string = "";
-    Bio: string = "";
-    Shiurim?: Shiur[]; // Optional, as the collection may not always be loaded
+    id: number = 0;
+    name: string = "";
+    title: string = "";
+    bio: string = "";
+    shiurim?: Shiur[]; // Optional, as the collection may not always be loaded
   }

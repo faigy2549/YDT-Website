@@ -22,7 +22,7 @@ export class TopicService {
 
   // Fetch a topic by ID
   getTopicById(id: number): Observable<Topic> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.baseUrl}/`+id;
     return this.httpClient.get<Topic>(url);
   }
 
@@ -33,13 +33,13 @@ export class TopicService {
 
   // Update an existing topic
   updateTopic(id: number, topic: Topic): Observable<void> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.baseUrl}/`+id;
     return this.httpClient.put<void>(url, topic);
   }
 
   // Delete a topic by ID
   deleteTopic(id: number): Observable<void> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.baseUrl}/`+id;
     return this.httpClient.delete<void>(url);
   }
 

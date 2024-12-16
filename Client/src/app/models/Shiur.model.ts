@@ -2,13 +2,13 @@ import { Rav } from "./Rav.model";
 import { Topic } from "./Topic.model";
 
 export class Shiur {
-    Id: number = 0;
-    Title: string = "";
-    Year: number = 0;
-    Length: string = ""; 
-    TopicId: number = 0;
-    Topic?: Topic; 
-    RavId: number = 0;
-    Rav?: Rav; 
+    id: number = 0;
+    title: string = "";
+    year: number = 0;
+    length: string = ""; 
+    topicId: number = 0;
+    topic?: Topic; 
+    ravId: number = 0;
+    rav?: Rav; 
   }
   

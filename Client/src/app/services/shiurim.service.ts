@@ -34,13 +34,14 @@ export class ShiurimService {
 
   // Fetch Shiurim by Year
   getShiurimByYear(year: number): Observable<Shiur[]> {
-    const url = `${this.baseUrl}/year/${year}`;
+    const url = `${this.baseUrl}/year/`+year;
     return this.httpClient.get<Shiur[]>(url);
   }
 
   // Fetch Shiurim by RavId
   getShiurimByRavId(ravId: number): Observable<Shiur[]> {
-    const url = `${this.baseUrl}/rav/${ravId}`;
+    console.log("in get",ravId)
+    const url = `${this.baseUrl}/rav/`+ravId;
     return this.httpClient.get<Shiur[]>(url);
   }
 
@@ -51,13 +52,13 @@ export class ShiurimService {
 
   // Update an existing Shiur
   updateShiur(id: number, shiur: Shiur): Observable<void> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.baseUrl}/`+id;
     return this.httpClient.put<void>(url, shiur);
   }
 
   // Delete a Shiur
   deleteShiur(id: number): Observable<void> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.baseUrl}/`+id;
     return this.httpClient.delete<void>(url);
   }
 

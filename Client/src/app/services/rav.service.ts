@@ -1,42 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {BehaviorSubject,Observable}from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Rav } from '../models/Rav.model';
 import { RavDTO } from '../models/RavDTO.model';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RavService {
-
-  constructor(private httpClient: HttpClient) { }
+  private baseUrl = 'https://localhost:7117/api/Rav';
+  
   private reloadRebbeimSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   reloadRebbeim$: Observable<boolean> = this.reloadRebbeimSubject.asObservable();
 
-  getRebbeim(): Observable<Rav[]>{
-    let url = 'https://localhost:7117/api/Rav';
-    return this.httpClient.get<Rav[]>(url);
-   }
-   GetById(id:number): Observable<Rav>{
-    let url = 'https://localhost:7117/api/Rav/'+id;
-    return this.httpClient.get<Rav>(url);
-   }
-   GetByName(name:string): Observable<Rav>{
-    let url = 'https://localhost:7117/api/Rav/'+name;
-    return this.httpClient.get<Rav>(url);
-   }
-   Add(rav:RavDTO): Observable<void>{
-    let url = 'https://localhost:7117/api/Rav/';
-    return this.httpClient.post<void>(url,rav);
-   }
-   Update(id:number,rav:RavDTO): Observable<void>{
-    let url = 'https://localhost:7117/api/Rav/'+id;
-    return this.httpClient.put<void>(url,rav);
-   }
-   Delete(id:number): Observable<void>{
-    let url = 'https://localhost:7117/api/Rav/'+id;
-    return this.httpClient.delete<void>(url);
-   }
+  constructor(private httpClient: HttpClient) {}
 
+  // Get all Rebbeim
+  getRebbeim(): Observable<Rav[]> {
+    return this.httpClient.get<Rav[]>(this.baseUrl);
+  }
+
+  // Get Rebbe by ID
+  getById(id: number): Observable<Rav> {
+    return this.httpClient.get<Rav>(`${this.baseUrl}/${id}`);
+  }
+
+  // Get Rebbe by Name
+  getByName(name: string): Observable<Rav> {
+    return this.httpClient.get<Rav>(`${this.baseUrl}/${name}`);
+  }
+
+  // Add a new Rebbe
+  add(rav: RavDTO): Observable<void> {
+    return this.httpClient.post<void>(this.baseUrl, rav);
+  }
+
+  // Update a Rebbe
+  update(id: number, rav: RavDTO): Observable<void> {
+    return this.httpClient.put<void>(`${this.baseUrl}/${id}`, rav);
+  }
+
+  // Delete a Rebbe
+  delete(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
+  }
 }
