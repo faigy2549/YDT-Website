@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { RavComponent } from './components/rav/rav.component';
 
  const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
+  {path:'rebbeim',component:RavComponent},
 ];
 
 @NgModule({
