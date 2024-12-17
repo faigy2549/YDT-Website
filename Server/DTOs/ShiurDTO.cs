@@ -12,7 +12,7 @@ namespace DTOs
         public string Title { get; set; }
 
         [Range(1, 9999, ErrorMessage = "Year must be between 1 and 9999")]
-        public int Year { get; set; }
+        public DateTime Date { get; set; }
 
         [TimeSpanFormat(ErrorMessage = "Invalid time format. Please use hh:mm:ss.")]
         public string Length { get; set; } // Now Length is a string to enforce format validation

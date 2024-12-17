@@ -7,6 +7,7 @@ import { Rav } from 'src/app/models/Rav.model';
 import { forkJoin, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators'; 
 import { TopicService } from 'src/app/services/topic.service';
+import { Router } from '@angular/router';
 
 
 
@@ -17,12 +18,16 @@ import { TopicService } from 'src/app/services/topic.service';
 })
 export class ShiurimComponent implements OnInit {
   rabbanim: Rav[] = [];  
-  rabbanimWithTopics: { rav: Rav, topics: Topic[] }[] = [];  
+  rabbanimWithTopics: { rav: Rav, topics: Topic[] }[] = []; 
   layout: string = 'grid';
-  constructor(private shiurService: ShiurimService, private ravService: RavService, private topicService: TopicService) { }
+  constructor(private shiurService: ShiurimService, private ravService: RavService, private topicService: TopicService,private router: Router) { }
 
   ngOnInit(): void {
     this.getAllRabbanimWithTopics();  
+  }
+
+  getAllShiurim(): void {
+    this.router.navigate(['/all_shiurim']);
   }
 
   getAllRabbanimWithTopics(): void {

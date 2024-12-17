@@ -1,3 +1,6 @@
+<p-button severity="secondary" class="w-full" [outlined]="true" (onClick)="getAllShiurim()" styleClass="w-full">   
+ View All Shiurim
+</p-button>
 <div class="card-container">
     <div *ngFor="let item of rabbanimWithTopics" class="card">
       <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'30rem'}">

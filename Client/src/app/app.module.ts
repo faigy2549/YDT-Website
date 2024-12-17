@@ -17,6 +17,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { ButtonModule } from 'primeng/button';  
 import { TagModule } from 'primeng/tag';  
 import {CardModule} from 'primeng/card';
+import { AllShiurimComponent } from './components/all-shiurim/all-shiurim.component';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import {CardModule} from 'primeng/card';
     ContactComponent,
     RavComponent,
     ShiurimComponent,
+    AllShiurimComponent,
   ],
   imports: [
    BrowserModule,
@@ -39,7 +42,8 @@ import {CardModule} from 'primeng/card';
    SelectButtonModule, 
    ButtonModule,  
    TagModule, 
-   CardModule
+   CardModule,
+   TableModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

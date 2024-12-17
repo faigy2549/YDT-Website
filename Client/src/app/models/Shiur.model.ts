@@ -4,7 +4,7 @@ import { Topic } from "./Topic.model";
 export class Shiur {
     id: number = 0;
     title: string = "";
-    year: number = 0;
+    date: Date = new Date();
     length: string = ""; 
     topicId: number = 0;
     topic?: Topic; 

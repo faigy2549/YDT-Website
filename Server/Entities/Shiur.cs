@@ -10,7 +10,7 @@ namespace Entities
     {
         public int Id { get; set; }  
         public string Title { get; set; }  
-        public int Year { get; set; }  
+        public DateTime Date { get; set; }  
         public TimeSpan Length { get; set; }  
 
         public int TopicId { get; set; } 

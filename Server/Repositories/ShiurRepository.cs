@@ -37,7 +37,7 @@ namespace Repositories
 
         public async Task<IEnumerable<Shiur>> GetByYearAsync(int year)
         {
-            return await _context.Shiurim.Where(s => s.Year == year).ToListAsync();
+            return await _context.Shiurim.Where(s => s.Date.Year == year).ToListAsync();
         }
 
         public async Task<IEnumerable<Shiur>> GetByRavIdAsync(int ravId)
