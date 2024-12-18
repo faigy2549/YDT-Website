@@ -21,12 +21,6 @@ export class NavBarComponent {
             }
           },
           {
-              label: 'About',
-              command: () => {
-                  this.router.navigate(['/about']);
-              }
-          },
-          {
             label: 'Rebbeim',
               command: () => {
                 this.router.navigate(['/rebbeim']);

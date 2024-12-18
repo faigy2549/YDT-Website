@@ -27,13 +27,12 @@ export class ShiurimComponent implements OnInit {
   }
 
   getAllShiurim(): void {
-    this.router.navigate(['/all_shiurim']);
+    this.router.navigate(['/all-shiurim']);
   }
 
   getAllRabbanimWithTopics(): void {
     this.ravService.getRebbeim().subscribe(rabbanim => {
       this.rabbanim = rabbanim; 
-      console.log(this.rabbanim);   
       this.getTopicsForRabbanim(rabbanim);
     });
   }
@@ -69,6 +68,7 @@ export class ShiurimComponent implements OnInit {
   
     forkJoin(ravRequests).subscribe(
       (results) => {
+        
         this.rabbanimWithTopics = results.filter(result => result.topics.length > 0);
       },
       (error) => {
@@ -87,5 +87,11 @@ export class ShiurimComponent implements OnInit {
     });
     
     return distinctTopics;
+  }
+
+  navigateToAllShiurim(ravId: number, topicId: number) {
+    this.router.navigate(['/all-shiurim'], {
+      queryParams: { rav: ravId.toString(), topic: topicId.toString() }
+    });
   }
 }

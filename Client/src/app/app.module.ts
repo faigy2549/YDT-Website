@@ -19,6 +19,7 @@ import { TagModule } from 'primeng/tag';
 import {CardModule} from 'primeng/card';
 import { AllShiurimComponent } from './components/all-shiurim/all-shiurim.component';
 import {TableModule} from 'primeng/table';
+import { AlumniComponent } from './components/alumni/alumni.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {TableModule} from 'primeng/table';
     RavComponent,
     ShiurimComponent,
     AllShiurimComponent,
+    AlumniComponent,
   ],
   imports: [
    BrowserModule,

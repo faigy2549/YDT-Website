@@ -40,7 +40,6 @@ export class ShiurimService {
 
   // Fetch Shiurim by RavId
   getShiurimByRavId(ravId: number): Observable<Shiur[]> {
-    console.log("in get",ravId)
     const url = `${this.baseUrl}/rav/`+ravId;
     return this.httpClient.get<Shiur[]>(url);
   }

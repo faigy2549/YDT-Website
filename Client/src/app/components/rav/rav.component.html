@@ -1,82 +1,134 @@
-<div  class="ry-container">
-    <p-card [style]="{ width: '34rem', overflow: 'hidden' ,height:'23rem'}">
-
-            <p style="font-size: 3.5rem; text-align: center;">
-               DVAR TORAH 
-               <br>
-               REBBEIM
-              </p>
-      </p-card>
-    <p-card [style]="{ width: '50rem', overflow: 'hidden' ,height:'23rem'}">
-        <div class="ry-div">
-            <p style=" width:20rem;">
-          <img alt="Card" class="w-full" src="../../../assets/image.png" [alt]="rebbeim[0].name" />
+   <div class="ry-container">
+    <div [style]="{ width: '34rem', overflow: 'hidden' ,height:'23rem'}">
+        <div class="dtrebbeim-div">
+            <p class="main-title">
+                YESHIVAS
+                <br>
+                D'VAR TORAH 
+                <br>
+                REBBEIM
             </p>
-            <p style="font-size: 1.5rem;">
+        </div>
+    </div>
+    <p-card class="ry-card" [style]="{ width: '50rem', overflow: 'hidden' ,height:'23rem'}">
+        <div class="ry-div">
+            <p class="image-container">
+                <img alt="Card" class="w-full" src="../../../assets/image.png" [alt]="rebbeim[0].name" />
+            </p>
+            <p class="subtitle">
                 R' Menachem Eichenstien
                 <br>
                 ROSH HAYESHIVA
-              </p>
-       
-    </div>
-      </p-card>
-     </div>
-<br>
+            </p>
+        </div>
+    </p-card>
+</div>
+
 <div class="card-container">
     <div *ngFor="let item of rebbeim" class="card">
-      <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'25rem'}">
-        <ng-template pTemplate="header">
-          <img alt="Card" class="w-full" src="../../../assets/IMG_6946.JPG" [alt]="item.name" />
-        </ng-template>
-        <ng-template pTemplate="title">
-          {{ item.name }}
-        </ng-template>
-        <ng-template pTemplate="subtitle">
-          {{ item.title }}
-        </ng-template>
-       
-      </p-card>
+        <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'25rem'}">
+            <ng-template pTemplate="header">
+                <img alt="Card" class="w-full" src="../../../assets/IMG_6946.JPG" [alt]="item.name" />
+            </ng-template>
+            <ng-template pTemplate="title">
+                {{ item.name }}
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+                {{ item.title }}
+            </ng-template>
+        </p-card>
     </div>
-  </div>
-  
-  <style>
-    /* Style for the card container */
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem; /* Gap between the cards */
+</div>
+
+<style>
+    /* General Styles */
+    body, html {
+        margin: 0;
+        height: 100%;
     }
+
+    /* Main Title Styling */
+    .main-title {
+        font-size: 3.5rem;
+        text-align: center;
+        font-style: italic;
+        font-family: 'Cursive', 'Brush Script MT', sans-serif;
+        color: #5D737E;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        justify-content: center;
+    }
+
+    /* Containers */
     .ry-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      flex-direction: row;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        flex-direction: row;
+        padding-bottom: 2rem;
     }
-  .ry-div{
-       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap:4rem;
-  }
-    /* Ensure each card takes up equal space */
-    .card {
-      flex: 0 1 calc(10% - 2rem); /* 4 cards per row with some spacing */
-      box-sizing: border-box; /* Include padding and border in the card width */
-    }
-  
-    /* Ensure the container spans the full height and centers content */
-    body,
-    html {
-      margin: 0;
-      height: 100%;
-    }
-  
     .card-container {
-      min-height: 100vh; /* Center content vertically */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding-bottom: 2rem;
+        min-height: 100vh; /* Center content vertically */
     }
-  </style>
+
+    /* Card Styles */
+    .card {
+        flex: 0 1 calc(10% - 2rem); /* 4 cards per row with some spacing */
+        box-sizing: border-box; /* Include padding and border in the card width */
+        animation: fadeInUp 0.6s ease-out;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.06); /* Slightly enlarge on hover */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    }
+
+    /* Rebbeim Section */
+    .dtrebbeim-div {
+        font-family: sans-serif;
+        box-shadow: none;
+    }
+
+    .ry-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+    }
   
+    .image-container {
+        width: 20rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .ry-container, .card-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
