@@ -1,6 +1,30 @@
+<div  class="ry-container">
+    <p-card [style]="{ width: '34rem', overflow: 'hidden' ,height:'23rem'}">
+
+            <p style="font-size: 3.5rem; text-align: center;">
+               DVAR TORAH 
+               <br>
+               REBBEIM
+              </p>
+      </p-card>
+    <p-card [style]="{ width: '50rem', overflow: 'hidden' ,height:'23rem'}">
+        <div class="ry-div">
+            <p style=" width:20rem;">
+          <img alt="Card" class="w-full" src="../../../assets/image.png" [alt]="rebbeim[0].name" />
+            </p>
+            <p style="font-size: 1.5rem;">
+                R' Menachem Eichenstien
+                <br>
+                ROSH HAYESHIVA
+              </p>
+       
+    </div>
+      </p-card>
+     </div>
+<br>
 <div class="card-container">
     <div *ngFor="let item of rebbeim" class="card">
-      <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'30rem'}">
+      <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'25rem'}">
         <ng-template pTemplate="header">
           <img alt="Card" class="w-full" src="../../../assets/IMG_6946.JPG" [alt]="item.name" />
         </ng-template>
@@ -10,9 +34,6 @@
         <ng-template pTemplate="subtitle">
           {{ item.title }}
         </ng-template>
-        <p>
-            {{item.bio}}
-        </p>
        
       </p-card>
     </div>
@@ -27,7 +48,20 @@
       align-items: center;
       gap: 2rem; /* Gap between the cards */
     }
-  
+    .ry-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-direction: row;
+    }
+  .ry-div{
+       display: flex;
+      justify-content: center;
+      align-items: center;
+      gap:4rem;
+  }
     /* Ensure each card takes up equal space */
     .card {
       flex: 0 1 calc(10% - 2rem); /* 4 cards per row with some spacing */
