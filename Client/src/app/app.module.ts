@@ -20,6 +20,7 @@ import {CardModule} from 'primeng/card';
 import { AllShiurimComponent } from './components/all-shiurim/all-shiurim.component';
 import {TableModule} from 'primeng/table';
 import { AlumniComponent } from './components/alumni/alumni.component';
+import {DividerModule} from 'primeng/divider'
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AlumniComponent } from './components/alumni/alumni.component';
    ButtonModule,  
    TagModule, 
    CardModule,
-   TableModule
+   TableModule,
+   DividerModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

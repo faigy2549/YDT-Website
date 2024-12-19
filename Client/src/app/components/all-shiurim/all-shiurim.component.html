@@ -1,37 +1,40 @@
-<div class="card fade-in">
-    <!-- Filter Section -->
+<div class="card fade-in flex">
+   
     <div class="filters">
-        <label for="searchBar">Search Shiurim:</label>
-        <input 
-            id="searchBar" 
-            type="text" 
-            [(ngModel)]="searchQuery" 
-            (input)="applyFilters()" 
-            placeholder="Search by title or Rav" 
-        />
-        <label for="ravFilter">Filter by Rav:</label>
-        <select id="ravFilter" [(ngModel)]="selectedRav" (change)="applyFilters()">
+        <p>Rav</p> <i icon="pi pi-plus"></i>
+        <p-divider></p-divider>
+        <select id="ravFilter"  [(ngModel)]="selectedRav" (change)="applyFilters()">
+            Filter by Rav:
             <option value="">All</option>
             <option *ngFor="let rav of ravList" [value]="rav.id">{{ rav.name }}</option>
         </select>
-
-        <label for="topicFilter">Filter by Topic:</label>
+        <p>Topic</p> <i icon="pi pi-plus"></i>
+        <p-divider></p-divider>
         <select id="topicFilter" [(ngModel)]="selectedTopic" (change)="applyFilters()">
+            Filter by Topic:
             <option value="">All</option>
             <option *ngFor="let topic of topicList" [value]="topic.id">{{ topic.name }}</option>
         </select>
-
-        <label for="yearFilter">Filter by Year:</label>
-        <input id="yearFilter" [(ngModel)]="selectedYear" (change)="applyFilters()" type="number" placeholder="Year" />
+        <p>Year</p> <i icon="pi pi-plus"></i>
+        <p-divider></p-divider>
+        <input id="yearFilter" [(ngModel)]="selectedYear" (change)="applyFilters()" type="number" placeholder="Filter by Year" />
     </div>
-
-    <!-- Shiurim Table -->
-    <p-table [value]="filteredShiurim" [responsive]="true" [tableStyle]="{ 'padding-right': '8rem', 'padding-left': '8rem', 'padding-bottom': '2rem', 'width':'50%'}">
+    <p-divider layout="vertical" />
+     <div class="shiurim-table">
+    <input 
+        id="searchBar" 
+        class="search"
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        (input)="applyFilters()" 
+        placeholder="Search by Title or Rav" 
+    />
+    <p-table [value]="filteredShiurim" [responsive]="true"  >
         <ng-template pTemplate="body" let-shiur let-i="index">
             <tr class="table-row fade-in-row" [style.animation-delay]="i * 0.2 + 's'">
                 <td class="td-flex">
                     <img
-                        [src]="'../../../assets/IMG_6946.JPG'"
+                        [src]="'../../../assets/image.png'"
                         [alt]="shiur.rav?.name"
                         class="profile-img"
                     />
@@ -47,7 +50,7 @@
                         <source src="../../../assets/Chamol Kempeh.mp3" type="audio/ogg">
                         <source src="../../../assets/Chamol Kempeh.mp3" type="audio/wav">
                     </audio>
-                    
+                </td>
             </tr>
             <br>
         </ng-template>
@@ -55,6 +58,7 @@
             In total there are {{ filteredShiurim.length }} shiurim.
         </ng-template>
     </p-table>
+</div>
 </div>
 
 <style>
@@ -71,7 +75,18 @@
         transform: translateY(20px);
         animation: fadeInUp 0.8s ease forwards;
     }
-
+.flex{
+    display: flex;
+    flex-direction: row;
+    gap:6rem;
+    justify-content: center;
+    text-align: center;
+    padding:4rem 8rem;
+    padding-top: 2rem;
+}
+.shiurim-table{
+    width:50rem;
+}
     /* Animation delay for rows */
     @keyframes fadeInUp {
         0% {
@@ -86,26 +101,26 @@
 
     /* General styles */
     .td {
-        border-top: 1px solid rgba(181, 203, 212, 0.9);
-        border-bottom: 1px solid rgba(181, 203, 212, 0.9);
+        border-top: 1px solid #7685C1;
+        border-bottom: 1px solid #7685C1;
     }
 
     .td-flex {
-        border-top: 1px solid rgba(181, 203, 212, 0.9);
-        border-bottom: 1px solid rgba(181, 203, 212, 0.9);
+        border-top: 1px solid #7685C1;
+        border-bottom: 1px solid #7685C1;
         display: flex;
         flex-direction: row;
         gap: 1rem;
     }
 
     .td-audio {
-        border-top: 1px solid rgba(181, 203, 212, 0.9);
-        border-bottom: 1px solid rgba(181, 203, 212, 0.9);
+        border-top: 1px solid #7685C1;
+        border-bottom: 1px solid #7685C1;
         text-align: right;
     }
 
     .table-row:hover {
-        background-color: rgba(240, 240, 240, 0.9);
+        background-color: #d9dceb;
         transition: background-color 0.3s ease;
     }
 
@@ -178,12 +193,19 @@
 
     /* Filter Styles */
     .filters {
-        margin-bottom: 2rem;
+       width:35rem;
+       text-align: left;
+
     }
 
-    .filters label {
+    .search {
+        width:20rem; 
+        margin: 0 1rem 1rem 0;
+        padding: 0.5rem;
         font-size: 1rem;
-        margin-right: 1rem;
+        border: 2px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+        border-image-slice: 1;
     }
 
     .filters select,
@@ -191,5 +213,9 @@
         margin: 0 1rem 1rem 0;
         padding: 0.5rem;
         font-size: 1rem;
+        border: 2px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+        border-image-slice: 1;
+        width:12rem;
     }
 </style>
