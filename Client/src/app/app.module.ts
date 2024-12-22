@@ -13,7 +13,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { RavComponent } from './components/rav/rav.component';
 import { DataViewModule } from 'primeng/dataview';
 import { FormsModule } from '@angular/forms';  
-import { SelectButtonModule } from 'primeng/selectbutton'; 
 import { ButtonModule } from 'primeng/button';  
 import { TagModule } from 'primeng/tag';  
 import {CardModule} from 'primeng/card';
@@ -21,7 +20,7 @@ import { AllShiurimComponent } from './components/all-shiurim/all-shiurim.compon
 import {TableModule} from 'primeng/table';
 import { AlumniComponent } from './components/alumni/alumni.component';
 import {DividerModule} from 'primeng/divider'
-
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,12 +41,12 @@ import {DividerModule} from 'primeng/divider'
    HttpClientModule,
    DataViewModule,
    FormsModule,  
-   SelectButtonModule, 
    ButtonModule,  
    TagModule, 
    CardModule,
    TableModule,
-   DividerModule
+   DividerModule,
+   DropdownModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

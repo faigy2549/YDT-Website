@@ -1,70 +1,146 @@
-   <p-button 
-   severity="secondary" 
-   class="w-full" 
-   [outlined]="true" 
-   (onClick)="getAllShiurim()" 
-   styleClass="w-full">
-   View All Shiurim
- </p-button>
- 
- <div class="card-container">
-   <div 
-     *ngFor="let item of rabbanimWithTopics; let i = index" 
-     class="card fade-in" 
-     [style.animation-delay]="i * 0.2 + 's'">
-     <p-card [style]="{ width: '20rem', overflow: 'hidden', height: '30rem' }">
-       <ng-template pTemplate="header">
-         <img alt="Card" class="w-full" src="../../../assets/IMG_6946.JPG" [alt]="item.rav.name" />
-       </ng-template>
-       <ng-template pTemplate="title">
-         {{ item.rav.name }}
-       </ng-template>
-       <ng-template pTemplate="subtitle">
-         {{ item.rav.title }}
-       </ng-template>
-       <ng-template pTemplate="footer">
-         <div *ngIf="item.topics && item.topics.length > 0">
-           <div class="flex gap-4 mt-1">
-             <div *ngFor="let topic of item.topics" class="text-sm text-surface-400">
-                <p-button 
-                severity="secondary" 
-                class="w-full" 
-                [outlined]="true" 
-                styleClass="w-full" 
-                (onClick)="navigateToAllShiurim(item.rav.id, topic.id)">
-                {{ topic.name }}
-             </p-button>
-             </div>
-           </div>
-         </div>
-       </ng-template>
-     </p-card>
-   </div>
+ <div class="header-img">
+    <br><br><br> <br><br><br>
+    <p class="header-text">SHIURIM</p>
  </div>
+ <div class="div_all_shiurim">
+ <p-button 
+ (onClick)="getAllShiurim()" 
+ label="View All Shiurim" 
+ severity="secondary" 
+ [outlined]="true" 
+ class="all-shiurim"  
+>
+</p-button></div>
+ <div class="card-container">
+ 
+   
+    <div
+      *ngFor="let item of rabbanimWithTopics; let i = index"
+      class="card fade-in rebbi-card"
+      [style.animation-delay]="i * 0.2 + 's'"
+      (click)="navigateToAllShiurim(item.rav.id)">
+      <p-card [style]="{ width: '20rem', overflow: 'hidden', height: '30rem' }">
+        <ng-template pTemplate="header">
+          <img alt="Card" class="w-full" src="../../../assets/image.png" [alt]="item.rav.name" />
+        </ng-template>
+        <ng-template pTemplate="title">
+          {{ item.rav.name }}
+        </ng-template>
+        <ng-template pTemplate="subtitle">
+          {{ item.rav.title }}
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <div *ngIf="item.topics && item.topics.length > 0" class="topics-container scrollable-footer">
+            <div *ngFor="let topic of item.topics" class="topic">
+              <p-button
+                severity="secondary"
+                [outlined]="true"
+                styleClass="topic-button"
+                (click)="navigateToAllShiurim(item.rav.id, topic.id)">
+                {{ topic.name }}
+              </p-button>
+            </div>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+  
  
  <style>
-   /* Style for the card container */
+.div_all_shiurim{
+    justify-content: center;
+    text-align: center;
+    padding-top:1.6rem;
+    padding-bottom: 0rem;
+}
+   .fade-in {
+     animation: fadeInUp 0.8s ease forwards; 
+}
+.all-shiurim{
+    width:5rem;
+}
    .card-container {
      display: flex;
      flex-wrap: wrap;
      justify-content: center;
      align-items: center;
-     gap: 2rem; /* Gap between the cards */
+     gap: 2rem; 
    }
  
    /* Ensure each card takes up equal space */
    .card {
+    padding-top: 0px;
      flex: 0 1 calc(10% - 2rem); /* 4 cards per row with some spacing */
-     box-sizing: border-box; /* Include padding and border in the card width */
      opacity: 0; /* Initially invisible */
+     box-sizing: border-box;
      transform: translateY(20px); /* Start position */
    }
- 
-   /* Fade-in animation */
-   .fade-in {
-     animation: fadeInUp 0.8s ease forwards; /* Apply fade-in with upward motion */
-   }
- 
+ .rebbi-card{
+   border-left: 1px solid #7685C1; 
+   border-right: 1px solid #7685C1; 
+   color:#383F5B;
+ }
+
+ :host ::ng-deep .p-card {
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    color:#383F5B;
+    height: 30rem; /* Keep the card height fixed */
+    overflow: hidden; /* Ensure scrolling works only for the footer */
+    background-color: #fafafc;
+}
+:host ::ng-deep .p-card:hover {
+  border-top: 1px solid #7685C1;
+  border-bottom: 1px solid #7685C1;
+  background-color: #d9dceb;
+}
+.rebbi-card img,
+.p-card img {
+  height: 14rem; /* Set a fixed height for consistency */
+  object-fit: cover; /* Maintain aspect ratio and cover the allocated space */
+  display: block; /* Removes any inline spacing or gaps caused by the image */
+}
+.topics-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+  gap: 0.5rem; /* Add spacing between buttons */
+  justify-content: flex-start; /* Align items to the left */
+}
+.topic {
+  flex: 0 1 auto; /* Allow buttons to shrink and grow based on content */
+  min-width: fit-content; /* Ensure buttons are at least as wide as their content */
+}
+.scrollable-footer {
+  max-height: 8rem; /* Limit the height of the footer */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+.topic-button {
+  width: auto; /* Allow buttons to expand for longer text */
+  max-width: 100%; /* Prevent buttons from exceeding container width */
+  text-align: center; /* Center the text inside the button */
+  padding: 0.5rem 1rem; /* Add spacing inside the button for better appearance */
+  font-size: 1rem; /* Adjust font size for better readability */
+}
+:host ::ng-deep .p-button {
+  border: 2px solid var(--grad, );
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  color: #383F5B;
+  font-size: 1rem;
+  height: auto; /* Allow height to adjust dynamically */
+  background-color: #d9dceb;
+  padding: 0.5rem 1rem; /* Add consistent padding */
+  min-width:8rem;
+  
+}
+
+:host ::ng-deep .p-button:hover {
+  border-top: 2px solid #7685C1;
+  border-bottom: 2px solid #7685C1;
+  background-color: white;
+}
+
    /* Keyframes for the fade-in effect */
    @keyframes fadeInUp {
      0% {
@@ -85,7 +161,7 @@
    }
  
    .card-container {
-     min-height: 100vh; /* Center content vertically */
+     min-height: 33rem;
    }
  </style>
  

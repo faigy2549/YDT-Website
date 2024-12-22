@@ -1,96 +1,34 @@
+.header-img{
+  background-image: url("/assets/IMG_2930.JPG");
+background-size: cover; 
+background-repeat: no-repeat; 
+background-position: center; 
+height: 28em;
+}
+.header-text{
+  text-align: center;
+  font-size: 4rem;
+  color:rgb(235, 234, 234);
+  margin:0px;
+}
+
 html, body {
   height: 100%;
   margin: 0;
-  display: flex;
+  display: flex;  
   flex-direction: column;
 }
 
 main {
-  flex: 1; 
+  justify-content: center;
+  display: flex;
+  flex-direction:column;
+
+
 }
+
 footer {
   flex-shrink: 0; 
   margin-top: auto; 
-}
-
-.p-menubar {
-  background-color: transparent;
-  height: 35vh; 
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  border-bottom: transparent;
-  justify-content: space-between; /* Space between logo and menu items */
-}
-
-/* Styling for the Logo */
-.p-menubar .logo {
-  height: 240px;
-  width: auto;
-  background-color: transparent;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  max-width: 100%; /* Ensure the logo doesn't overflow */
-}
-
-/* Styling for the Menu Items */
-.p-menubar .p-menubar-root-list {
-  display: flex;
-  gap: 20px; /* Space between items */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  margin-right: 0px;
-  direction: ltr; /* Left to right layout */
-}
-
-/* Styling for Menu Links */
-.p-menubar .p-menubar-item-link {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 15px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Hover and Active States for Menu Links */
-.p-menubar .p-menubar-item-link:hover {
-  background-color: #2c3e50;
-  border-radius: 5px;
-}
-
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
-  .p-menubar {
-    flex-direction: column; /* Stack logo and menu items vertically on smaller screens */
-    height: auto; /* Adjust height to fit content */
-  }
-
-  .p-menubar .logo {
-    margin-bottom: 20px; /* Add some space between the logo and menu items */
-    height: 160px; /* Smaller logo size on smaller screens */
-  }
-
-  .p-menubar .p-menubar-root-list {
-    flex-direction: column; /* Stack menu items vertically */
-    gap: 10px; /* Adjust space between items */
-    margin-left: 0; /* Remove any margin on the left */
-  }
-
-  .p-menubar .p-menubar-item-link {
-    font-size: 14px; /* Smaller text size on smaller screens */
-    padding: 8px 12px; /* Adjust padding */
-  }
-}
-
-@media (max-width: 480px) {
-  .p-menubar {
-    padding: 0 10px; /* Adjust padding for smaller screens */
-  }
-
-  .p-menubar .logo {
-    height: 130px; /* Further reduce logo size for very small screens */
-  }
 }
 

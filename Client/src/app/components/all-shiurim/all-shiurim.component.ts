@@ -74,7 +74,8 @@ export class AllShiurimComponent implements OnInit {
           const ravMatch = this.selectedRav ? Number(shiur.ravId) === Number(this.selectedRav) : true;
           const topicMatch = this.selectedTopic ? Number(shiur.topicId) === Number(this.selectedTopic) : true;
       const yearMatch = this.selectedYear ? new Date(shiur.date).getFullYear() === +this.selectedYear : true;
-      const matchesSearch = !this.searchQuery || 
+      const matchesSearch = !this.searchQuery ||
+      shiur.topic?.name.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
       shiur.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
       (shiur.rav?.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
       

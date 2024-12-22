@@ -89,9 +89,9 @@ export class ShiurimComponent implements OnInit {
     return distinctTopics;
   }
 
-  navigateToAllShiurim(ravId: number, topicId: number) {
+  navigateToAllShiurim(ravId: number, topicId?: number) {
     this.router.navigate(['/all-shiurim'], {
-      queryParams: { rav: ravId.toString(), topic: topicId.toString() }
+      queryParams: { rav: ravId.toString(), topic: topicId?.toString() }
     });
   }
 }

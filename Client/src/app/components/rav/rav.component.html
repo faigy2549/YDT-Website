@@ -1,15 +1,8 @@
-   <div class="ry-container">
-    <div [style]="{ width: '34rem', overflow: 'hidden' ,height:'23rem'}">
-        <div class="dtrebbeim-div">
-            <p class="main-title">
-                YESHIVAS
-                <br>
-                D'VAR TORAH 
-                <br>
-                REBBEIM
-            </p>
-        </div>
-    </div>
+<div class="header-img">
+    <br><br><br> <br><br><br>
+    <p class="header-text">REBBEIM</p>
+ </div>
+   <div class="ry-container" >
     <p-card class="ry-card" [style]="{ width: '50rem', overflow: 'hidden' ,height:'23rem'}">
         <div class="ry-div">
             <p class="image-container">
@@ -24,11 +17,11 @@
     </p-card>
 </div>
 
-<div class="card-container">
+<div class="card-container" >
     <div *ngFor="let item of rebbeim" class="card">
         <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'25rem'}">
             <ng-template pTemplate="header">
-                <img alt="Card" class="w-full" src="../../../assets/IMG_6946.JPG" [alt]="item.name" />
+                <img alt="Card"  class="w-full" src="../../../assets/image.png" [alt]="item.name" />
             </ng-template>
             <ng-template pTemplate="title">
                 {{ item.name }}
@@ -41,6 +34,35 @@
 </div>
 
 <style>
+
+:host ::ng-deep .p-card {
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    color:#383F5B;
+    height: 30rem; /* Keep the card height fixed */
+    overflow: hidden; /* Ensure scrolling works only for the footer */
+    border-top: 1px solid #7685C1;
+    border-bottom: 1px solid #7685C1;
+    background-color: #fafafc;
+    /* border-right: 1px solid #7685C1; */
+
+}
+:host ::ng-deep .p-card:hover {
+  background-color: #d9dceb;
+
+   color:#383F5B;
+}
+.rebbi-card img,
+.p-card img {
+  height: 12rem; /* Set a fixed height for consistency */
+  max-height: 8rem;
+  object-fit: cover; /* Maintain aspect ratio and cover the allocated space */
+  display: block; /* Removes any inline spacing or gaps caused by the image */
+}
+.ry-card{
+   border-left: none; 
+   border-right: none;
+}
     /* General Styles */
     body, html {
         margin: 0;
@@ -67,6 +89,7 @@
         gap: 2rem;
         flex-direction: row;
         padding-bottom: 2rem;
+        padding-top: 2rem;
     }
     .card-container {
         display: flex;
@@ -75,6 +98,7 @@
         align-items: center;
         gap: 2rem;
         padding-bottom: 2rem;
+        /* padding-top: 2rem; */
         min-height: 100vh; /* Center content vertically */
     }
 
@@ -87,8 +111,10 @@
     }
 
     .card:hover {
-        transform: scale(1.06); /* Slightly enlarge on hover */
+        /* transform: scale(1.06); Slightly enlarge on hover */
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        /* border-top: 1px solid #7685C1;
+        border-bottom: 1px solid #7685C1; */
     }
 
     /* Rebbeim Section */

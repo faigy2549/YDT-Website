@@ -1,18 +1,23 @@
+<div class="header-img">
+    <br><br><br> <br><br><br>
+    <p class="header-text">SHIURIM</p>
+ </div>
 <div class="card fade-in flex">
    
     <div class="filters">
         <p>Rav</p> <i icon="pi pi-plus"></i>
         <p-divider></p-divider>
-        <select id="ravFilter"  [(ngModel)]="selectedRav" (change)="applyFilters()">
+        <select  id="ravFilter"  [(ngModel)]="selectedRav" (change)="applyFilters()">
             Filter by Rav:
             <option value="">All</option>
             <option *ngFor="let rav of ravList" [value]="rav.id">{{ rav.name }}</option>
         </select>
+
         <p>Topic</p> <i icon="pi pi-plus"></i>
         <p-divider></p-divider>
-        <select id="topicFilter" [(ngModel)]="selectedTopic" (change)="applyFilters()">
+        <select id="topicFilter" [(ngModel)]="selectedTopic" (change)="applyFilters()" >
             Filter by Topic:
-            <option value="">All</option>
+            <option value="Topic">All</option>
             <option *ngFor="let topic of topicList" [value]="topic.id">{{ topic.name }}</option>
         </select>
         <p>Year</p> <i icon="pi pi-plus"></i>
@@ -27,7 +32,7 @@
         type="text" 
         [(ngModel)]="searchQuery" 
         (input)="applyFilters()" 
-        placeholder="Search by Title or Rav" 
+        placeholder="Search by Title, Topic or Rav" 
     />
     <p-table [value]="filteredShiurim" [responsive]="true"  >
         <ng-template pTemplate="body" let-shiur let-i="index">
