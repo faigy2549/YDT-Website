@@ -2,13 +2,14 @@
     <br><br><br> <br><br><br>
     <p class="header-text">REBBEIM</p>
  </div>
+
    <div class="ry-container" >
     <p-card class="ry-card" [style]="{ width: '50rem', overflow: 'hidden' ,height:'23rem'}">
         <div class="ry-div">
             <p class="image-container">
                 <img alt="Card" class="w-full" src="../../../assets/image.png" [alt]="rebbeim[0].name" />
             </p>
-            <p class="subtitle">
+            <p class="title">
                 R' Menachem Eichenstien
                 <br>
                 ROSH HAYESHIVA
@@ -39,13 +40,13 @@
     box-shadow: none !important;
     border-radius: 0px !important;
     color:#383F5B;
-    height: 30rem; /* Keep the card height fixed */
-    overflow: hidden; /* Ensure scrolling works only for the footer */
+    height: 30rem; 
+    overflow: hidden; 
     border-top: 1px solid #7685C1;
     border-bottom: 1px solid #7685C1;
     background-color: #fafafc;
-    /* border-right: 1px solid #7685C1; */
-
+    font-family: 'FrankRuhlLibre-Light';
+    font-size: 1.5rem;
 }
 :host ::ng-deep .p-card:hover {
   background-color: #d9dceb;
@@ -62,6 +63,8 @@
 .ry-card{
    border-left: none; 
    border-right: none;
+   font-family: 'FrankRuhlLibre-Bold';
+   font-size: 1.5rem;
 }
     /* General Styles */
     body, html {

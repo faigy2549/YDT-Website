@@ -21,6 +21,7 @@ import {TableModule} from 'primeng/table';
 import { AlumniComponent } from './components/alumni/alumni.component';
 import {DividerModule} from 'primeng/divider'
 import { DropdownModule } from 'primeng/dropdown';
+import { DonateComponent } from './components/donate/donate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { DropdownModule } from 'primeng/dropdown';
     ShiurimComponent,
     AllShiurimComponent,
     AlumniComponent,
+    DonateComponent,
   ],
   imports: [
    BrowserModule,

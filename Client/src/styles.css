@@ -7,9 +7,10 @@ height: 28em;
 }
 .header-text{
   text-align: center;
-  font-size: 4rem;
-  color:rgb(235, 234, 234);
+  font-size: 5rem;
+  color:rgb(245, 244, 236);
   margin:0px;
+  font-family: 'FrankRuhlLibre-Bold';
 }
 
 html, body {
@@ -17,6 +18,7 @@ html, body {
   margin: 0;
   display: flex;  
   flex-direction: column;
+  font-family: 'FrankRuhlLibre-Light';
 }
 
 main {
@@ -32,3 +34,21 @@ footer {
   margin-top: auto; 
 }
 
+@font-face {
+  font-family: 'FrankRuhlLibre-Light';
+  src: url('/assets/fonts/FrankRuhlLibre-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FrankRuhlLibre-Medium';
+  src: url('/assets/fonts/FrankRuhlLibre-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FrankRuhlLibre-Bold';
+  src: url('/assets/fonts/FrankRuhlLibre-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
