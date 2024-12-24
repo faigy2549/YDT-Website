@@ -40,5 +40,8 @@ namespace Repositories
         public DbSet<Rav> Rabbanim { get; set; }
         public DbSet<Shiur> Shiurim { get; set; }
         public DbSet<Topic> Topics { get; set; }
+        public DbSet<Alumni> Alumni { get; set; }
+        public DbSet<MazalTov> MazalTov { get; set; }
+        public DbSet<Occasion> Occasions { get; set; }
     }
 }

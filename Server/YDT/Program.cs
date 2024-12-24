@@ -1,3 +1,4 @@
+using Entities;
 using Microsoft.EntityFrameworkCore;
 using NLog.Web;
 using Repositories;
@@ -34,9 +35,20 @@ builder.Services.AddScoped<IRavService, RavService>();
 builder.Services.AddScoped<IShiurRepository, ShiurRepository>();
 builder.Services.AddScoped<IShiurService, ShiurService>();
 
+builder.Services.AddScoped<IAlumniRepository, AlumniRepository>();
+builder.Services.AddScoped<IAlumniService, AlumniService>();
+builder.Services.AddScoped<IMazalTovRepository, MazalTovRepository>();
+builder.Services.AddScoped<IMazalTovService, MazalTovService>();
+builder.Services.AddScoped<IOccasionRepository, OccasionRepository>();
+builder.Services.AddScoped<IOccasionService, OccasionService>();
+
 builder.Services.AddScoped<ITopicRepository, TopicRepository>();
 builder.Services.AddScoped<ITopicService, TopicService>();
-
+builder.Services.AddScoped<IContactService, ContactService>();
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables();
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 builder.Host.UseNLog();
 var app = builder.Build();
