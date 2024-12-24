@@ -65,23 +65,30 @@ export class AllShiurimComponent implements OnInit {
   openAudio(shiurId: number) {
     this.audioVisible[shiurId] = !this.audioVisible[shiurId];
   }
-
   applyFilters() {
-    console.log('All Shiurim:', this.shiurim); 
-    console.log('Selected Rav:', this.selectedRav);
-    console.log('Selected Topic:', this.selectedTopic);
     this.filteredShiurim = this.shiurim.filter(shiur => {
-          const ravMatch = this.selectedRav ? Number(shiur.ravId) === Number(this.selectedRav) : true;
-          const topicMatch = this.selectedTopic ? Number(shiur.topicId) === Number(this.selectedTopic) : true;
-      const yearMatch = this.selectedYear ? new Date(shiur.date).getFullYear() === +this.selectedYear : true;
-      const matchesSearch = !this.searchQuery ||
-      shiur.topic?.name.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
-      shiur.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-      (shiur.rav?.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
-      
+      const allRavSelected = !this.selectedRav || this.selectedRav === '';
+      const allTopicSelected = !this.selectedTopic || this.selectedTopic === '';
+  
+      const ravMatch = allRavSelected || Number(shiur.ravId) === Number(this.selectedRav);
+      const topicMatch = allTopicSelected || Number(shiur.topicId) === Number(this.selectedTopic);
+      const yearMatch = !this.selectedYear || new Date(shiur.date).getFullYear() === Number(this.selectedYear);
+  
+      const matchesSearch = !this.searchQuery || 
+        (shiur.topic?.name?.toLowerCase().includes(this.searchQuery.toLowerCase())) || 
+        (shiur.title?.toLowerCase().includes(this.searchQuery.toLowerCase())) || 
+        (shiur.rav?.name?.toLowerCase().includes(this.searchQuery.toLowerCase()));
+  
       return ravMatch && topicMatch && yearMatch && matchesSearch;
     });
-    history.pushState(null, '', '/all-shiurim');
+    const queryParams = new URLSearchParams();
+    if (this.selectedRav) queryParams.set('rav', this.selectedRav);
+    if (this.selectedTopic) queryParams.set('topic', this.selectedTopic);
+    if (this.selectedYear) queryParams.set('year', this.selectedYear);
+  
+    const queryString = queryParams.toString();
+    history.replaceState(null, '', `/all-shiurim${queryString ? '?' + queryString : ''}`);
   }
+  
   
 }

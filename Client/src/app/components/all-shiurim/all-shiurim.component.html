@@ -17,7 +17,7 @@
         <p-divider></p-divider>
         <select id="topicFilter" [(ngModel)]="selectedTopic" (change)="applyFilters()" >
             Filter by Topic:
-            <option value="Topic">All</option>
+            <option value="">All</option>
             <option *ngFor="let topic of topicList" [value]="topic.id">{{ topic.name }}</option>
         </select>
         <p>Year</p> <i icon="pi pi-plus"></i>

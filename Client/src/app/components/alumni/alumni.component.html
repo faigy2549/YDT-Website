@@ -2,3 +2,43 @@
     <br><br><br> <br><br><br>
     <p class="header-text">ALUMNI</p>
  </div>
+ <div class="card">
+    <p-splitter [panelSizes]="[65, 35]" [style]="{ height: '500px' }">
+      <!-- Left Panel: Mazal Tov List -->
+      <ng-template pTemplate>
+        <div class="p-4">
+          <h3>Mazal Tovs</h3>
+          <ul>
+            <li *ngFor="let mazalTov of mazalTovList">
+              Occasion: {{ mazalTov.occasionId }}, Email: {{ mazalTov.alumniId }}, Date: {{ mazalTov.date }}
+            </li>
+          </ul>
+        </div>
+      </ng-template>
+  
+      <!-- Right Panel: Add Mazal Tov Form -->
+      <ng-template pTemplate>
+        <div class="p-4">
+          <h3>Share your simcha!</h3>
+          <form (ngSubmit)="addMazalTov()">
+            <div class="p-fluid">
+              <div class="p-field">
+                <label for="occasionId">Occasion</label>
+                <input id="occasionId" type="number" [(ngModel)]="newMazalTov.occasionId" name="occasionId" required />
+              </div>
+              <div class="p-field">
+                <label for="alumniId">Email</label>
+                <input id="alumniId" type="email" [(ngModel)]="newMazalTov.alumniId" name="alumniId" required />
+              </div>
+              <div class="p-field">
+                <label for="date">Date</label>
+                <input id="date" type="date" [(ngModel)]="newMazalTov.date" name="date" required />
+              </div>
+              <button type="submit" pButton label="Add Mazal Tov"></button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+    </p-splitter>
+  </div>
+  

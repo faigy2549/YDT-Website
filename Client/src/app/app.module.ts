@@ -1,5 +1,6 @@
 import {  NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,10 @@ import { AlumniComponent } from './components/alumni/alumni.component';
 import {DividerModule} from 'primeng/divider'
 import { DropdownModule } from 'primeng/dropdown';
 import { DonateComponent } from './components/donate/donate.component';
+import { MessageModule } from 'primeng/message';
+import { FieldsetModule } from 'primeng/fieldset';
+import { InputTextModule,} from 'primeng/inputtext';
+import {SplitterModule} from 'primeng/splitter'
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +43,7 @@ import { DonateComponent } from './components/donate/donate.component';
   imports: [
    BrowserModule,
    AppRoutingModule,
+   BrowserAnimationsModule,
    CommonModule,
    MenubarModule,
    HttpClientModule,
@@ -49,6 +55,10 @@ import { DonateComponent } from './components/donate/donate.component';
    TableModule,
    DividerModule,
    DropdownModule,
+   MessageModule,
+   FieldsetModule,
+   InputTextModule,
+   SplitterModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

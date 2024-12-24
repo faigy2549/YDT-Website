@@ -1,5 +1,153 @@
 <div class="header-img">
-    <br><br><br> <br><br><br>
+    <br><br><br><br><br><br>
     <p class="header-text">CONTACT</p>
- </div>
-
+  </div>
+  
+  <div class="contact-container">
+    <div class="fieldsets-row">
+      <p-fieldset legend="US Office" class="contact-fieldset">
+        <p class="m-0">
+          <strong>Address:</strong> 123 Yeshiva Lane, Torah City, TS 12345<br>
+          <strong>Phone:</strong> (123) 456-7890<br>
+          <strong>Email:</strong> usofficeyeshiva.org<br>
+        </p>
+      </p-fieldset>
+  
+      <p-fieldset legend="Yeshiva" class="contact-fieldset">
+        <p class="m-0">
+          <strong>Address:</strong> 12 Ezras Torah, Jerusalem, Israel<br>
+          <strong>Phone:</strong> +972-2-123-4567<br>
+          <strong>Email:</strong> israelyeshiva.org<br>
+        </p>
+      </p-fieldset>
+    </div>
+  
+    <div class="contact-form">
+      <p-fieldset legend="Get in Touch">
+        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="p-fluid">
+          <div class="p-field">
+            <label for="name">Name</label>
+            <input id="name" type="text" pInputText name="name" ngModel required />
+          </div>
+          <div class="p-field">
+            <label for="email">Email</label>
+            <input id="email" type="email" pInputText name="email" ngModel required />
+          </div>
+          <div class="p-field">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              rows="4"
+              pInputTextarea
+              name="message"
+              ngModel
+              required
+              class="full-width-textarea"
+            ></textarea>
+          </div>
+          <div class="p-field">
+            <button pButton type="submit" label="Submit" class="p-button-success" [disabled]="!contactForm.valid"></button>
+          </div>
+        </form>
+      </p-fieldset>
+    </div>
+  </div>
+  
+  <div *ngIf="formSubmitted" class="success-message">
+    <p-message severity="success" text="Your message has been sent successfully!"></p-message>
+  </div>
+  
+  <style>
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    :host ::ng-deep .p-fieldset{
+        font-family: 'FrankRuhlLibre-Medium';
+        border-top:solid #383F5B  1px;
+        border-bottom: #383F5B solid 1px;
+        border-left: #7685C1 solid 1px;
+        border-right: #7685C1 solid 1px;
+        border-radius: 0px;
+    }
+    :host ::ng-deep .p-fieldset .p-fieldset-legend {
+        font-family: 'FrankRuhlLibre-Medium';
+        border-top:solid #7685C1  1px;
+        border-bottom: #7685C1 solid 1px;
+        border-left: #383F5B solid 1px;
+        border-right: #383F5B solid 1px;
+        border-radius: 0px;
+    }
+    .fieldsets-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 2rem;
+      width: 100%;
+    }
+  
+    .contact-fieldset {
+      flex: 1;
+      padding: 1rem;
+      box-shadow: none;
+      border: none;
+    }
+  
+    .contact-form {
+      width: 100%;
+      margin-bottom: 2rem; /* Space between form and footer */
+    }
+  
+    .p-field {
+      margin-bottom: 1rem;
+    }
+  
+    #message.full-width-textarea {
+      width: 100%; /* Matches other inputs */
+      font-size: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  
+    button[pButton] {
+      width: 100%;
+      background-color:#7685C1;
+      border-image: linear-gradient(to right, #383F5B, #7685C1);
+      border-image-slice: 1;
+      border: 2px solid var(--grad, );
+      border-radius: 0px;
+      font-family: 'FrankRuhlLibre-Medium';
+    }
+  
+    .success-message {
+      padding-top: 2rem;
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+  
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .fieldsets-row {
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .contact-fieldset {
+        width: 100%;
+      }
+  
+      .contact-form {
+        padding: 0;
+      }
+    }
+  </style>
+  
