@@ -20,10 +20,12 @@ namespace Services
         public async Task<bool> SendMessage(ContactFormRequest contact)
         {
             string subject =contact.Email + " Sent a message";
-            string body = $@"{contact.Name} sent a message from the YDT websute
-            Email- {contact.Email}  
-            Message-
-            {contact.Message}";
+            string body = $@"
+            {contact.Name} sent a message from the YDT website
+            {Environment.NewLine}
+            Email: {contact.Email}
+            {Environment.NewLine}
+            Message: {contact.Message}";
             await _emailService.SendEmailAsync("ydvartorah@gmail.com", subject, body);
             return true;
         }
