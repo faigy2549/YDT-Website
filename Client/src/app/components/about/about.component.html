@@ -1,0 +1,97 @@
+<div class="header-img">
+    <br><br><br> <br><br><br>
+    <p class="header-text">ABOUT</p>
+ </div>
+ <div class="container">
+    <div class="container-row">
+    <p-fieldset  >
+      <p>
+        At the turn of the century, the leading Roshei Yeshiva in America saw the need for a Yeshiva in Yerushalayim for American Bochurim to grow in Torah with warmth and individualized attention. With the encouragement and Bracha of Harav Elya Svei, Harav Chaim Epstein, and Harav Yitzchock Feigelstock Zichronam Livracha, the Rosh Yeshiva - Harav Menachem Eichenstein Shlit’a opened Yeshivas Dvar Torah - a Makom Torah where each Talmid would grow to their maximum potential.
+      </p>
+    </p-fieldset>
+    <div>
+        <p-image src="../../../assets/IMG_2928.JPG" alt="Image" width="500" [preview]="true" />
+    </div>
+    </div>
+    <div class="container-row">
+        <div>
+            <p-image src="../../../assets/IMG_2928.JPG" alt="Image" width="500" [preview]="true" />
+        </div>
+    <p-fieldset>
+        <p>
+          For twenty-five years, the Rosh Yeshiva has lovingly transmitted the Mesorah he drew from the Gedolim of yesteryear. As a close Talmid of Rav Shach Zt"l and with a personal connection to Rav Shmuel Auerbach Zt”l and Reb Yisroel Elya Weintraub zt”l, the Rosh Yeshiva imbued the Bochurim with the Torah and Yiras Shmayaim he received from the previous generation.
+        </p>
+      </p-fieldset>
+    
+    </div>
+    <div class="container-row">
+      <p-fieldset >
+        <p>
+          Many years have passed and with it many stories of success in bringing forth the best in each Bachur. As the years went by, the Yeshiva grew in reputation and in size. Eli Hakohen 36 - the Yeshiva’s beloved home for over 20 years, was no longer suitable. A larger building - a more spacious Bais Medrash, more shiur rooms, and a larger dining room were needed. With much Siyatta Dishmaya, a building was found on one of the most Torahdike streets in Yerushalayim - Rechov Ezras Torah, which was renovated to suit the specific needs of the Yeshiva.
+        </p>
+      </p-fieldset>
+      <div>
+        <p-image src="../../../assets/IMG_2928.JPG" alt="Image" width="500" [preview]="true" />
+    </div>
+    </div>
+    <div class="container-row">
+        <div>
+            <p-image src="../../../assets/IMG_2928.JPG" alt="Image" width="500" [preview]="true" />
+        </div>
+      <p-fieldset >
+        <p>
+          With the beautiful new Bais Hamedrash recently inaugurated, the sweet sounds of Torah reverberate within its walls and beyond. The many Bochurim and Yungerleit that fill its halls find here not only a welcoming atmosphere to call home, but an authentic and enjoyable connection to a real Torah life. The many Shmuesen, Vaadim, Chaburos, extracurricular incentives, and even Bein Hazemanim learning programs are all uniquely designed to cultivate the precious gems the Yeshiva is known to produce. Enhancing the Yeshiva is an elite kollel of Choshuve Yungerleit who embody true Bnei Torah.
+        </p>
+      </p-fieldset>
+  </div>
+</div>
+
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .container-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8rem;
+    width: 100%;
+    margin: 0 auto;
+    padding-right:8rem;
+    padding-left:8rem;
+    padding-top:4rem;
+    padding-bottom:4rem;
+    justify-content: center;
+  }
+  :host ::ng-deep .p-fieldset{
+    font-family: 'FrankRuhlLibre-Medium';
+    border-top:solid #383F5B  0px;
+    border-bottom: #383F5B solid 0px;
+    border-left: #7685C1 solid 0px;
+    border-right: #7685C1 solid 0px;
+    border-radius: 0px;
+    font-size: 1.5rem;
+    color:#383F5B;
+    padding:0;
+}
+:host ::ng-deep .p-fieldset .p-fieldset-content {
+    padding: 0rem;
+}
+:host ::ng-deep .p-fieldset .p-fieldset-legend {
+    display: none !important;
+}
+:host ::ng-deep .p-image{
+    border-top:solid #383F5B  3px;
+    border-bottom: #383F5B solid 3px;
+    border-left: #7685C1 solid 3px;
+    border-right: #7685C1 solid 3px;
+    border-radius: 0px;
+}
+</style>

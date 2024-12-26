@@ -1,5 +1,94 @@
-<div class="header-img">
-    <br><br><br> <br><br><br>
-    <p class="header-text">ABOUT</p>
- </div>
+<div class="header-vid">
+    <video src="../../../assets/ברדק - השידוך (בשיתוף קרן עם ישראל חי).mp4" autoplay muted loop playsinline></video>
+  </div>
+  <div class="container-row">
+    <div>
+        <p-image src="../../../assets/IMG_2930.JPG" alt="Image" width="500" [preview]="true" />
+    </div>
+    <p-fieldset  >
+        <p>
+          At the turn of the century, the leading Roshei Yeshiva in America saw the need for a Yeshiva in Yerushalayim for American Bochurim to grow in Torah with warmth and individualized attention. With the encouragement and Bracha of Harav Elya Svei, Harav Chaim Epstein, and Harav Yitzchock Feigelstock Zichronam Livracha, the Rosh Yeshiva - Harav Menachem Eichenstein Shlit’a opened Yeshivas Dvar Torah - a Makom Torah where each Talmid would grow to their maximum potential.
+        </p>
+      </p-fieldset>
+      <p-button label="Learn more about us" (click)="navigateToAbout()"></p-button>
 
+  </div>
+  <style>
+  /* Container for video header */
+  .header-vid {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 30em; /* Adjust as needed */
+    overflow: hidden; /* Prevent any overflow issues */
+  }
+  
+  /* Video styling */
+  .header-vid video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers the container */
+    transform: translate(-50%, -50%);
+  }
+  .container-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8rem;
+    width: 100%;
+    margin: 0 auto;
+    padding-right:8rem;
+    padding-left:8rem;
+    padding-top:4rem;
+    padding-bottom:4rem;
+    justify-content: center;
+  }
+  :host ::ng-deep .p-fieldset{
+    font-family: 'FrankRuhlLibre-Medium';
+    border-top:solid #383F5B  0px;
+    border-bottom: #383F5B solid 0px;
+    border-left: #7685C1 solid 0px;
+    border-right: #7685C1 solid 0px;
+    border-radius: 0px;
+    font-size: 1.5rem;
+    color:#383F5B;
+    padding:0;
+}
+:host ::ng-deep .p-fieldset .p-fieldset-content {
+    padding: 0rem;
+}
+:host ::ng-deep .p-fieldset .p-fieldset-legend {
+    display: none !important;
+}
+:host ::ng-deep .p-image{
+    border-top:solid #383F5B  3px;
+    border-bottom: #383F5B solid 3px;
+    border-left: #7685C1 solid 3px;
+    border-right: #7685C1 solid 3px;
+    border-radius: 0px;
+}
+:host ::ng-deep .p-button {
+  border: 2px solid var(--grad, );
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  color: #383F5B;
+  font-size: 1rem;
+  height: auto; /* Allow height to adjust dynamically */
+  background-color: #d9dceb;
+  padding: 0.5rem 1rem; /* Add consistent padding */
+  min-width:8rem;
+  font-family: 'FrankRuhlLibre-Medium';
+}
+
+:host ::ng-deep .p-button:hover {
+  border-top: 2px solid #7685C1;
+  border-bottom: 2px solid #7685C1;
+  background-color: white;
+}
+  </style>
+  

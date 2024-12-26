@@ -56,6 +56,19 @@
   <div *ngIf="formSubmitted" class="success-message">
     <p-message severity="success" text="Your message has been sent successfully!"></p-message>
   </div>
+
+  <div *ngIf="validationErrors.length" class="error-messages">
+    <p-message
+      *ngFor="let error of validationErrors"
+      severity="error"
+      [text]="error"
+    ></p-message>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p-message severity="error" [text]="errorMessage"></p-message>
+  </div>
+
   
   <style>
     .contact-container {
@@ -76,6 +89,7 @@
         border-left: #7685C1 solid 1px;
         border-right: #7685C1 solid 1px;
         border-radius: 0px;
+        color:#383F5B;
     }
     :host ::ng-deep .p-fieldset .p-fieldset-legend {
         font-family: 'FrankRuhlLibre-Medium';
@@ -84,6 +98,7 @@
         border-left: #383F5B solid 1px;
         border-right: #383F5B solid 1px;
         border-radius: 0px;
+        color:#383F5B;
     }
     .fieldsets-row {
       display: flex;
@@ -105,8 +120,10 @@
       margin-bottom: 2rem; /* Space between form and footer */
     }
   
-    .p-field {
+    :host ::ng-deep .p-field {
       margin-bottom: 1rem;
+      color:#383F5B;
+      font-family: 'FrankRuhlLibre-Medium';
     }
   
     #message.full-width-textarea {
@@ -128,8 +145,7 @@
       font-family: 'FrankRuhlLibre-Medium';
     }
   
-    .success-message {
-      padding-top: 2rem;
+    .success-message , .error-message,.error-messages {
       text-align: center;
       padding-bottom: 2rem;
     }

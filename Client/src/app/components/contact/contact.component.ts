@@ -11,6 +11,7 @@ export class ContactComponent {
   formSubmitted = false;
   isSubmitting = false;
   errorMessage = '';
+  validationErrors: string[] = [];
 
   constructor(private contactService: ContactService) {}
 
@@ -24,6 +25,7 @@ export class ContactComponent {
 
       this.isSubmitting = true;
       this.errorMessage = '';
+      this.validationErrors = [];
 
       this.contactService.sendContactForm(contactForm).subscribe({
         next: (response) => {
@@ -34,8 +36,17 @@ export class ContactComponent {
         },
         error: (error) => {
           console.error('Error submitting form:', error);
-          this.errorMessage = 'There was a problem submitting the form. Please try again later.';
           this.isSubmitting = false;
+
+          if (error.status === 400 && error.error?.errors) {
+            const errors = error.error.errors;
+            this.validationErrors = Object.keys(errors).reduce((acc, key) => {
+              return acc.concat(errors[key]);
+            }, []);
+          } else {
+            this.errorMessage =
+              'There was a problem submitting the form. Please try again later.';
+          }
         },
       });
     }

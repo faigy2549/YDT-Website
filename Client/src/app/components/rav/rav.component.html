@@ -1,9 +1,14 @@
-<div class="header-img">
+ <div class="header-img">
     <br><br><br> <br><br><br>
-    <p class="header-text">REBBEIM</p>
+    <p class="header-text">HANHALA</p>
  </div>
 
    <div class="ry-container" >
+    <p-fieldset  >
+        <p>
+            Joining the R”Y in his sacred task is a supremely devoted and truly unique Hanhalas Hayeshiva. 
+        </p>
+      </p-fieldset>
     <p-card class="ry-card" [style]="{ width: '50rem', overflow: 'hidden' ,height:'23rem'}">
         <div class="ry-div">
             <p class="image-container">
@@ -20,7 +25,7 @@
 
 <div class="card-container" >
     <div *ngFor="let item of rebbeim" class="card">
-        <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'25rem'}">
+        <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'30rem'}">
             <ng-template pTemplate="header">
                 <img alt="Card"  class="w-full" src="../../../assets/image.png" [alt]="item.name" />
             </ng-template>
@@ -30,131 +35,177 @@
             <ng-template pTemplate="subtitle">
                 {{ item.title }}
             </ng-template>
+            <p class="bio">{{item.bio}}</p>
         </p-card>
     </div>
 </div>
-
 <style>
+body, html {
+    margin: 0;
+    height: 100%;
+}
+
+p {
+    font-family: 'FrankRuhlLibre-Medium';
+}
+
+.bio {
+    font-family: 'FrankRuhlLibre-Medium';
+    font-size: 1rem;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    text-align: center;
+    font-style: italic;
+    font-family: 'Cursive', 'Brush Script MT', sans-serif;
+    color: #5D737E;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+}
+
+.ry-container, .rav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-direction: row;
+    width: 100%;
+    padding: 2rem 8rem;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    min-height: 100vh;
+}
+
+.card {
+    flex: 0 1 calc(20% - 2rem);
+    box-sizing: border-box; 
+    animation: fadeInUp 0.6s ease-out;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); 
+}
 
 :host ::ng-deep .p-card {
     box-shadow: none !important;
     border-radius: 0px !important;
-    color:#383F5B;
-    height: 30rem; 
-    overflow: hidden; 
+    color: #383F5B;
+    height: 30rem;
+    overflow: hidden;
     border-top: 1px solid #7685C1;
     border-bottom: 1px solid #7685C1;
     background-color: #fafafc;
     font-family: 'FrankRuhlLibre-Light';
     font-size: 1.5rem;
 }
-:host ::ng-deep .p-card:hover {
-  background-color: #d9dceb;
 
-   color:#383F5B;
+:host ::ng-deep .p-card:hover {
+    background-color: #d9dceb;
+    color: #383F5B;
 }
+:host ::ng-deep .p-card .p-card-content {
+    padding: 0rem 0;
+}
+
 .rebbi-card img,
 .p-card img {
-  height: 12rem; /* Set a fixed height for consistency */
-  max-height: 8rem;
-  object-fit: cover; /* Maintain aspect ratio and cover the allocated space */
-  display: block; /* Removes any inline spacing or gaps caused by the image */
+    height: 12rem;
+    object-fit: cover;
+    display: block;
 }
-.ry-card{
-   border-left: none; 
-   border-right: none;
-   font-family: 'FrankRuhlLibre-Bold';
-   font-size: 1.5rem;
+.image-container {
+    width: 20rem;
 }
-    /* General Styles */
-    body, html {
-        margin: 0;
-        height: 100%;
-    }
+.ry-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+.ry-card {
+    border-left: none;
+    border-right: none;
+    font-family: 'FrankRuhlLibre-Bold';
+    font-size: 1.5rem;
+    padding-right: 2rem;
+}
+:host ::ng-deep .p-fieldset {
+    font-family: 'FrankRuhlLibre-Medium';
+    border: none;
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #383F5B;
+}
 
-    /* Main Title Styling */
-    .main-title {
-        font-size: 3.5rem;
-        text-align: center;
-        font-style: italic;
-        font-family: 'Cursive', 'Brush Script MT', sans-serif;
-        color: #5D737E;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        justify-content: center;
-    }
+:host ::ng-deep .p-fieldset .p-fieldset-legend {
+    display: none !important;
+}
 
-    /* Containers */
-    .ry-container {
-        display: flex;
+.title {
+    font-size: 1.8rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .ry-container{
+        padding: 2rem 4rem;
         flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        flex-direction: row;
-        padding-bottom: 2rem;
-        padding-top: 2rem;
+        justify-content: space-between;
     }
+
     .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        padding-bottom: 2rem;
-        /* padding-top: 2rem; */
-        min-height: 100vh; /* Center content vertically */
+        gap: 1.5rem;
     }
 
-    /* Card Styles */
     .card {
-        flex: 0 1 calc(10% - 2rem); /* 4 cards per row with some spacing */
-        box-sizing: border-box; /* Include padding and border in the card width */
-        animation: fadeInUp 0.6s ease-out;
-        transition: all 0.3s ease;
+        flex: 0 1 calc(45% - 1rem);
     }
 
-    .card:hover {
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    .ry-card {
+        width: 100%; 
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .ry-container,  .card-container {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
     }
 
-    /* Rebbeim Section */
-    .dtrebbeim-div {
-        font-family: sans-serif;
-        box-shadow: none;
+    .card {
+        flex: 0 1 100%; 
+        height: auto;
     }
 
-    .ry-div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 4rem;
-    }
-  
-    .image-container {
-        width: 20rem;
+    .ry-card {
+        width: 100%;
+        height: auto;
     }
 
-    .subtitle {
-        font-size: 1.5rem;
+    .title, .subtitle {
+        font-size: 1.2rem; 
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .ry-container, .card-container {
-            flex-direction: column;
-            align-items: stretch;
-        }
+    .bio {
+        font-size: 0.9rem;
     }
+}
 
-    /* Animations */
-    @keyframes fadeInUp {
-        0% {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
 </style>

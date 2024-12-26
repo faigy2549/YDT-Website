@@ -21,9 +21,15 @@ export class NavBarComponent {
             }
           },
           {
-            label: 'Rebbeim',
+            label: 'About',
               command: () => {
-                this.router.navigate(['/rebbeim']);
+                this.router.navigate(['/about']);
+            }
+          },
+          {
+            label: 'Hanhala',
+              command: () => {
+                this.router.navigate(['/hanhala']);
             }
           },
           {

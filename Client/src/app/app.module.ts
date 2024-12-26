@@ -26,7 +26,9 @@ import { DonateComponent } from './components/donate/donate.component';
 import { MessageModule } from 'primeng/message';
 import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextModule,} from 'primeng/inputtext';
-import {SplitterModule} from 'primeng/splitter'
+import {SplitterModule} from 'primeng/splitter';
+import {ImageModule} from 'primeng/image';
+import { AboutComponent } from './components/about/about.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,7 @@ import {SplitterModule} from 'primeng/splitter'
     AllShiurimComponent,
     AlumniComponent,
     DonateComponent,
+    AboutComponent,
   ],
   imports: [
    BrowserModule,
@@ -59,6 +62,7 @@ import {SplitterModule} from 'primeng/splitter'
    FieldsetModule,
    InputTextModule,
    SplitterModule,
+   ImageModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

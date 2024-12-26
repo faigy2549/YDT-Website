@@ -2,9 +2,8 @@
     <br><br><br> <br><br><br>
     <p class="header-text">ALUMNI</p>
  </div>
- <div class="card">
-    <p-splitter [panelSizes]="[65, 35]" [style]="{ height: '500px' }">
-      <!-- Left Panel: Mazal Tov List -->
+ <div class="card-container">
+   <p-card>
       <ng-template pTemplate>
         <div class="p-4">
           <h3>Mazal Tovs</h3>
@@ -15,11 +14,12 @@
           </ul>
         </div>
       </ng-template>
-  
+    </p-card>
       <!-- Right Panel: Add Mazal Tov Form -->
-      <ng-template pTemplate>
-        <div class="p-4">
+       <p-card>
+            <ng-template pTemplate="title">
           <h3>Share your simcha!</h3>
+        </ng-template>
           <form (ngSubmit)="addMazalTov()">
             <div class="p-fluid">
               <div class="p-field">
@@ -27,8 +27,8 @@
                 <input id="occasionId" type="number" [(ngModel)]="newMazalTov.occasionId" name="occasionId" required />
               </div>
               <div class="p-field">
-                <label for="alumniId">Email</label>
-                <input id="alumniId" type="email" [(ngModel)]="newMazalTov.alumniId" name="alumniId" required />
+                <label for="alumniId">Name</label>
+                <input type="text" pInputText [(ngModel)]="newMazalTov.alumniId" required />
               </div>
               <div class="p-field">
                 <label for="date">Date</label>
@@ -37,8 +37,63 @@
               <button type="submit" pButton label="Add Mazal Tov"></button>
             </div>
           </form>
-        </div>
-      </ng-template>
-    </p-splitter>
+    </p-card>
   </div>
-  
+  <style>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+:host ::ng-deep .p-card {
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    color:#383F5B;
+    height: 30rem; 
+    overflow: hidden; 
+    border-top: 1px solid #7685C1;
+    border-bottom: 1px solid #7685C1;
+    background-color: #fafafc;
+    font-family: 'FrankRuhlLibre-Medium';
+    font-size: 1.5rem;
+
+}
+:host ::ng-deep .p-card:hover {
+  background-color: #d9dceb;
+}
+:host ::ng-deep .p-button {
+  border: 2px solid var(--grad, );
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  color: #383F5B;
+  font-size: 1rem;
+  height: auto; /* Allow height to adjust dynamically */
+  background-color: #d9dceb;
+  padding: 0.5rem 1rem; /* Add consistent padding */
+  min-width:8rem;
+  font-family: 'FrankRuhlLibre-Medium';
+  margin-top: 4rem;
+}
+:host ::ng-deep .p-input-text {
+  border: 2px solid var(--grad, );
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  color: #383F5B;
+  font-size: 1rem;
+  height: auto; /* Allow height to adjust dynamically */
+  background-color: #d9dceb;
+  padding: 0.5rem 1rem; /* Add consistent padding */
+  min-width:8rem;
+  font-family: 'FrankRuhlLibre-Medium';
+}
+
+:host ::ng-deep .p-button:hover {
+  border-top: 2px solid #7685C1;
+  border-bottom: 2px solid #7685C1;
+  background-color: white;
+}
+</style>

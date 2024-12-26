@@ -7,10 +7,13 @@ import { AllShiurimComponent } from './components/all-shiurim/all-shiurim.compon
 import { ContactComponent } from './components/contact/contact.component';
 import { AlumniComponent } from './components/alumni/alumni.component';
 import { DonateComponent } from './components/donate/donate.component';
+import { AboutComponent } from './components/about/about.component';
 
  const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
+  {path:'about',component:AboutComponent},
+  {path:'hanhala',component:RavComponent},
   {path:'shiurim',component:ShiurimComponent},
   {path:'all-shiurim',component:AllShiurimComponent},
   {path:'donate',component:DonateComponent},
@@ -18,7 +21,7 @@ import { DonateComponent } from './components/donate/donate.component';
   {path:'contact',component:ContactComponent},
 
 
-  {path:'rebbeim',component:RavComponent},
+  
 ];
 
 @NgModule({
