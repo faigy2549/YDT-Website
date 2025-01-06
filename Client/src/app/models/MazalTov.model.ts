@@ -7,8 +7,8 @@ export class MazalTov{
     occasionId: number=0; // Foreign key for Occasion
     occasion?: Occasion=new Occasion; // Occasion object (optional)
   
-    alumniId: number=0; // Foreign key for Alumni
-    alumni?: Alumni=new Alumni; // Alumni object (optional)
+    name:string="";
+    email:string="";
   
     date: string=""; // Date as ISO string (e.g., "2024-12-24")
 }

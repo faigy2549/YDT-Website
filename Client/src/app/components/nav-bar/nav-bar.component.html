@@ -6,19 +6,19 @@
       <ng-template #item let-item>
         <ng-container>
           <div class="link-container">
-            <a [routerLink]="item.route" class="p-menubar-item-link">
-              {{ item.label }}   
-            </a>
-            <p-divider/>
+            <a [routerLink]="item.route" 
+            routerLinkActive="active" 
+            [routerLinkActiveOptions]="{ exact: true }">
+           {{ item.label }}
+           <p-divider layout="vertical"></p-divider>
+         </a>
           </div>
-       
         </ng-container>
         <p-divider />
       </ng-template>
-  
     </p-menubar>
   </div>
-  
+
   
   <style>
 
@@ -30,16 +30,15 @@
 
 :host ::ng-deep .p-menubar {
   background-color: transparent;
-  margin: 0 auto;
-  max-width: 1200px; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center; 
   border:none;
-  padding-left:8.5rem;
+  padding-left: 16rem;
 }
 .menubar-section{
     text-align: center;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-end {
+    max-width: 0px;
 }
 
 /* Links container */
@@ -49,15 +48,33 @@
   justify-content: center;
 }
 :host ::ng-deep .p-menubar .p-menuitem > .p-menuitem-content .p-menuitem-link {
-    background-color: white;
-    border-top: 1px solid #383F5B;
-    border-bottom: 1px solid #383F5B;
+    /* background-color: white; */
+    border-top: 1px solid #7685C1;
+    border-bottom: 1px solid#7685C1;
     padding:1rem;
     justify-content: center;
     font-size: 1rem;
     min-width: 8.5rem;
     font-family: 'FrankRuhlLibre-Medium';
+    border-radius: 0px;
 }
+
+:host ::ng-deep .p-menubar .p-menuitem:hover > .p-menuitem-content {
+    background-color: #d9dceb; /* Highlight the menu item */
+    transition: background-color 0.3s ease;
+}
+
+:host ::ng-deep .p-menubar .p-menuitem:hover > .p-menuitem-content .p-menuitem-link {
+    background-color: inherit; /* Ensure the link inherits the hover background */
+}
+a.active {
+  background-color: #d9dceb;
+  border-right: 1px solid #7685C1;
+  border-left: 1px solid #7685C1;
+border-radius:0px;
+  transition: background-color 0.3s ease;
+}
+
 /* Individual link styling */
 :host ::ng-deep .p-menubar .p-menubar-item-link {
   color: white; /* White text color */
@@ -69,12 +86,12 @@
   color:#383F5B;
 }
 
-:host ::ng-deep .p-menubar .p-menubar-item-link:hover {
-  color: #f0f0f0; /* Slightly lighter text on hover */
+:host ::ng-deep .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-text {
+    color: #383F5B;
 }
 
 /* Divider between links */
-.p-divider {
+:host ::ng-deep .p-divider {
   width: 10px;
   height: 20px; 
   color:#383F5B;

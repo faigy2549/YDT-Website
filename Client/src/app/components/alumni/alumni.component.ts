@@ -9,7 +9,7 @@ import { MazalTovService } from 'src/app/services/mazaltov.service';
 })
 export class AlumniComponent implements OnInit {
   mazalTovList: MazalTov[] = [];
-  newMazalTov: MazalTov = {id:0, occasionId: 0, alumniId: 0, date: '' };
+  newMazalTov: MazalTov = {id:0, occasionId: 0, name: '',email:'', date: '' };
 
   constructor(private mazalTovService: MazalTovService) {}
 
@@ -24,10 +24,10 @@ export class AlumniComponent implements OnInit {
   }
 
   addMazalTov(): void {
-    if (this.newMazalTov.occasionId && this.newMazalTov.alumniId && this.newMazalTov.date) {
+    if (this.newMazalTov.occasionId && this.newMazalTov.name && this.newMazalTov.date) {
       this.mazalTovService.add(this.newMazalTov).subscribe(() => {
         this.getMazalTovList();
-        this.newMazalTov = { id:0,occasionId: 0, alumniId: 0, date: '' };
+        this.newMazalTov = {id:0, occasionId: 0, name: '',email:'', date: '' };
       });
     }
   }

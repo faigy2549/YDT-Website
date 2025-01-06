@@ -8,6 +8,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AlumniComponent } from './components/alumni/alumni.component';
 import { DonateComponent } from './components/donate/donate.component';
 import { AboutComponent } from './components/about/about.component';
+import { NewsletterComponent } from './components/newsletter/newsletter.component';
 
  const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -16,6 +17,7 @@ import { AboutComponent } from './components/about/about.component';
   {path:'hanhala',component:RavComponent},
   {path:'shiurim',component:ShiurimComponent},
   {path:'all-shiurim',component:AllShiurimComponent},
+  {path:'newsletter',component:NewsletterComponent},
   {path:'donate',component:DonateComponent},
   {path:'alumni',component:AlumniComponent},
   {path:'contact',component:ContactComponent},

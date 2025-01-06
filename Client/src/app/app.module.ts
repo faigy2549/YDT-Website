@@ -28,7 +28,8 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextModule,} from 'primeng/inputtext';
 import {SplitterModule} from 'primeng/splitter';
 import {ImageModule} from 'primeng/image';
-import { AboutComponent } from './components/about/about.component'
+import { AboutComponent } from './components/about/about.component';
+import { NewsletterComponent } from './components/newsletter/newsletter.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { AboutComponent } from './components/about/about.component'
     AlumniComponent,
     DonateComponent,
     AboutComponent,
+    NewsletterComponent,
   ],
   imports: [
    BrowserModule,

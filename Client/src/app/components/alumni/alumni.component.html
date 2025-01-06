@@ -9,7 +9,7 @@
           <h3>Mazal Tovs</h3>
           <ul>
             <li *ngFor="let mazalTov of mazalTovList">
-              Occasion: {{ mazalTov.occasionId }}, Email: {{ mazalTov.alumniId }}, Date: {{ mazalTov.date }}
+             Mazal Tov to {{ mazalTov.name }} on the Birth of his {{ mazalTov.occasionId }}
             </li>
           </ul>
         </div>
@@ -23,18 +23,22 @@
           <form (ngSubmit)="addMazalTov()">
             <div class="p-fluid">
               <div class="p-field">
-                <label for="occasionId">Occasion</label>
-                <input id="occasionId" type="number" [(ngModel)]="newMazalTov.occasionId" name="occasionId" required />
+                <label for="email">Email</label>
+                <input type="email" pInputText [(ngModel)]="newMazalTov.email" required />
               </div>
               <div class="p-field">
                 <label for="alumniId">Name</label>
-                <input type="text" pInputText [(ngModel)]="newMazalTov.alumniId" required />
+                <input type="text" pInputText [(ngModel)]="newMazalTov.name" required />
+              </div>
+              <div class="p-field">
+                <label for="occasionId">Occasion</label>
+                <p-inputnumber type="number"  [(ngModel)]="newMazalTov.occasionId" required />
               </div>
               <div class="p-field">
                 <label for="date">Date</label>
-                <input id="date" type="date" [(ngModel)]="newMazalTov.date" name="date" required />
+                <input type="date" pInputDate [(ngModel)]="newMazalTov.date" required />
               </div>
-              <button type="submit" pButton label="Add Mazal Tov"></button>
+              <button type="submit" pButton label="Send Mazal Tov"></button>
             </div>
           </form>
     </p-card>
@@ -78,7 +82,7 @@
   font-family: 'FrankRuhlLibre-Medium';
   margin-top: 4rem;
 }
-:host ::ng-deep .p-input-text {
+:host ::ng-deep .p-input-text, .p-input-date, .p-input-number{
   border: 2px solid var(--grad, );
   border-image: linear-gradient(to right, #383F5B, #7685C1);
   border-image-slice: 1;
