@@ -15,10 +15,11 @@ namespace Entities
         public Occasion Occasion { get; set; }
 
         [Required]
-        [ForeignKey("Alumni")]
-        public int AlumniId { get; set; }
-        public Alumni Alumni { get; set; }
+        public string Name { get; set; }
 
+        [Required]
+        [EmailAddress]
+        public string EmailAddress { get; set; }
         public DateTime Date { get; set; }
     }
 }

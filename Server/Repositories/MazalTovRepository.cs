@@ -16,13 +16,12 @@ namespace Repositories
 
         public async Task<IEnumerable<MazalTov>> GetAllAsync()
         {
-            return await _context.MazalTov.Include(m => m.Alumni).Include(m => m.Occasion).ToListAsync();
+            return await _context.MazalTov.Include(m => m.Occasion).ToListAsync();
         }
 
         public async Task<MazalTov> GetByIdAsync(int id)
         {
             return await _context.MazalTov
-                .Include(m => m.Alumni)
                 .Include(m => m.Occasion)
                 .FirstOrDefaultAsync(m => m.Id == id);
         }
