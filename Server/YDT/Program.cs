@@ -19,10 +19,10 @@ builder.Configuration
 
 var smtpUsername = Environment.GetEnvironmentVariable("SMTP_USERNAME");
 var smtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD");
-
+var MailchimpApiKey= Environment.GetEnvironmentVariable("MAILCHIMP_API_KEY");
 // Your API key and server prefix
-string apiKey = "a76d62d0ed2ba4d6a8ee5969ca2ff96b-us17"; // Replace with your actual API key
-string serverPrefix = "us17"; // Example: "us20"
+string apiKey = MailchimpApiKey; 
+string serverPrefix = "us17";
 
 // Mailchimp API base URL
 string baseUrl = $"https://{serverPrefix}.api.mailchimp.com/3.0/";
