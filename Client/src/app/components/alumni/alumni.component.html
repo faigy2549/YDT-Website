@@ -8,11 +8,25 @@
 UPCOMING EVENTS
 </p>
 <div class="event-container">
-  <p-carousel [numVisible]="1" [numScroll]="1" [circular]="true" >
-    <ng-template let-product #item>
-      <p-image src="../../../assets/yc.png" alt="Image"  [preview]="true" />
-    </ng-template>
+  <p-carousel 
+  [value]="imageList" 
+  [numVisible]="4" 
+  [numScroll]="1" 
+  [circular]="true" 
+  [autoplayInterval]="8000"
+  [showIndicators]="false">
+  
+  <ng-template pTemplate="item" let-product>
+    <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4">
+      <div class="mb-4">
+        <div class="relative mx-auto">
+          <img [src]="product.img" [alt]="product.name" class="w-full rounded-border" />
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </p-carousel>
+
 
 </div>
   </p-card>
@@ -66,7 +80,7 @@ UPCOMING EVENTS
       <p class="headings">
         SHARE YOUR SIMCHAH
       </p>
-      <form (ngSubmit)="addMazalTov()" #mazalTovForm="ngForm" class="p-fluid">
+      <form *ngIf="!formSubmitted" (ngSubmit)="addMazalTov()" #mazalTovForm="ngForm" class="p-fluid">
         <!-- Name Field -->
         <div class="p-field">
           <label for="name">Name</label>
@@ -79,7 +93,7 @@ UPCOMING EVENTS
             required
             #name="ngModel"
           />
-          <small *ngIf="name.touched && name.invalid" class="error-message">
+          <small *ngIf="name.touched && name.invalid && !formSubmitted" class="error-message">
             Name is required.
           </small>
         </div>
@@ -97,10 +111,10 @@ UPCOMING EVENTS
             email
             #email="ngModel"
           />
-          <small *ngIf="email.touched && email.invalid" class="error-message">
+          <small *ngIf="email.touched && email.invalid && !formSubmitted" class="error-message">
             Email is required.
           </small>
-          <small *ngIf="email.errors && email.touched" class="error-message">
+          <small *ngIf="email.errors && email.touched && !formSubmitted" class="error-message">
             Please enter a valid email address.
           </small>
         </div>
@@ -120,7 +134,7 @@ UPCOMING EVENTS
             [required]="true"
             #occasionId="ngModel"
           ></p-dropdown>
-          <small *ngIf="occasionId.touched && occasionId.invalid" class="error-message">
+          <small *ngIf="occasionId.touched && occasionId.invalid && !formSubmitted" class="error-message">
             Occasion is required.
           </small>
         </div>
@@ -137,15 +151,13 @@ UPCOMING EVENTS
             [style]="{ width: '100%' }"
             #date="ngModel"
           ></p-calendar>
-          <small *ngIf="date.touched && date.invalid" class="error-message">
+          <small *ngIf="date.touched && date.invalid && !formSubmitted" class="error-message">
             Date is required.
           </small>
         </div>
       
             
-          <div *ngIf="formSubmitted && !validationErrors.length" class="success-message-container">
-          <p-message severity="success" text="Mazal Tov has been added successfully!"></p-message>
-        </div>
+          
         <div class="p-field">
           <button
             pButton
@@ -158,7 +170,9 @@ UPCOMING EVENTS
           ></button>
         </div>
       </form>
-   
+      <div *ngIf="formSubmitted" class="success-message-container">
+        <p-message severity="success" text="Mazal Tov has been added successfully!"></p-message>
+      </div>
     </p-card>
  
     
@@ -180,7 +194,6 @@ UPCOMING EVENTS
 }
 .updates-container{
   padding: 2rem 8rem;
-  max-width: 100%;
 }
 .event-container{
   display: flex;
@@ -188,9 +201,20 @@ UPCOMING EVENTS
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  padding: 2rem 8rem;
   max-width: 100%;
   margin: 0 auto;
+}
+:host ::ng-deep .p-carousel .p-carousel-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 23rem; 
+}
+
+:host ::ng-deep .p-carousel .p-carousel-item img {
+  width: 100%; /* Ensures the image stretches horizontally */
+  height: 100%; /* Ensures the image stretches vertically */
+  object-fit: contain; 
 }
 :host ::ng-deep .p-image{
     border-top:solid #383F5B  3px;

@@ -1,0 +1,20 @@
+<div class="newsletter-container">
+    <div class="join-newsletter">
+
+    </div>
+<div class="campaign-list">
+    <h1>Archives</h1>
+    <ul *ngIf="campaigns && campaigns.length">
+      <li *ngFor="let campaign of campaigns" (click)="viewCampaignContent(campaign.id)">
+        {{ campaign.settings.title }} - Sent on {{ campaign.send_time | date:'fullDate' }} 
+      </li>
+    </ul>
+    <p *ngIf="!campaigns || !campaigns.length">No campaigns found.</p>
+  </div>
+</div>
+
+<style>
+    .newsletter-container{
+        
+    }
+</style>

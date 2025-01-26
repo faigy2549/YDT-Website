@@ -15,8 +15,9 @@ export class AlumniComponent implements OnInit {
   newMazalTov: MazalTov = { id: 0, occasionId: 0, name: '', emailAddress: '', date: '' };
   occasions: Occasion[] = []; // Add property to store occasions
   formSubmitted = false;
-  validationErrors: string[] = [];
+  // validationErrors: string[] = [];
   errorMessage: string | null = null;
+  imageList:{name:string, img:string}[]=[];
   
   constructor(
     private mazalTovService: MazalTovService,
@@ -28,23 +29,15 @@ export class AlumniComponent implements OnInit {
   ngOnInit(): void {
     this.getMazalTovList();
     this.getOccasions();
+    this.imageList=[ {name:"yarchei",img:"../../../assets/yc.png"},{name:"yarchei",img:"../../../assets/yc.png"},{name:"yarchei",img:"../../../assets/yc.png"},{name:"yarchei",img:"../../../assets/yc.png"},{name:"yarchei",img:"../../../assets/yc.png"}];
   }
-
   addMazalTov(): void {
-  this.formSubmitted = true;
-  this.validationErrors = [];
-
-  if (!this.newMazalTov.name || !this.newMazalTov.emailAddress || !this.newMazalTov.occasionId || !this.newMazalTov.date) {
-    this.validationErrors.push('All fields are required.');
-    return; 
-  }
-
   this.mazalTovService.add(this.newMazalTov).subscribe({
     next: () => {
       this.formSubmitted = true; 
-      this.validationErrors = []; 
       this.getMazalTovList();
       this.newMazalTov = { id: 0, occasionId: 0, name: '', emailAddress: '', date: '' };
+      this.resetForm()
     },
     error: (error) => {
       this.errorMessage = 'An error occurred while submitting the form.';
@@ -64,6 +57,14 @@ export class AlumniComponent implements OnInit {
     this.occasionService.getAll().subscribe((data) => {
       this.occasions = data;
     });
+  }
+  resetForm(): void {
+    console.log("in reset");
+    
+    setTimeout(() => {
+      this.formSubmitted = false;
+      console.log("timer over")
+    }, 10000); 
   }
   navigateToNewslatter(): void {
     this.router.navigate(['/newsletter']);

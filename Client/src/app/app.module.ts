@@ -32,7 +32,9 @@ import { AboutComponent } from './components/about/about.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component'
 import { CalendarModule } from 'primeng/calendar';
 import { TooltipModule } from 'primeng/tooltip';
-import {CarouselModule} from 'primeng/carousel'
+import {CarouselModule} from 'primeng/carousel';
+import { CampaignListComponent } from './components/campaign-list/campaign-list.component';
+import { CampaignContentComponent } from './components/campaign-content/campaign-content.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +49,8 @@ import {CarouselModule} from 'primeng/carousel'
     DonateComponent,
     AboutComponent,
     NewsletterComponent,
+    CampaignListComponent,
+    CampaignContentComponent,
   ],
   imports: [
    BrowserModule,
