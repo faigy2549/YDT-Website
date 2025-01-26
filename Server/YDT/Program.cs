@@ -19,33 +19,6 @@ builder.Configuration
 
 var smtpUsername = Environment.GetEnvironmentVariable("SMTP_USERNAME");
 var smtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD");
-var MailchimpApiKey= Environment.GetEnvironmentVariable("MAILCHIMP_API_KEY");
-// Your API key and server prefix
-string apiKey = MailchimpApiKey; 
-string serverPrefix = "us17";
-
-// Mailchimp API base URL
-string baseUrl = $"https://{serverPrefix}.api.mailchimp.com/3.0/";
-
-try
-{
-    using (HttpClient client = new HttpClient())
-    {
-        client.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Basic", Convert.ToBase64String(
-                System.Text.Encoding.ASCII.GetBytes($"anystring:{apiKey}")));
-
-        HttpResponseMessage response = await client.GetAsync(baseUrl + "campaigns");
-        response.EnsureSuccessStatusCode();
-
-        string responseBody = await response.Content.ReadAsStringAsync();
-        Console.WriteLine("Raw Response: " + responseBody);
-    }
-}
-catch (Exception ex)
-{
-    Console.WriteLine($"Error: {ex.Message}");
-}
 
 // Add services to the container
 builder.Services.AddControllers();
@@ -70,7 +43,7 @@ builder.Services.AddDbContext<YDTDbContext>(options =>
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddHttpClient();
 // Add repository and service dependencies
 builder.Services.AddScoped<IRavRepository, RavRepository>();
 builder.Services.AddScoped<IRavService, RavService>();
@@ -91,6 +64,7 @@ builder.Services.AddScoped<ITopicRepository, TopicRepository>();
 builder.Services.AddScoped<ITopicService, TopicService>();
 
 builder.Services.AddScoped<IContactService, ContactService>();
+builder.Services.AddScoped<INewsletterService,NewsletterService>();
 // Configure EmailSettings from appsettings.json and override with environment variables
 builder.Services.Configure<EmailSettings>(options =>
 {
