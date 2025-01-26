@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DTOs;
 
 namespace YDT.Controllers
 {
@@ -29,7 +30,7 @@ namespace YDT.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] MazalTov mazalTov)
+        public async Task<IActionResult> Add([FromBody] MazalTovDTO mazalTov)
         {
             await _service.AddAsync(mazalTov);
             return Ok(mazalTov);

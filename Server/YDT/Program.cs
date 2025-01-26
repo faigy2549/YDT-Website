@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using NLog.Web;
 using Repositories;
 using Services;
+using System.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,32 @@ builder.Configuration
 var smtpUsername = Environment.GetEnvironmentVariable("SMTP_USERNAME");
 var smtpPassword = Environment.GetEnvironmentVariable("SMTP_PASSWORD");
 
-Console.WriteLine($"SMTP Username: {smtpUsername}"); // Check if the SMTP username is loaded correctly
+// Your API key and server prefix
+string apiKey = "a76d62d0ed2ba4d6a8ee5969ca2ff96b-us17"; // Replace with your actual API key
+string serverPrefix = "us17"; // Example: "us20"
+
+// Mailchimp API base URL
+string baseUrl = $"https://{serverPrefix}.api.mailchimp.com/3.0/";
+
+try
+{
+    using (HttpClient client = new HttpClient())
+    {
+        client.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Basic", Convert.ToBase64String(
+                System.Text.Encoding.ASCII.GetBytes($"anystring:{apiKey}")));
+
+        HttpResponseMessage response = await client.GetAsync(baseUrl + "campaigns");
+        response.EnsureSuccessStatusCode();
+
+        string responseBody = await response.Content.ReadAsStringAsync();
+        Console.WriteLine("Raw Response: " + responseBody);
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Error: {ex.Message}");
+}
 
 // Add services to the container
 builder.Services.AddControllers();

@@ -13,6 +13,8 @@ namespace YDT
             CreateMap<Shiur, ShiurDTO>().ReverseMap();
 
             CreateMap<Topic, TopicDTO>().ReverseMap();
+
+            CreateMap<MazalTov,MazalTovDTO> ().ReverseMap(); 
         }
     }
 }
