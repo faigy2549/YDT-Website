@@ -30,6 +30,9 @@ import {SplitterModule} from 'primeng/splitter';
 import {ImageModule} from 'primeng/image';
 import { AboutComponent } from './components/about/about.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component'
+import { CalendarModule } from 'primeng/calendar';
+import { TooltipModule } from 'primeng/tooltip';
+import {CarouselModule} from 'primeng/carousel'
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +68,9 @@ import { NewsletterComponent } from './components/newsletter/newsletter.componen
    InputTextModule,
    SplitterModule,
    ImageModule,
+   CalendarModule,
+   TooltipModule,
+   CarouselModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

@@ -1,103 +1,373 @@
 <div class="header-img">
-    <br><br><br> <br><br><br>
-    <p class="header-text">ALUMNI</p>
- </div>
- <div class="card-container">
-   <p-card>
-      <ng-template pTemplate>
-        <div class="p-4">
-          <h3>Mazal Tovs</h3>
-          <ul>
-            <li *ngFor="let mazalTov of mazalTovList">
-             Mazal Tov to {{ mazalTov.name }} on the Birth of his {{ mazalTov.occasionId }}
-            </li>
-          </ul>
-        </div>
-      </ng-template>
-    </p-card>
-      <!-- Right Panel: Add Mazal Tov Form -->
-       <p-card>
-            <ng-template pTemplate="title">
-          <h3>Share your simcha!</h3>
-        </ng-template>
-          <form (ngSubmit)="addMazalTov()">
-            <div class="p-fluid">
-              <div class="p-field">
-                <label for="email">Email</label>
-                <input type="email" pInputText [(ngModel)]="newMazalTov.email" required />
-              </div>
-              <div class="p-field">
-                <label for="alumniId">Name</label>
-                <input type="text" pInputText [(ngModel)]="newMazalTov.name" required />
-              </div>
-              <div class="p-field">
-                <label for="occasionId">Occasion</label>
-                <p-inputnumber type="number"  [(ngModel)]="newMazalTov.occasionId" required />
-              </div>
-              <div class="p-field">
-                <label for="date">Date</label>
-                <input type="date" pInputDate [(ngModel)]="newMazalTov.date" required />
-              </div>
-              <button type="submit" pButton label="Send Mazal Tov"></button>
-            </div>
-          </form>
+  <br><br><br><br><br><br>
+  <p class="header-text">ALUMNI</p>
+</div>
+<div class="updates-container">
+  <p-card >
+<p class="headings">
+UPCOMING EVENTS
+</p>
+<div class="event-container">
+  <p-carousel [numVisible]="1" [numScroll]="1" [circular]="true" >
+    <ng-template let-product #item>
+      <p-image src="../../../assets/yc.png" alt="Image"  [preview]="true" />
+    </ng-template>
+</p-carousel>
+
+</div>
+  </p-card>
+</div>
+<div class="mazal-tov-row">
+  <div class="redirect-to-newsletter-container">
+    <p-card >
+<p class="headings">
+  NEWSLETTER
+</p>
+      <p class="newsletter-text-header">
+        Stay connected with Yeshivas Dvar Torah!</p>
+        <p class="newsletter-text">
+         Join our weekly newsletter to receive updates, inspiring Divrei Torah, and memorable photos.
+      </p>
+      <ng-template pTemplate="footer">
+      <p-button 
+        class="newsletter-button" 
+        label="Subscribe or View Past Newsletters" 
+        (click)="navigateToNewslatter()">
+      </p-button>
+    </ng-template>
     </p-card>
   </div>
-  <style>
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+  <!-- Mazal Tov List -->
+  <div class="mazal-tov-list-container">
+    <p-card >
+      <p class="headings">
+        MAZAL TOVS
+      </p>
+      <ul class="mazal-tov-list">
+          <li *ngFor="let mazalTov of mazalTovList.slice().reverse()">
+           <a [href]="'mailto:' + mazalTov.emailAddress" class="mazal-tov-link">
+              <strong>{{ mazalTov.name.toUpperCase() }}</strong>
+            </a>
+            <br>
+            <span *ngIf="mazalTov.occasionId === 1 || mazalTov.occasionId ===2">
+              on the birth of a <strong>{{ mazalTov.occasion?.eventName }}</strong>
+            </span>
+            <span *ngIf="mazalTov.occasionId === 4 || mazalTov.occasionId === 5">
+              on his <strong>{{ mazalTov.occasion?.eventName }}</strong>
+            </span>
+          </li>
+      </ul>
+    </p-card>
+  </div>
+
+  <!-- Mazal Tov Form -->
+  <div class="mazal-tov-form-container">
+    <p-card >
+      <p class="headings">
+        SHARE YOUR SIMCHAH
+      </p>
+      <form (ngSubmit)="addMazalTov()" #mazalTovForm="ngForm" class="p-fluid">
+        <!-- Name Field -->
+        <div class="p-field">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            pInputText
+            name="name"
+            [(ngModel)]="newMazalTov.name"
+            required
+            #name="ngModel"
+          />
+          <small *ngIf="name.touched && name.invalid" class="error-message">
+            Name is required.
+          </small>
+        </div>
+      
+        <!-- Email Field -->
+        <div class="p-field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            pInputText
+            name="emailAddress"
+            [(ngModel)]="newMazalTov.emailAddress"
+            required
+            email
+            #email="ngModel"
+          />
+          <small *ngIf="email.touched && email.invalid" class="error-message">
+            Email is required.
+          </small>
+          <small *ngIf="email.errors && email.touched" class="error-message">
+            Please enter a valid email address.
+          </small>
+        </div>
+      
+        <!-- Occasion Dropdown -->
+        <div class="p-field">
+          <label for="occasionId">Occasion</label>
+          <p-dropdown
+            id="occasionId"
+            [options]="occasions"
+            [(ngModel)]="newMazalTov.occasionId"
+            name="occasionId"
+            optionLabel="eventName"
+            optionValue="id"
+            placeholder="Select an Occasion"
+            [scrollHeight]="'100px'"
+            [required]="true"
+            #occasionId="ngModel"
+          ></p-dropdown>
+          <small *ngIf="occasionId.touched && occasionId.invalid" class="error-message">
+            Occasion is required.
+          </small>
+        </div>
+      
+        <!-- Date Field -->
+        <div class="p-field">
+          <label for="date">Date</label>
+          <p-calendar
+            id="date"
+            [(ngModel)]="newMazalTov.date"
+            name="date"
+            dateFormat="yy-mm-dd"
+            [required]="true"
+            [style]="{ width: '100%' }"
+            #date="ngModel"
+          ></p-calendar>
+          <small *ngIf="date.touched && date.invalid" class="error-message">
+            Date is required.
+          </small>
+        </div>
+      
+            
+          <div *ngIf="formSubmitted && !validationErrors.length" class="success-message-container">
+          <p-message severity="success" text="Mazal Tov has been added successfully!"></p-message>
+        </div>
+        <div class="p-field">
+          <button
+            pButton
+            type="submit"
+            label="Send Mazal Tov"
+            class="p-button-success"
+            [disabled]="!mazalTovForm.valid"
+            pTooltip="{{!mazalTovForm.valid ? 'Please fill out all fields to submit' : ''}}"
+            tooltipPosition="top"
+          ></button>
+        </div>
+      </form>
+   
+    </p-card>
+ 
+    
+  </div>
+ 
+</div>
+
+<style>
+.mazal-tov-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 8rem;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap; 
 }
-:host ::ng-deep .p-card {
-    box-shadow: none !important;
-    border-radius: 0px !important;
-    color:#383F5B;
-    height: 30rem; 
-    overflow: hidden; 
-    border-top: 1px solid #7685C1;
-    border-bottom: 1px solid #7685C1;
-    background-color: #fafafc;
-    font-family: 'FrankRuhlLibre-Medium';
-    font-size: 1.5rem;
+.updates-container{
+  padding: 2rem 8rem;
+  max-width: 100%;
+}
+.event-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 8rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+:host ::ng-deep .p-image{
+    border-top:solid #383F5B  3px;
+    border-bottom: #383F5B solid 3px;
+    border-left: #7685C1 solid 3px;
+    border-right: #7685C1 solid 3px;
+    border-radius: 0px;
+}
+.headings{
+  border-top: 1px solid var(--grad, );
+  border-bottom: 1px solid var(--grad, );
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  font-family: 'FrankRuhlLibre-Light';
+  font-size: 1.5rem;
+  text-align: center;
+  position: sticky;
+  top: 0; /* Adjust this to set the sticky offset from the top */
+  z-index: 10; /* Ensures it stays above other content */
+  background-color: #fafafc; /* Matches the background to avoid overlap issues */
+  padding: 0.5rem 0; /* Adjust padding for consistent spacing */
+}
+.redirect-to-newsletter-container ,
+.mazal-tov-list-container,
+.mazal-tov-form-container{
+  flex: 1 1 30%; /* Ensures equal width for all three containers */
+  max-width: 30%; /* Sets a consistent maximum width */
+  min-width: 280px; /* Prevents containers from shrinking too small */
+  box-sizing: border-box; 
 
 }
-:host ::ng-deep .p-card:hover {
-  background-color: #d9dceb;
+.newsletter-text-header{
+  font-size: 2rem;
+  color: #383F5B;
+  text-align:center;
+}
+.newsletter-text{
+  font-size: 1.6rem;
+  color: #383F5B;
+  text-align:center;
+}
+.newsletter-button{
+  font-size: 1.5rem;
+  color: #383F5B;
+  text-align:center;
+}
+:host ::ng-deep .p-card .p-card-footer {
+    padding:1.2rem 0  0 0; 
+   text-align: center;
+}
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  font-family: 'FrankRuhlLibre-Medium';
+  display: block;
+}
+.mazal-tov-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mazal-tov-list li {
+  padding-top:1rem;
+  padding-bottom:1rem;
+  font-size: 1.3rem;
+  color: #383F5B;
+  text-align:center;
 }
 :host ::ng-deep .p-button {
   border: 2px solid var(--grad, );
   border-image: linear-gradient(to right, #383F5B, #7685C1);
   border-image-slice: 1;
-  color: #383F5B;
-  font-size: 1rem;
-  height: auto; /* Allow height to adjust dynamically */
-  background-color: #d9dceb;
-  padding: 0.5rem 1rem; /* Add consistent padding */
-  min-width:8rem;
   font-family: 'FrankRuhlLibre-Medium';
-  margin-top: 4rem;
+  font-size: 1.2rem;
 }
-:host ::ng-deep .p-input-text, .p-input-date, .p-input-number{
-  border: 2px solid var(--grad, );
+
+:host ::ng-deep .p-card{
+  box-shadow: none !important;
+  border: 1px solid #7685C1;
+  border-radius: 0px;
+  background-color: #fafafc;
+  font-family: 'FrankRuhlLibre-Medium';
+  font-size: 1rem;
+        font-family: 'FrankRuhlLibre-Medium';
+        border-top:solid #383F5B  1px;
+        border-bottom: #383F5B solid 1px;
+        border-left: #7685C1 solid 1px;
+        border-right: #7685C1 solid 1px;
+        border-radius: 0px;
+        color:#383F5B;
+        min-height:35rem;
+        max-height:35rem;
+        overflow-y: auto;
+        overflow-y: scroll; /* Enables scrolling */
+        scrollbar-width: none; /* Hides scrollbar for Firefox */
+        -ms-overflow-style: none; /* Hides scrollbar for Internet Explorer and Edge */
+    }
+    :host ::ng-deep .p-card::-webkit-scrollbar {
+  display: none; /* Hides scrollbar for WebKit browsers (Chrome, Safari) */
+}
+    .p-inputtext{
+  border: 1px solid var(--grad, );
   border-image: linear-gradient(to right, #383F5B, #7685C1);
   border-image-slice: 1;
-  color: #383F5B;
-  font-size: 1rem;
-  height: auto; /* Allow height to adjust dynamically */
-  background-color: #d9dceb;
-  padding: 0.5rem 1rem; /* Add consistent padding */
-  min-width:8rem;
+  font-family: 'FrankRuhlLibre-light';
+    }
+    :host ::ng-deep .p-fluid .p-calendar .p-inputtext {
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-light';
+    }
+    :host ::ng-deep .p-fluid .p-dropdown{
+      border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-light';
+    }
+    :host ::ng-deep .p-fluid .p-dropdown .p-dropdown-label {
+      font-family: 'FrankRuhlLibre-light';
+    }
+    :host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    font-family: 'FrankRuhlLibre-light';
+}
+.p-field{
+  padding:0.4rem;
+}
+    .mazal-tov-link {
+  color: #7685C1; /* Match button color */
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  font-family: 'FrankRuhlLibre-Medium';
+}
+
+.mazal-tov-link:hover {
+  color:#383F5B; /* Match hover color */
+  text-decoration: underline;
+}
+:host ::ng-deep .p-button {
+  margin-top:1rem;
+  background-color: #7685C1;
+  color: #fff;
   font-family: 'FrankRuhlLibre-Medium';
 }
 
 :host ::ng-deep .p-button:hover {
-  border-top: 2px solid #7685C1;
-  border-bottom: 2px solid #7685C1;
-  background-color: white;
+  background-color: #d9dceb;
+  color: #383F5B;
 }
-</style>
+:host ::ng-deep .p-tooltip {
+  background-color: #f8d7da;
+  color: #721c24;
+  font-size: 0.9rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+.success-message-container {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  margin-top: 1rem;        /* Adds margin-top of 1rem */
+  width: 100%;             /* Ensures the container takes full width */
+  text-align: center;      /* Ensures the message text is centered */
+}
+@media (max-width: 768px) {
+  .mazal-tov-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mazal-tov-list-container,
+  .mazal-tov-form-container {
+    max-width: 100%;
+  }
+}
+
+
+  </style>
+  
