@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewsletterService } from 'src/app/services/newsletter.service';
+import { Subscriber } from 'src/app/models/Subscriber.model';
 
 @Component({
   selector: 'app-campaign-list',
@@ -9,6 +10,8 @@ import { NewsletterService } from 'src/app/services/newsletter.service';
 })
 export class CampaignListComponent implements OnInit {
   campaigns: any[] = [];
+  newSubscriber: Subscriber = { firstName: '', lastName: '', email: '' };
+  formSubmitted: boolean = false;
 
   constructor(private newsletterService: NewsletterService, private router: Router) {}
 
@@ -25,5 +28,19 @@ export class CampaignListComponent implements OnInit {
 
   viewCampaignContent(campaignId: string): void {
     this.router.navigate(['/newsletter', campaignId]);
+  }
+
+  addSubscriber(): void {
+    if (this.newSubscriber.firstName && this.newSubscriber.lastName && this.newSubscriber.email) {
+      this.newsletterService.addSubscriber(this.newSubscriber).subscribe(
+        () => {
+          this.formSubmitted = true;
+          this.newSubscriber = { firstName: '', lastName: '', email: '' };
+        },
+        (error) => {
+          console.error('Error adding subscriber:', error);
+        }
+      );
+    }
   }
 }

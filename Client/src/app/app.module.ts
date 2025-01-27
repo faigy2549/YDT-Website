@@ -34,7 +34,10 @@ import { CalendarModule } from 'primeng/calendar';
 import { TooltipModule } from 'primeng/tooltip';
 import {CarouselModule} from 'primeng/carousel';
 import { CampaignListComponent } from './components/campaign-list/campaign-list.component';
-import { CampaignContentComponent } from './components/campaign-content/campaign-content.component'
+import { CampaignContentComponent } from './components/campaign-content/campaign-content.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import {OrderListModule} from 'primeng/orderlist';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +78,8 @@ import { CampaignContentComponent } from './components/campaign-content/campaign
    CalendarModule,
    TooltipModule,
    CarouselModule,
+   ProgressSpinnerModule,
+   OrderListModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

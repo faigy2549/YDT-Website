@@ -1,5 +1,6 @@
 <div class="campaign-content">
     <button (click)="goBack()">Back</button>
-    <div [innerHTML]="htmlContent"></div>
+    <p-progressSpinner *ngIf="!htmlContent" aria-label="loading"></p-progressSpinner>
+    <p-card [innerHTML]="htmlContent"></p-card>
   </div>
   
