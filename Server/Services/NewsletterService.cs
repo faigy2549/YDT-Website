@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using DTOs;
 using System.Threading.Tasks;
+using System.Text.Json.Nodes;
 
 namespace Services
 {
@@ -64,20 +65,40 @@ namespace Services
             var responseBody = await response.Content.ReadAsStringAsync();
             Console.WriteLine($"Subscriber added successfully: {responseBody}");
         }
-        public async Task<string> ListCampaigns()
+
+public async Task<string> ListCampaigns()
+    {
+        string fields = "campaigns.id,campaigns.settings.title,campaigns.settings.subject_line,campaigns.send_time";
+        string sortField = "send_time";
+        string sortDir = "DESC"; 
+
+        string endpoint = $"campaigns?fields={fields}&count=200&sort_field={sortField}&sort_dir={sortDir}";
+
+        var response = await _httpClient.GetAsync(endpoint);
+
+        if (!response.IsSuccessStatusCode)
         {
-            var response = await _httpClient.GetAsync("campaigns");
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var errorDetails = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Failed to fetch campaigns: {errorDetails}");
-            }
-
-            var responseBody = await response.Content.ReadAsStringAsync();
-            return responseBody;
+            var errorDetails = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Failed to fetch campaigns: {errorDetails}");
         }
-        public async Task<string> GetCampaignHtmlContent(string campaignId)
+
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var jsonResponse = JsonNode.Parse(responseBody);
+
+        var filteredCampaigns = jsonResponse["campaigns"]
+            ?.AsArray()
+            .Where(campaign => !string.IsNullOrWhiteSpace(campaign["send_time"]?.ToString()))
+            .ToList();
+
+        var result = new
+        {
+            campaigns = filteredCampaigns
+        };
+
+        return JsonSerializer.Serialize(result);
+    }
+
+    public async Task<string> GetCampaignHtmlContent(string campaignId)
         {
             var response = await _httpClient.GetAsync($"campaigns/{campaignId}/content");
 
