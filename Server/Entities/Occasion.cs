@@ -10,5 +10,6 @@ namespace Entities
         [Required]
         [MaxLength(50)]
         public string EventName { get; set; }
+
     }
 }

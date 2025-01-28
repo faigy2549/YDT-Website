@@ -70,9 +70,10 @@ public async Task<string> ListCampaigns()
     {
         string fields = "campaigns.id,campaigns.settings.title,campaigns.settings.subject_line,campaigns.send_time";
         string sortField = "send_time";
-        string sortDir = "DESC"; 
+        string sortDir = "DESC";
+        int count = 200;
 
-        string endpoint = $"campaigns?fields={fields}&count=200&sort_field={sortField}&sort_dir={sortDir}";
+        string endpoint = $"campaigns?fields={fields}&count={count}&sort_field={sortField}&sort_dir={sortDir}";
 
         var response = await _httpClient.GetAsync(endpoint);
 

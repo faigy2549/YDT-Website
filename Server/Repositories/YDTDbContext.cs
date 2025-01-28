@@ -43,5 +43,6 @@ namespace Repositories
         public DbSet<Alumni> Alumni { get; set; }
         public DbSet<MazalTov> MazalTov { get; set; }
         public DbSet<Occasion> Occasions { get; set; }
+        public DbSet<Event> Events { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using NLog.Web;
 using Repositories;
+using Repositories.Repositories;
 using Services;
 using System.Net.Http.Headers;
 
@@ -62,6 +63,8 @@ builder.Services.AddScoped<IOccasionService, OccasionService>();
 
 builder.Services.AddScoped<ITopicRepository, TopicRepository>();
 builder.Services.AddScoped<ITopicService, TopicService>();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IEventService, EventService>();
 
 builder.Services.AddScoped<IContactService, ContactService>();
 builder.Services.AddScoped<INewsletterService,NewsletterService>();
