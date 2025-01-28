@@ -1,79 +1,4 @@
 <div class="newsletter-container h-screen">
-    <div class="join-newsletter">
-      <p-card>
-        <p class="headings"> Join The Newsletter 
-        </p>
-        <p>Fill out the form below to join Yeshiva's mailing list.</p>
-        <form *ngIf="!formSubmitted" (ngSubmit)="addSubscriber()" #joinForm="ngForm" class="p-fluid">
-          <!-- First Name Field -->
-          <div class="p-field">
-            <label for="firstName">First Name</label>
-            <input
-              id="firstName"
-              type="text"
-              pInputText
-              name="firstName"
-              [(ngModel)]="newSubscriber.firstName"
-              required
-              #firstName="ngModel"
-            />
-            <small *ngIf="firstName.touched && firstName.invalid" class="error-message">
-              First Name is required.
-            </small>
-          </div>
-  
-          <!-- Last Name Field -->
-          <div class="p-field">
-            <label for="lastName">Last Name</label>
-            <input
-              id="lastName"
-              type="text"
-              pInputText
-              name="lastName"
-              [(ngModel)]="newSubscriber.lastName"
-              required
-              #lastName="ngModel"
-            />
-            <small *ngIf="lastName.touched && lastName.invalid" class="error-message">
-              Last Name is required.
-            </small>
-          </div>
-  
-          <!-- Email Field -->
-          <div class="p-field">
-            <label for="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              pInputText
-              name="email"
-              [(ngModel)]="newSubscriber.email"
-              required
-              email
-              #email="ngModel"
-            />
-            <small *ngIf="email.touched && email.invalid" class="error-message">
-              A valid email is required.
-            </small>
-          </div>
-  
-          <!-- Submit Button -->
-          <div class="p-field">
-            <button
-              pButton
-              type="submit"
-              label="Join Mailing List"
-              class="p-button-success"
-              [disabled]="!joinForm.valid"
-            ></button>
-          </div>
-        </form>
-  
-        <div *ngIf="formSubmitted" class="success-message-container">
-          <p-message severity="success" text="You have been added successfully!"></p-message>
-        </div>
-      </p-card>
-    </div>
   
     <p-card class="campaign-list h-full">
       <p class="headings">
@@ -99,7 +24,7 @@
             </div>
             <div class="flex-shrink-0">
               <span class="text-sm font-medium">
-                {{ campaign.send_time | date: 'fullDate' }}
+                {{ campaign.send_time | date: 'M/d/yyyy' }}
               </span>
             </div>
           </div>
@@ -107,35 +32,93 @@
       </p-orderList>
       <p-progressSpinner *ngIf="!campaigns || !campaigns.length" aria-label="loading"></p-progressSpinner>
     </p-card>
+
+    <div class="join-newsletter">
+        <p-card>
+          <p class="headings"> Join Yeshiva's Newsletter 
+          </p>
+          <p class="sub-headings">Fill out the form to join our weekly newsletter, and receive updates, Divrei Torah, and photos. </p>
+          <form *ngIf="!formSubmitted" (ngSubmit)="addSubscriber()" #joinForm="ngForm" class="p-fluid">
+            <div class="p-field">
+              <label for="firstName">First Name</label>
+              <input
+              id="firstName"
+              type="text"
+              pInputText
+              name="firstName"
+              [(ngModel)]="newSubscriber.firstName"
+              required
+              #firstName="ngModel"
+              [ngClass]="{'invalid-field': firstName.touched && firstName.invalid}"
+            />
+          </div>
+            <div class="p-field">
+              <label for="lastName">Last Name</label>
+              <input
+              id="lastName"
+              type="text"
+              pInputText
+              name="lastName"
+              [(ngModel)]="newSubscriber.lastName"
+              required
+              #lastName="ngModel"
+              [ngClass]="{'invalid-field': lastName.touched && lastName.invalid}"
+            />
+            </div>
+            <div class="p-field">
+              <label for="email">Email</label>
+                       
+            <input
+            id="email"
+            type="email"
+            pInputText
+            name="email"
+            [(ngModel)]="newSubscriber.email"
+            required
+            email
+            #email="ngModel"
+            [ngClass]="{'invalid-field': email.touched && email.invalid}"
+          />
+            </div>
+    <br>
+            <!-- Submit Button -->
+            <div class="p-field">
+              <button
+                pButton
+                type="submit"
+                label="Subscribe"
+                class="p-button-success"
+                [disabled]="!joinForm.valid"
+              ></button>
+            </div>
+          </form>
+    
+          <div *ngIf="formSubmitted" class="success-message-container">
+            <p-message severity="success" text="You have been added successfully!"></p-message>
+          </div>
+        </p-card>
+      </div>
+
   </div>
   
   <style>
-  .newsletter-container {
-    display: flex;
-    height: 100vh;
-    flex-direction: row;
-    padding: 2rem 8rem; /* 8rem padding on the sides and 2rem padding on top */
-    gap: 4rem; /* Adds a gap of 4rem between the form and list sections */
-  }
-  
-  .join-newsletter {
-    flex: 1 1 25%; /* Takes 1/4 of the width */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  :host ::ng-deep .p-button:hover {
-  background-color: #d9dceb;
-  color: #383F5B;
+
+.newsletter-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: row;
+  padding: 2rem 8rem; /* 8rem padding on the sides and 2rem padding on top */
+  gap: 2rem; /* Adds a gap of 4rem between the form and list sections */
 }
-:host ::ng-deep .p-tooltip {
-  background-color: #f8d7da;
-  color: #721c24;
-  font-size: 0.9rem;
-  border: 1px solid #f5c6cb;
-  border-radius: 4px;
-  padding: 0.5rem;
+
+.join-newsletter {
+  flex: 1 1 25%; /* Takes 1/4 of the width */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+/* Success message container styling */
 .success-message-container {
   display: flex;
   justify-content: center; /* Centers horizontally */
@@ -144,33 +127,39 @@
   width: 100%;             /* Ensures the container takes full width */
   text-align: center;      /* Ensures the message text is centered */
 }
-.p-field{
-  padding:0.4rem;
-}   
-.p-inputtext{
+
+/* Padding for form fields */
+.p-field {
+  padding: 0.3rem;
+}
+
+/* Input field styling */
+.p-inputtext {
   border: 1px solid var(--grad, );
   border-image: linear-gradient(to right, #383F5B, #7685C1);
   border-image-slice: 1;
   font-family: 'FrankRuhlLibre-light';
-    }
-:host ::ng-deep .p-card{
+}
+
+/* Styling for the p-card container */
+:host ::ng-deep .p-card {
   box-shadow: none !important;
   border: 1px solid #7685C1;
   border-radius: 0px;
   background-color: #fafafc;
   font-family: 'FrankRuhlLibre-Medium';
   font-size: 1rem;
-        font-family: 'FrankRuhlLibre-Medium';
-        border-top:solid #383F5B  1px;
-        border-bottom: #383F5B solid 1px;
-        border-left: #7685C1 solid 1px;
-        border-right: #7685C1 solid 1px;
-        border-radius: 0px;
-        color:#383F5B;
-        min-height:35rem;
-        max-height:35rem;
-    }
-    :host ::ng-deep .p-button {
+  border-top: solid #383F5B 1px;
+  border-bottom: #383F5B solid 1px;
+  border-left: #7685C1 solid 1px;
+  border-right: #7685C1 solid 1px;
+  color: #383F5B;
+  min-height: 35rem;
+  max-height: 35rem;
+}
+
+/* Button styling */
+:host ::ng-deep .p-button {
   border: 2px solid var(--grad, );
   border-image: linear-gradient(to right, #383F5B, #7685C1);
   border-image-slice: 1;
@@ -178,7 +167,9 @@
   font-size: 1.2rem;
   background-color: #7685C1;
 }
-.headings{
+
+/* Styling for the headings section */
+.headings {
   border-top: 1px solid var(--grad, );
   border-bottom: 1px solid var(--grad, );
   border-image: linear-gradient(to right, #383F5B, #7685C1);
@@ -190,50 +181,72 @@
   top: 0; /* Adjust this to set the sticky offset from the top */
   z-index: 10; /* Ensures it stays above other content */
   background-color: #fafafc; /* Matches the background to avoid overlap issues */
-  padding: 0.5rem 0; /* Adjust padding for consistent spacing */
+  padding: 0.3rem 0; /* Adjust padding for consistent spacing */
 }
+
+/* Styling for sub-headings section */
+.sub-headings {
+  font-family: 'FrankRuhlLibre-Light';
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: #fafafc; /* Matches the background to avoid overlap issues */
+}
+
+/* Styling for the order list container */
 :host ::ng-deep .p-orderlist .p-orderlist-list {
-
-    height: 20rem;
-    background-color: #fafafc;
-    border:none;
-}
-:host ::ng-deep .p-orderlist .p-orderlist-controls{
-background-color: #fafafc;
-width:0px;
-}
-:host ::ng-deep .p-orderlist  .p-orderlist-filter-container  {
-    background-color: #fafafc;
-    border:none;
-}
-:host ::ng-deep  .p-orderlist .p-orderlist-controls .p-button {
-   background-color: #fafafc;
-   border: none;
+  height: 20rem;
+  background-color: #fafafc;
+  border: none;
+  font-family: 'FrankRuhlLibre-Light';
+  color: #383F5B;
 }
 
-:host ::ng-deep .p-card .p-card-footer {
-    padding:1.2rem 0  0 0; 
-   text-align: center;
+:host ::ng-deep .p-orderlist .p-orderlist-controls {
+  background-color: #fafafc;
+  padding: 0;
+  width: 0px;
 }
 
-  .campaign-list {
-    flex: 1 1 75%; /* Takes 3/4 of the width */
-    overflow-y: auto; /* Makes the list scrollable */
-    padding-right: 16px; /* Some padding to the right to avoid content being hidden under scrollbar */
-  }
-  
-  .campaign-list::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  .campaign-list::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
-  }
-  
-  .campaign-list::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-  }
+:host ::ng-deep .p-orderlist .p-orderlist-filter-container {
+  background-color: #fafafc;
+  border: none;
+}
+
+:host ::ng-deep .p-orderlist .p-orderlist-filter-container .p-orderlist-filter-input {
+  border-top: 1px solid var(--grad, );
+  border-bottom: 1px solid var(--grad, );
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  font-family: 'FrankRuhlLibre-Light';
+  font-size: 1rem;
+  color: #383F5B;
+}
+
+:host ::ng-deep .p-orderlist .p-orderlist-controls .p-button {
+  background-color: #fafafc;
+  border: none;
+}
+
+.campaign-list {
+  flex: 1 1 60%; /* Takes 3/4 of the width */
+  overflow-y: auto; /* Makes the list scrollable */
+}
+
+/* Styling for the campaign list scrollbar */
+.campaign-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Styling for the campaign list scrollbar thumb */
+.campaign-list::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+/* Hover effect for the campaign list scrollbar thumb */
+.campaign-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
 
   
   </style>
