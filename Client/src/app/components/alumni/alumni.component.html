@@ -1,36 +1,4 @@
-<div class="header-img">
-  <br><br><br><br><br><br>
-  <p class="header-text">ALUMNI</p>
-</div>
-<div class="updates-container">
-  <p-card >
-<p class="headings">
-UPCOMING EVENTS
-</p>
-<div class="event-container">
-  <p-carousel 
-  [value]="imageList" 
-  [numVisible]="3" 
-  [numScroll]="1" 
-  [circular]="true" 
-  [autoplayInterval]="8000"
-  [showIndicators]="false">
-  
-  <ng-template pTemplate="item" let-product>
-    <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4">
-      <div class="mb-4">
-        <div class="relative mx-auto">
-          <img [src]="product.img" [alt]="product.name" class="w-full rounded-border" />
-        </div>
-      </div>
-    </div>
-  </ng-template>
-</p-carousel>
-
-
-</div>
-  </p-card>
-</div>
+<app-updates></app-updates>
 <div class="mazal-tov-row">
   <div class="redirect-to-newsletter-container">
     <p-card >
@@ -43,6 +11,7 @@ UPCOMING EVENTS
          Join our weekly newsletter to receive updates, inspiring Divrei Torah, and memorable photos.
       </p>
       <ng-template pTemplate="footer">
+        <br>
       <p-button 
         class="newsletter-button" 
         label="Subscribe or View Past Newsletters" 
@@ -51,7 +20,6 @@ UPCOMING EVENTS
     </ng-template>
     </p-card>
   </div>
-  <!-- Mazal Tov List -->
   <div class="mazal-tov-list-container">
     <p-card >
       <p class="headings">
@@ -73,15 +41,12 @@ UPCOMING EVENTS
       </ul>
     </p-card>
   </div>
-
-  <!-- Mazal Tov Form -->
   <div class="mazal-tov-form-container">
     <p-card >
       <p class="headings">
         SHARE YOUR SIMCHAH
       </p>
       <form *ngIf="!formSubmitted" (ngSubmit)="addMazalTov()" #mazalTovForm="ngForm" class="p-fluid">
-        <!-- Name Field -->
         <div class="p-field">
           <label for="name">Name</label>
           <input
@@ -93,12 +58,7 @@ UPCOMING EVENTS
             required
             #name="ngModel"
           />
-          <small *ngIf="name.touched && name.invalid && !formSubmitted" class="error-message">
-            Name is required.
-          </small>
         </div>
-      
-        <!-- Email Field -->
         <div class="p-field">
           <label for="email">Email</label>
           <input
@@ -111,15 +71,7 @@ UPCOMING EVENTS
             email
             #email="ngModel"
           />
-          <small *ngIf="email.touched && email.invalid && !formSubmitted" class="error-message">
-            Email is required.
-          </small>
-          <small *ngIf="email.errors && email.touched && !formSubmitted" class="error-message">
-            Please enter a valid email address.
-          </small>
         </div>
-      
-        <!-- Occasion Dropdown -->
         <div class="p-field">
           <label for="occasionId">Occasion</label>
           <p-dropdown
@@ -134,12 +86,7 @@ UPCOMING EVENTS
             [required]="true"
             #occasionId="ngModel"
           ></p-dropdown>
-          <small *ngIf="occasionId.touched && occasionId.invalid && !formSubmitted" class="error-message">
-            Occasion is required.
-          </small>
         </div>
-      
-        <!-- Date Field -->
         <div class="p-field">
           <label for="date">Date</label>
           <p-calendar
@@ -151,13 +98,7 @@ UPCOMING EVENTS
             [style]="{ width: '100%' }"
             #date="ngModel"
           ></p-calendar>
-          <small *ngIf="date.touched && date.invalid && !formSubmitted" class="error-message">
-            Date is required.
-          </small>
-        </div>
-      
-            
-          
+        </div>  
         <div class="p-field">
           <button
             pButton
@@ -174,12 +115,8 @@ UPCOMING EVENTS
         <p-message severity="success" text="Mazal Tov has been added successfully!"></p-message>
       </div>
     </p-card>
- 
-    
   </div>
- 
 </div>
-
 <style>
 .mazal-tov-row {
   display: flex;
@@ -192,36 +129,12 @@ UPCOMING EVENTS
   margin: 0 auto;
   flex-wrap: wrap; 
 }
-.updates-container{
-  padding: 2rem 8rem;
+.gap-4 {
+    gap: 0.5rem !important;
 }
-.event-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  max-width: 100%;
-  margin: 0 auto;
-}
-:host ::ng-deep .p-carousel .p-carousel-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 23rem; 
-}
-
-:host ::ng-deep .p-carousel .p-carousel-item img {
-  width: 100%; /* Ensures the image stretches horizontally */
-  height: 100%; /* Ensures the image stretches vertically */
-  object-fit: contain; 
-}
-:host ::ng-deep .p-image{
-    border-top:solid #383F5B  3px;
-    border-bottom: #383F5B solid 3px;
-    border-left: #7685C1 solid 3px;
-    border-right: #7685C1 solid 3px;
-    border-radius: 0px;
+.mb-4{
+  margin-bottom: 0px !important;
+  min-width: 24rem !important;
 }
 .headings{
   border-top: 1px solid var(--grad, );
@@ -232,19 +145,23 @@ UPCOMING EVENTS
   font-size: 1.5rem;
   text-align: center;
   position: sticky;
-  top: 0; /* Adjust this to set the sticky offset from the top */
-  z-index: 10; /* Ensures it stays above other content */
-  background-color: #fafafc; /* Matches the background to avoid overlap issues */
-  padding: 0.5rem 0; /* Adjust padding for consistent spacing */
+  top: 0;
+  z-index: 10; 
+  background-color: #fafafc; 
+  padding: 0.5rem 0; 
+  margin-bottom:2rem;
 }
 .redirect-to-newsletter-container ,
 .mazal-tov-list-container,
 .mazal-tov-form-container{
-  flex: 1 1 30%; /* Ensures equal width for all three containers */
-  max-width: 30%; /* Sets a consistent maximum width */
-  min-width: 280px; /* Prevents containers from shrinking too small */
+  flex: 1 1 30%; 
+  max-width: 30%; 
+  min-width: 280px; 
   box-sizing: border-box; 
-
+  border-top:solid #383F5B  2px;
+  border-bottom: #383F5B solid 2px;
+  border-left: #7685C1 solid 2px;
+  border-right: #7685C1 solid 2px;
 }
 .newsletter-text-header{
   font-size: 2rem;
@@ -277,7 +194,6 @@ UPCOMING EVENTS
   padding: 0;
   margin: 0;
 }
-
 .mazal-tov-list li {
   padding-top:1rem;
   padding-bottom:1rem;
@@ -292,65 +208,56 @@ UPCOMING EVENTS
   font-family: 'FrankRuhlLibre-Medium';
   font-size: 1.2rem;
 }
-
 :host ::ng-deep .p-card{
   box-shadow: none !important;
-  border: 1px solid #7685C1;
   border-radius: 0px;
   background-color: #fafafc;
   font-family: 'FrankRuhlLibre-Medium';
   font-size: 1rem;
-        font-family: 'FrankRuhlLibre-Medium';
-        border-top:solid #383F5B  1px;
-        border-bottom: #383F5B solid 1px;
-        border-left: #7685C1 solid 1px;
-        border-right: #7685C1 solid 1px;
-        border-radius: 0px;
-        color:#383F5B;
-        min-height:35rem;
-        max-height:35rem;
-        overflow-y: auto;
-        overflow-y: scroll; /* Enables scrolling */
-        scrollbar-width: none; /* Hides scrollbar for Firefox */
-        -ms-overflow-style: none; /* Hides scrollbar for Internet Explorer and Edge */
-    }
-    :host ::ng-deep .p-card::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for WebKit browsers (Chrome, Safari) */
+  color:#383F5B;
+  min-height:35rem;
+  max-height: 35rem;
 }
-    .p-inputtext{
-  border: 1px solid var(--grad, );
+:host ::ng-deep .p-card .p-card-content {
+    padding-bottom: 0.50rem;
+}
+:host ::ng-deep  .p-card .p-card-body {
+    padding: 1.25rem;
+    padding-bottom: 0rem;
+}
+.p-inputtext{
+border: 1px solid var(--grad, );
+border-image: linear-gradient(to right, #383F5B, #7685C1);
+border-image-slice: 1;
+font-family: 'FrankRuhlLibre-light';
+}
+:host ::ng-deep .p-fluid .p-calendar .p-inputtext {
+border-image: linear-gradient(to right, #383F5B, #7685C1);
+border-image-slice: 1;
+font-family: 'FrankRuhlLibre-light';
+}
+:host ::ng-deep .p-fluid .p-dropdown{
   border-image: linear-gradient(to right, #383F5B, #7685C1);
-  border-image-slice: 1;
+border-image-slice: 1;
+font-family: 'FrankRuhlLibre-light';
+}
+:host ::ng-deep .p-fluid .p-dropdown .p-dropdown-label {
   font-family: 'FrankRuhlLibre-light';
-    }
-    :host ::ng-deep .p-fluid .p-calendar .p-inputtext {
-    border-image: linear-gradient(to right, #383F5B, #7685C1);
-    border-image-slice: 1;
-    font-family: 'FrankRuhlLibre-light';
-    }
-    :host ::ng-deep .p-fluid .p-dropdown{
-      border-image: linear-gradient(to right, #383F5B, #7685C1);
-    border-image-slice: 1;
-    font-family: 'FrankRuhlLibre-light';
-    }
-    :host ::ng-deep .p-fluid .p-dropdown .p-dropdown-label {
-      font-family: 'FrankRuhlLibre-light';
-    }
-    :host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
-    font-family: 'FrankRuhlLibre-light';
+}
+:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+font-family: 'FrankRuhlLibre-light';
 }
 .p-field{
   padding:0.4rem;
 }
-    .mazal-tov-link {
-  color: #7685C1; /* Match button color */
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
-  font-family: 'FrankRuhlLibre-Medium';
+.mazal-tov-link {
+color: #7685C1; 
+text-decoration: none;
+transition: color 0.3s ease-in-out;
+font-family: 'FrankRuhlLibre-Medium';
 }
-
 .mazal-tov-link:hover {
-  color:#383F5B; /* Match hover color */
+  color:#383F5B; 
   text-decoration: underline;
 }
 :host ::ng-deep .p-button {
@@ -359,7 +266,6 @@ UPCOMING EVENTS
   color: #fff;
   font-family: 'FrankRuhlLibre-Medium';
 }
-
 :host ::ng-deep .p-button:hover {
   background-color: #d9dceb;
   color: #383F5B;
@@ -374,12 +280,34 @@ UPCOMING EVENTS
 }
 .success-message-container {
   display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;     /* Centers vertically */
-  margin-top: 1rem;        /* Adds margin-top of 1rem */
-  width: 100%;             /* Ensures the container takes full width */
-  text-align: center;      /* Ensures the message text is centered */
+  justify-content: center; 
+  align-items: center;    
+  margin-top: 1rem;       
+  width: 100%;          
+  text-align: center;      
 }
+.mazal-tov-list-container {
+  max-height: 35rem; 
+  overflow-y: auto; 
+  scrollbar-width: thin; 
+  scrollbar-color: #7685C1 #fafafc;
+  background-color:#fafafc;
+  font-family: 'FrankRuhlLibre-light';
+}
+
+.mazal-tov-list-container::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.mazal-tov-list-container::-webkit-scrollbar-thumb {
+  background: #7685C1; 
+  border-radius: 4px;
+}
+
+.mazal-tov-list-container::-webkit-scrollbar-track {
+  background: #fafafc; 
+}
+
 @media (max-width: 768px) {
   .mazal-tov-row {
     flex-direction: column;
@@ -389,6 +317,7 @@ UPCOMING EVENTS
   .mazal-tov-list-container,
   .mazal-tov-form-container {
     max-width: 100%;
+    max-height:35rem !important;
   }
 }
 

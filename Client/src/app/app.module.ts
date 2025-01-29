@@ -37,6 +37,8 @@ import { CampaignListComponent } from './components/campaign-list/campaign-list.
 import { CampaignContentComponent } from './components/campaign-content/campaign-content.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import {OrderListModule} from 'primeng/orderlist';
+import {DialogModule} from 'primeng/dialog';
+import { UpdatesComponent } from './components/updates/updates.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import {OrderListModule} from 'primeng/orderlist';
     NewsletterComponent,
     CampaignListComponent,
     CampaignContentComponent,
+    UpdatesComponent,
   ],
   imports: [
    BrowserModule,
@@ -80,6 +83,7 @@ import {OrderListModule} from 'primeng/orderlist';
    CarouselModule,
    ProgressSpinnerModule,
    OrderListModule,
+   DialogModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

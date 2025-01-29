@@ -1,9 +1,10 @@
-<div class="newsletter-container h-screen">
+<div class="newsletter-container">
   
     <p-card class="campaign-list h-full">
       <p class="headings">
         Newsletter Archives
       </p>
+      <!-- <p-progressSpinner *ngIf="!campaigns || !campaigns.length" aria-label="loading" strokeWidth="6" [style]="{ width: '50px', height: '50px' }"></p-progressSpinner> -->
       <p-orderList
         [value]="campaigns"
         dataKey="id"
@@ -30,14 +31,14 @@
           </div>
         </ng-template>
       </p-orderList>
-      <p-progressSpinner *ngIf="!campaigns || !campaigns.length" aria-label="loading"></p-progressSpinner>
+    
     </p-card>
 
     <div class="join-newsletter">
         <p-card>
           <p class="headings"> Join Yeshiva's Newsletter 
           </p>
-          <p class="sub-headings">Fill out the form to join our weekly newsletter, and receive updates, Divrei Torah, and photos. </p>
+          <p class="sub-headings">Subscribe to our weekly newsletter, and receive updates, Divrei Torah, and photos. </p>
           <form *ngIf="!formSubmitted" (ngSubmit)="addSubscriber()" #joinForm="ngForm" class="p-fluid">
             <div class="p-field">
               <label for="firstName">First Name</label>
@@ -80,7 +81,7 @@
             [ngClass]="{'invalid-field': email.touched && email.invalid}"
           />
             </div>
-    <br>
+    <br><br>
             <!-- Submit Button -->
             <div class="p-field">
               <button
@@ -105,9 +106,8 @@
 
 .newsletter-container {
   display: flex;
-  height: 100vh;
   flex-direction: row;
-  padding: 2rem 8rem; /* 8rem padding on the sides and 2rem padding on top */
+  padding: 2rem 8rem 2rem  8rem; /* 8rem padding on the sides and 2rem padding on top */
   gap: 2rem; /* Adds a gap of 4rem between the form and list sections */
 }
 
@@ -229,7 +229,6 @@
 
 .campaign-list {
   flex: 1 1 60%; /* Takes 3/4 of the width */
-  overflow-y: auto; /* Makes the list scrollable */
 }
 
 /* Styling for the campaign list scrollbar */
