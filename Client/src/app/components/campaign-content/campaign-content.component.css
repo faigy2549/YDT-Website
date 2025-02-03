@@ -1,0 +1,44 @@
+:host ::ng-deep .p-card{
+    box-shadow: none !important;
+    background-color: #fafafc;
+    font-family: 'FrankRuhlLibre-Medium';
+    color:#383F5B;
+    border: 2px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+  
+  }
+  :host ::ng-deep .p-card .p-card-body{
+    padding:0px;
+  }
+  :host ::ng-deep .p-card .p-card-content{
+    padding:0px;
+  }
+  .campaign-content{
+    padding: 2rem 8rem;
+
+  }
+  :host ::ng-deep .p-button {
+    border: 2px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    height:1rem;
+    background-color: #d9dceb;
+    color: #383F5B; 
+    }
+    :host ::ng-deep .p-button:hover {
+      background-color: #7685C1;
+      color: #fff;
+    }
+    .iframe-container {
+        position: relative;
+      }
+      
+      .back-button {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10; 
+      }
+      
+      

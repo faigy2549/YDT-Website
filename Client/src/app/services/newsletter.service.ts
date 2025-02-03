@@ -19,7 +19,8 @@ export class NewsletterService {
     return this.http.get(`${this.baseUrl}/campaigns/${campaignId}/html-content`, { responseType: 'text' });
   }
 
-  addSubscriber(subscriber: Subscriber): Observable<any> {
-    return this.http.post(`${this.baseUrl}/add-subscriber`, subscriber);
+  addSubscriber(subscriber: Subscriber): Observable<string> {
+    return this.http.post(`${this.baseUrl}/add-subscriber`, subscriber, { responseType: 'text' });
   }
+  
 }

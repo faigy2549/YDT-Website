@@ -1,4 +1,3 @@
-/* app.component.css */
 footer {
     background-color: #383F5B;
     color: #ecf0f1;
@@ -6,6 +5,7 @@ footer {
     text-align: center;
     flex-shrink: 0; 
     margin-top: auto; 
+
   }
   
   footer .content {
@@ -21,12 +21,15 @@ footer {
     align-items: flex-start;
     gap: 60px;
     text-align: left;
+    align-items: center;
+    text-align: center;
   }
   
   footer .links > div {
     flex: 1;
     min-width: 250px;
     margin-bottom: 20px;
+ 
   }
   
   footer .subscribe form {

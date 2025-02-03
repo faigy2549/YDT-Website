@@ -1,0 +1,138 @@
+.updates-container{
+    padding: 2rem 8rem;
+  }
+  :host ::ng-deep .event-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  :host ::ng-deep .p-carousel {
+    width:82rem
+  }
+  :host ::ng-deep .p-carousel .p-carousel-item {
+    margin-left: 2rem; 
+    display: flex;
+    justify-content: center;
+    height: 30rem; 
+    min-width:24rem;
+    width:24rem;
+    max-width:24rem;
+    border: 1px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-light';
+    overflow: hidden; 
+  }
+  
+  .event-header{
+    background-color: #d9dceb;
+    padding: 1.5rem;
+  }
+  .event-text{
+    padding:1.25rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .event-image:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  } 
+  .event-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  }
+  
+  .event-image::after {
+    content: "Click to View";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'FrankRuhlLibre-Light';
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+  }
+  
+  .event-image:hover::after {
+    opacity: 1;
+  }
+  
+  
+  :host ::ng-deep .p-carousel .p-carousel-item img {
+    width: 100% !important; /* Stretch to fill the full width */
+    height: 100% !important; /* Stretch to fill the full height */
+    object-fit: cover  !important; /* Ensure the image covers the container, cropping if necessary */
+    display: block; /* Prevent inline element spacing issues */
+  min-width: 24rem;
+  max-height:28rem;
+  min-height:28rem;
+  }
+  :host ::ng-deep .p-image{
+      width:24rem;
+      height:28rem;
+  }
+  
+  .gap-4 {
+      gap: 0.5rem !important;
+  }
+  .mb-4{
+    margin-bottom: 0px !important;
+    min-width: 24rem !important;
+  }
+  .headings{
+    border-top: 1px solid var(--grad, );
+    border-bottom: 1px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-Light';
+    font-size: 1.5rem;
+    text-align: center;
+    position: sticky;
+    top: 0; /* Adjust this to set the sticky offset from the top */
+    z-index: 10; /* Ensures it stays above other content */
+    background-color: #fafafc; /* Matches the background to avoid overlap issues */
+    padding: 0.5rem 0; /* Adjust padding for consistent spacing */
+    margin-bottom:2rem;
+  }
+  
+  :host ::ng-deep .p-card{
+    box-shadow: none !important;
+    border: 1px solid #7685C1;
+    border-radius: 0px;
+    background-color: #fafafc;
+    font-family: 'FrankRuhlLibre-Medium';
+    font-size: 1rem;
+          font-family: 'FrankRuhlLibre-Medium';
+          border-top:solid #383F5B  1px;
+          border-bottom: #383F5B solid 1px;
+          border-left: #7685C1 solid 1px;
+          border-right: #7685C1 solid 1px;
+          border-radius: 0px;
+          color:#383F5B;
+          min-height:35rem;
+          max-height:45rem;
+      }
+      :host ::ng-deep .p-card .p-card-content {
+      padding-bottom: 0.75rem;
+  }
+  
+  :host ::ng-deep .p-button:hover {
+    background-color: #d9dceb;
+    color: #383F5B;
+  }

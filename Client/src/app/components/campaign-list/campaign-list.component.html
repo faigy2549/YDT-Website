@@ -4,7 +4,6 @@
       <p class="headings">
         Newsletter Archives
       </p>
-      <!-- <p-progressSpinner *ngIf="!campaigns || !campaigns.length" aria-label="loading" strokeWidth="6" [style]="{ width: '50px', height: '50px' }"></p-progressSpinner> -->
       <p-orderList
         [value]="campaigns"
         dataKey="id"
@@ -82,8 +81,11 @@
           />
             </div>
     <br><br>
+    <div *ngIf="errorMessage" class="error-message-container">
+      <p-message severity="error" [text]="errorMessage"></p-message>
+    </div>
             <!-- Submit Button -->
-            <div class="p-field">
+            <div class="p-field"  >
               <button
                 pButton
                 type="submit"
@@ -102,150 +104,4 @@
 
   </div>
   
-  <style>
-
-.newsletter-container {
-  display: flex;
-  flex-direction: row;
-  padding: 2rem 8rem 2rem  8rem; /* 8rem padding on the sides and 2rem padding on top */
-  gap: 2rem; /* Adds a gap of 4rem between the form and list sections */
-}
-
-.join-newsletter {
-  flex: 1 1 25%; /* Takes 1/4 of the width */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Success message container styling */
-.success-message-container {
-  display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;     /* Centers vertically */
-  margin-top: 1rem;        /* Adds margin-top of 1rem */
-  width: 100%;             /* Ensures the container takes full width */
-  text-align: center;      /* Ensures the message text is centered */
-}
-
-/* Padding for form fields */
-.p-field {
-  padding: 0.3rem;
-}
-
-/* Input field styling */
-.p-inputtext {
-  border: 1px solid var(--grad, );
-  border-image: linear-gradient(to right, #383F5B, #7685C1);
-  border-image-slice: 1;
-  font-family: 'FrankRuhlLibre-light';
-}
-
-/* Styling for the p-card container */
-:host ::ng-deep .p-card {
-  box-shadow: none !important;
-  border: 1px solid #7685C1;
-  border-radius: 0px;
-  background-color: #fafafc;
-  font-family: 'FrankRuhlLibre-Medium';
-  font-size: 1rem;
-  border-top: solid #383F5B 1px;
-  border-bottom: #383F5B solid 1px;
-  border-left: #7685C1 solid 1px;
-  border-right: #7685C1 solid 1px;
-  color: #383F5B;
-  min-height: 35rem;
-  max-height: 35rem;
-}
-
-/* Button styling */
-:host ::ng-deep .p-button {
-  border: 2px solid var(--grad, );
-  border-image: linear-gradient(to right, #383F5B, #7685C1);
-  border-image-slice: 1;
-  font-family: 'FrankRuhlLibre-Medium';
-  font-size: 1.2rem;
-  background-color: #7685C1;
-}
-
-/* Styling for the headings section */
-.headings {
-  border-top: 1px solid var(--grad, );
-  border-bottom: 1px solid var(--grad, );
-  border-image: linear-gradient(to right, #383F5B, #7685C1);
-  border-image-slice: 1;
-  font-family: 'FrankRuhlLibre-Light';
-  font-size: 1.5rem;
-  text-align: center;
-  position: sticky;
-  top: 0; /* Adjust this to set the sticky offset from the top */
-  z-index: 10; /* Ensures it stays above other content */
-  background-color: #fafafc; /* Matches the background to avoid overlap issues */
-  padding: 0.3rem 0; /* Adjust padding for consistent spacing */
-}
-
-/* Styling for sub-headings section */
-.sub-headings {
-  font-family: 'FrankRuhlLibre-Light';
-  font-size: 1.1rem;
-  text-align: center;
-  background-color: #fafafc; /* Matches the background to avoid overlap issues */
-}
-
-/* Styling for the order list container */
-:host ::ng-deep .p-orderlist .p-orderlist-list {
-  height: 20rem;
-  background-color: #fafafc;
-  border: none;
-  font-family: 'FrankRuhlLibre-Light';
-  color: #383F5B;
-}
-
-:host ::ng-deep .p-orderlist .p-orderlist-controls {
-  background-color: #fafafc;
-  padding: 0;
-  width: 0px;
-}
-
-:host ::ng-deep .p-orderlist .p-orderlist-filter-container {
-  background-color: #fafafc;
-  border: none;
-}
-
-:host ::ng-deep .p-orderlist .p-orderlist-filter-container .p-orderlist-filter-input {
-  border-top: 1px solid var(--grad, );
-  border-bottom: 1px solid var(--grad, );
-  border-image: linear-gradient(to right, #383F5B, #7685C1);
-  border-image-slice: 1;
-  font-family: 'FrankRuhlLibre-Light';
-  font-size: 1rem;
-  color: #383F5B;
-}
-
-:host ::ng-deep .p-orderlist .p-orderlist-controls .p-button {
-  background-color: #fafafc;
-  border: none;
-}
-
-.campaign-list {
-  flex: 1 1 60%; /* Takes 3/4 of the width */
-}
-
-/* Styling for the campaign list scrollbar */
-.campaign-list::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Styling for the campaign list scrollbar thumb */
-.campaign-list::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 4px;
-}
-
-/* Hover effect for the campaign list scrollbar thumb */
-.campaign-list::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-}
-
-  
-  </style>
+ 

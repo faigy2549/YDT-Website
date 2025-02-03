@@ -1,0 +1,187 @@
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    /* Fade-in effect for rows */
+    .fade-in-row {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    :host ::ng-deep{
+        font-family: 'FrankRuhlLibre-Light';
+    }
+.flex{
+    display: flex;
+    flex-direction: row;
+    gap:6rem;
+    justify-content: center;
+    text-align: center;
+    padding:4rem 8rem;
+    padding-top: 2rem;
+}
+.shiurim-table{
+    width:90rem;
+ 
+}
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    /* background-color:#d9dceb; */
+   border-radius: 0px;
+    color:#383F5B;
+    font-family: 'FrankRuhlLibre-Light';
+}
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page :hover {
+    background-color:#7685C1;
+}
+:host ::ng-deep .p-paginator .p-dropdown {
+    border-radius: 0px; 
+}
+:host ::ng-deep .p-paginator .p-dropdown .p-dropdown-label{
+color:#383F5B;
+font-family: 'FrankRuhlLibre-Light';
+}
+:host ::ng-deep  .p-dropdown .p-dropdown-panel {
+    border-radius: 0px; 
+}
+:host ::ng-deep  .p-dropdown-panel .p-dropdown-items .p-dropdown-item{
+    color:#383F5B;
+    font-family: 'FrankRuhlLibre-Light'; 
+}
+
+    /* Animation delay for rows */
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* General styles */
+    .td {
+        border-top: 1px solid #7685C1;
+        border-bottom: 1px solid #7685C1;
+        font-family: 'FrankRuhlLibre-Medium';
+    }
+
+    .td-flex {
+        border-top: 1px solid #7685C1;
+        border-bottom: 1px solid #7685C1;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        font-family: 'FrankRuhlLibre-Medium';
+    }
+
+    .td-audio {
+        border-top: 1px solid #7685C1;
+        border-bottom: 1px solid #7685C1;
+        text-align: right;
+    }
+
+    .table-row:hover {
+        background-color: #d9dceb;
+        transition: background-color 0.3s ease;
+    }
+
+    .profile-img {
+        object-fit: cover;
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+    }
+
+    .audio-player {
+        width: 300px;
+        margin-right: 0px;
+    }
+
+    /* Medium screens */
+    @media (max-width: 768px) {
+        .card {
+            padding: 1rem;
+        }
+
+        .profile-img {
+            height: 4rem;
+            width: 4rem;
+        }
+
+        .audio-player {
+            width: 100%;
+        }
+
+        p-table {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Small screens */
+    @media (max-width: 576px) {
+        .card {
+            padding: 0.5rem;
+        }
+
+        .profile-img {
+            height: 3rem;
+            width: 3rem;
+        }
+
+        .audio-player {
+            width: 100%;
+        }
+
+        p-table {
+            font-size: 0.8rem;
+        }
+
+        .td {
+            font-size: 0.8rem;
+            padding: 0.5rem;
+        }
+
+        tr {
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        tr .td {
+            display: block;
+            text-align: left;
+        }
+    }
+
+    /* Filter Styles */
+    .filters {
+       width:35rem;
+       text-align: left;
+       font-family: 'FrankRuhlLibre-Light';
+       font-size: 1.2rem;
+    }
+
+    .search {
+        width:20rem; 
+        margin: 0 1rem 1rem 0;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 2px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+        border-image-slice: 1;
+        font-family: 'FrankRuhlLibre-Light';
+    }
+
+    .filters select,
+    .filters input {
+        margin: 0 1rem 1rem 0;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 2px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+        border-image-slice: 1;
+        width:12rem;
+        font-family: 'FrankRuhlLibre-Light';
+    }

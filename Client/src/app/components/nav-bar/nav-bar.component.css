@@ -1,0 +1,110 @@
+
+.menu-wrapper {
+  background-color: white;
+  width: 100%; /* Ensure it spans the full width of the screen */
+  padding: 20px 0; /* Optional: Add padding for spacing */
+}
+
+:host ::ng-deep .p-menubar {
+  background-color: transparent;
+  border:none;
+  padding-left: 16rem;
+}
+.menubar-section{
+    text-align: center;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-end {
+    max-width: 0px;
+}
+
+/* Links container */
+.link-container {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+:host ::ng-deep .p-menubar .p-menuitem > .p-menuitem-content .p-menuitem-link {
+    /* background-color: white; */
+    border-top: 1px solid #7685C1;
+    border-bottom: 1px solid#7685C1;
+    padding:1rem;
+    justify-content: center;
+    font-size: 1rem;
+    min-width: 8.5rem;
+    font-family: 'FrankRuhlLibre-Medium';
+    border-radius: 0px;
+}
+
+:host ::ng-deep .p-menubar .p-menuitem:hover > .p-menuitem-content {
+    background-color: #d9dceb; /* Highlight the menu item */
+    transition: background-color 0.3s ease;
+}
+
+:host ::ng-deep .p-menubar .p-menuitem:hover > .p-menuitem-content .p-menuitem-link {
+    background-color: inherit; /* Ensure the link inherits the hover background */
+}
+a.active {
+  background-color: #d9dceb;
+  border-right: 1px solid #7685C1;
+  border-left: 1px solid #7685C1;
+border-radius:0px;
+  transition: background-color 0.3s ease;
+}
+
+/* Individual link styling */
+:host ::ng-deep .p-menubar .p-menubar-item-link {
+  color: white; /* White text color */
+  text-decoration: none; /* Remove underline */
+  padding: 10px 15px; /* Add spacing */
+  font-weight: bold; /* Optional: Make text bold */
+  display: inline-block;
+  transition: color 0.3s ease; /* Smooth hover transition */
+  color:#383F5B;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-text {
+    color: #383F5B;
+}
+
+/* Divider between links */
+:host ::ng-deep .p-divider {
+  width: 10px;
+  height: 20px; 
+  color:#383F5B;
+  background-color: #383F5B;
+  margin: 0 10px; 
+}
+
+/* Logo adjustments */
+.logo {
+  height:12rem;
+  max-height: 12rem;
+  width: auto;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  max-width: 100%;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .p-menubar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .p-menubar .logo {
+    margin-bottom: 20px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .p-menubar {
+    padding: 0 10px;
+  }
+
+  .p-menubar .logo {
+    height: 110px;
+  }
+}

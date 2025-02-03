@@ -1,3 +1,4 @@
+@import 'assets/primeng-custom.css';
 .header-img{
   background-image: url("/assets/IMG_2930.JPG");
 background-size: cover; 
@@ -25,8 +26,6 @@ main {
   justify-content: center;
   display: flex;
   flex-direction:column;
-
-
 }
 
 footer {
