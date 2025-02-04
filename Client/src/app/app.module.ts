@@ -39,6 +39,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import {OrderListModule} from 'primeng/orderlist';
 import {DialogModule} from 'primeng/dialog';
 import { UpdatesComponent } from './components/updates/updates.component';
+import { ApplyComponent } from './components/apply/apply.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { UpdatesComponent } from './components/updates/updates.component';
     CampaignListComponent,
     CampaignContentComponent,
     UpdatesComponent,
+    ApplyComponent,
   ],
   imports: [
    BrowserModule,

@@ -10,6 +10,7 @@ import { DonateComponent } from './components/donate/donate.component';
 import { AboutComponent } from './components/about/about.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { CampaignContentComponent } from './components/campaign-content/campaign-content.component';
+import { ApplyComponent } from './components/apply/apply.component';
 
  const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -19,9 +20,10 @@ import { CampaignContentComponent } from './components/campaign-content/campaign
   {path:'shiurim',component:ShiurimComponent},
   {path:'all-shiurim',component:AllShiurimComponent},
   {path:'newsletter',component:NewsletterComponent},
-  { path: 'newsletter/:campaignId', component: CampaignContentComponent },
+  { path:'newsletter/:campaignId', component: CampaignContentComponent },
   {path:'donate',component:DonateComponent},
   {path:'alumni',component:AlumniComponent},
+  {path:'apply',component:ApplyComponent},
   {path:'contact',component:ContactComponent},
 
 

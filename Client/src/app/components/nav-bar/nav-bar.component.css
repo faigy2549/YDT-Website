@@ -6,10 +6,19 @@
 }
 
 :host ::ng-deep .p-menubar {
-  background-color: transparent;
-  border:none;
-  padding-left: 16rem;
-}
+    background-color: transparent;
+    border: none;
+    padding: 0rem 4rem;
+    display: flex;
+    justify-content: center; /* Centers the menu */
+    width: fit-content; /* Makes it take only the necessary space */
+    margin: 0 auto; /* Centers it within its parent */
+  }
+  :host ::ng-deep .p-menubar .p-menubar-root-list {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100%;
+  }
 .menubar-section{
     text-align: center;
 }
@@ -31,7 +40,7 @@
     padding:1rem;
     justify-content: center;
     font-size: 1rem;
-    min-width: 8.5rem;
+    min-width: 8rem;
     font-family: 'FrankRuhlLibre-Medium';
     border-radius: 0px;
 }
@@ -41,16 +50,13 @@
     transition: background-color 0.3s ease;
 }
 
-:host ::ng-deep .p-menubar .p-menuitem:hover > .p-menuitem-content .p-menuitem-link {
-    background-color: inherit; /* Ensure the link inherits the hover background */
+  /* Styling for active menu item */
+  :host ::ng-deep .p-menuitem-link.active {
+    background-color:#d9dceb !important;  /* Highlight color */
+    transition: background-color 0.3s ease-in-out;
+    font-size: 1.2rem;
 }
-a.active {
-  background-color: #d9dceb;
-  border-right: 1px solid #7685C1;
-  border-left: 1px solid #7685C1;
-border-radius:0px;
-  transition: background-color 0.3s ease;
-}
+
 
 /* Individual link styling */
 :host ::ng-deep .p-menubar .p-menubar-item-link {

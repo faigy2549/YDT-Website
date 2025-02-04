@@ -53,7 +53,7 @@
             <div class="mb-4">
               <!-- Check if the item has an event ad -->
                 <div class="event-image" *ngIf="item.eventAd" (click)="openImage(item.eventAd)">
-                  <p-image [src]="'https://localhost:7117/' + item.eventAd" [alt]="item.eventName"  [preview]="false"   />
+                  <p-image [src]="item.eventAd" [alt]="item.eventName"  [preview]="false"   />
                 </div>
               <!-- Event Details -->
               <div *ngIf="!item.eventAd">
