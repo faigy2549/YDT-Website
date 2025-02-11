@@ -1,6 +1,24 @@
 <div class="header-vid">
-    <video src="../../../assets/Document from DovyF.mp4" autoplay muted loop playsinline [volume]="0"></video>
+  <video #videoPlayer src="../../../assets/Document from DovyF.mp4" autoplay [volume]="0" loop playsinline></video>
+
+  <div class="controls">
+
+    <p-slider 
+    *ngIf="volumeOpen"
+      [(ngModel)]="volume" 
+      [min]="0"
+      [max]="1"
+      [step]="0.1"
+      orientation="vertical"
+      (onChange)="adjustVolume(videoPlayer, $event.value ? $event.value : 0)">
+    </p-slider>
+
+    <i (click)="toggleVolume()" [ngClass]="getVolumeIcon()" class="pi volume-icon"></i>
   </div>
+</div>
+
+
+
   <div class="container-row">
     <div>
         <p-image src="../../../assets/IMG_2930.JPG" alt="Image" width="500" [preview]="true" />

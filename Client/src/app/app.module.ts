@@ -40,6 +40,9 @@ import {OrderListModule} from 'primeng/orderlist';
 import {DialogModule} from 'primeng/dialog';
 import { UpdatesComponent } from './components/updates/updates.component';
 import { ApplyComponent } from './components/apply/apply.component';
+import {SliderModule} from 'primeng/slider';
+import {TabMenuModule} from 'primeng/tabmenu';
+import {OverlayPanelModule} from 'primeng/overlaypanel'
 
 @NgModule({
   declarations: [
@@ -85,7 +88,10 @@ import { ApplyComponent } from './components/apply/apply.component';
    CarouselModule,
    ProgressSpinnerModule,
    OrderListModule,
-   DialogModule
+   DialogModule,
+   SliderModule,
+   TabMenuModule,
+   OverlayPanelModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

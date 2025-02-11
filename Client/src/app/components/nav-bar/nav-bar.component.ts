@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import {  Router } from '@angular/router';
+import { Component, HostListener, ViewChild } from '@angular/core';
+import {  NavigationEnd, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,10 +10,17 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavBarComponent {
   items: MenuItem[] = [];
-
+  currentRoute: string = '';
+  activeItem: MenuItem | undefined;
+  @ViewChild('menu') menu!: OverlayPanel;
+  isMobile = false;
   constructor(private router: Router) {}
-
+  @HostListener('window:resize', ['$event'])
+  checkScreenSize() {
+    this.isMobile = window.innerWidth < 768;
+  }
   ngOnInit() {
+    this.checkScreenSize();
     this.items = [
       {
         label: 'Home',
@@ -64,6 +72,13 @@ export class NavBarComponent {
         }
       },
       {
+        label: 'Apply',
+        route: '/apply',
+        command: () => {
+          this.router.navigate(['/apply']);
+        }
+      },
+      {
         label: 'Contact',
         route: '/contact',
         command: () => {
@@ -71,5 +86,18 @@ export class NavBarComponent {
         }
       }
     ];
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.urlAfterRedirects;
+        console.log("Current Route:", this.currentRoute);
+  
+        this.activeItem = this.items.find(item => `/${item.label?.toLowerCase()}` === this.currentRoute);
+        console.log("Active Item:", this.activeItem);
+      }
+    });
   }
+onActiveItemChange(event: MenuItem) {
+  this.activeItem = event;
+}
+
 }

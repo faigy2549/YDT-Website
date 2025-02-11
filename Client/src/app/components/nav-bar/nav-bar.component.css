@@ -1,116 +1,119 @@
 
 .menu-wrapper {
   background-color: white;
-  width: 100%; /* Ensure it spans the full width of the screen */
-  padding: 20px 0; /* Optional: Add padding for spacing */
-}
-
-:host ::ng-deep .p-menubar {
-    background-color: transparent;
-    border: none;
-    padding: 0rem 4rem;
-    display: flex;
-    justify-content: center; /* Centers the menu */
-    width: fit-content; /* Makes it take only the necessary space */
-    margin: 0 auto; /* Centers it within its parent */
-  }
-  :host ::ng-deep .p-menubar .p-menubar-root-list {
-    display: flex !important;
-    justify-content: center !important;
-    width: 100%;
-  }
-.menubar-section{
-    text-align: center;
-}
-
-:host ::ng-deep .p-menubar .p-menubar-end {
-    max-width: 0px;
-}
-
-/* Links container */
-.link-container {
+  width: 100%;
+  padding: 20px 0;
   display: flex;
-  align-items: center; 
-  justify-content: center;
-}
-:host ::ng-deep .p-menubar .p-menuitem > .p-menuitem-content .p-menuitem-link {
-    /* background-color: white; */
-    border-top: 1px solid #7685C1;
-    border-bottom: 1px solid#7685C1;
-    padding:1rem;
-    justify-content: center;
-    font-size: 1rem;
-    min-width: 8rem;
-    font-family: 'FrankRuhlLibre-Medium';
-    border-radius: 0px;
+  flex-direction: column;
+  align-items: center;
 }
 
-:host ::ng-deep .p-menubar .p-menuitem:hover > .p-menuitem-content {
-    background-color: #d9dceb; /* Highlight the menu item */
-    transition: background-color 0.3s ease;
+/* Center align the menubar */
+.menubar-section {
+  text-align: center;
 }
 
-  /* Styling for active menu item */
-  :host ::ng-deep .p-menuitem-link.active {
-    background-color:#d9dceb !important;  /* Highlight color */
-    transition: background-color 0.3s ease-in-out;
-    font-size: 1.2rem;
-}
-
-
-/* Individual link styling */
-:host ::ng-deep .p-menubar .p-menubar-item-link {
-  color: white; /* White text color */
-  text-decoration: none; /* Remove underline */
-  padding: 10px 15px; /* Add spacing */
-  font-weight: bold; /* Optional: Make text bold */
-  display: inline-block;
-  transition: color 0.3s ease; /* Smooth hover transition */
-  color:#383F5B;
-}
-
-:host ::ng-deep .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-text {
-    color: #383F5B;
-}
-
-/* Divider between links */
-:host ::ng-deep .p-divider {
-  width: 10px;
-  height: 20px; 
-  color:#383F5B;
-  background-color: #383F5B;
-  margin: 0 10px; 
-}
-
-/* Logo adjustments */
 .logo {
-  height:12rem;
+  height: 12rem;
   max-height: 12rem;
   width: auto;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
   max-width: 100%;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Responsiveness for smaller screens */
+/* PrimeNG tab menu styling */
+:host ::ng-deep .p-tabmenu {
+  background-color: transparent;
+  border: none;
+  padding: 0rem 4rem;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* Menu items */
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+  background-color: white;
+  border-top: 1px solid #383F5B;
+  border-bottom: 1px solid #383F5B;
+  padding: 1rem;
+  justify-content: center;
+  font-size: 1rem;
+  min-width: 8rem;
+  font-family: 'FrankRuhlLibre-Light';
+  border-radius: 0px;
+  transition: background 0.3s ease;
+}
+
+/* Active link text color */
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+  color: #7685C1;
+}
+
+/* Link text color */
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+  color: #383F5B;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .logo {
+    height: 12rem;
+  }
+}
+/* Tablet View: Reduce padding & font size */
+@media (max-width: 1200px) {
+  :host ::ng-deep .p-tabmenu {
+    padding: 0 2rem !important;
+  }
+
+  :host ::ng-deep .p-tabmenu .p-tabmenu-nav {
+    flex-wrap: nowrap !important;
+    justify-content: space-evenly !important;
+  }
+
+  :host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+    padding: 1rem 0.8rem !important; /* Reduce padding */
+    font-size: 1rem !important; /* Shrink text */
+    min-width: auto !important; /* Allow shrinking */
+  }
+}
+/* Mobile view adjustments */
 @media (max-width: 768px) {
-  .p-menubar {
-    flex-direction: column;
-    height: auto;
+  .menu-wrapper {
+    padding: 10px 0;
   }
 
-  .p-menubar .logo {
-    margin-bottom: 20px;
-    height: 140px;
+  .logo {
+    height: 10rem;
   }
 }
+/* mobile design */
+:host ::ng-deep .p-button {
+border: 2px solid var(--grad, );
+ border-image: linear-gradient(to right, #383F5B, #7685C1);
+ border-image-slice: 1;
+ color: #383F5B;
+ font-size: 1rem;
+ height: auto; 
+ background-color: #d9dceb;
+ padding: 0.5rem 1rem; 
+ min-width:3rem;
+ font-family: 'FrankRuhlLibre-Medium'; 
+ }
+ 
+ .p-button:focus {
+  box-shadow: none;
+  border: 3px solid var(--grad, );
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+ border-image-slice: 1;
+}
+/* PrimeNG overlay panel styling is in styles.css (if not the styles don't affect because the panel is not in the dom yet)*/
 
+/* Smaller screen sizes */
 @media (max-width: 480px) {
-  .p-menubar {
-    padding: 0 10px;
-  }
-
-  .p-menubar .logo {
-    height: 110px;
+  .logo {
+    height: 8rem;
   }
 }

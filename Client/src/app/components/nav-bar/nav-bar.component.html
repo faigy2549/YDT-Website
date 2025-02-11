@@ -2,22 +2,63 @@
     <div class="menubar-section">
         <img class="logo" src="../../../assets/logo with transparent background.png" alt="Logo">
       </div>
-    <p-menubar [model]="items">
+      <button *ngIf="isMobile" pButton type="button" icon="pi pi-bars" (click)="menu.toggle($event)" class="menu-button"></button>
+      <p-overlayPanel *ngIf="isMobile" #menu [showCloseIcon]="false" >
+        <p-tabMenu [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event); menu.hide()">
+          <ng-template #item let-item>
+            <ng-container *ngIf="item.route; else urlRef">
+                <a 
+                    [routerLink]="item.route" 
+                    class="p-menubar-item-link">
+                    <span [class]="item.icon"></span>
+                    <span class="ml-2">{{ item.label }}</span>
+                </a>
+            </ng-container>
+            <ng-template #urlRef>
+                <a *ngIf="item.url; else noLink" [href]="item.url" class="p-menubar-item-link">
+                    <span [class]="item.icon"></span>
+                    <span class="ml-2">{{ item.label }}</span>
+                </a>
+            </ng-template>
+            <ng-template #noLink>
+                <div class="p-menubar-item-link">
+                    <span [class]="item.icon"></span>
+                    <span class="ml-2">{{ item.label }}</span>
+                    <span class="pi pi-fw pi-angle-down ml-2"></span>
+                </div>
+            </ng-template>
+          </ng-template>
+        </p-tabMenu>
+      </p-overlayPanel>
+    <p-tabMenu *ngIf="!isMobile" [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event)">
       <ng-template #item let-item>
-        <ng-container>
-          <div class="link-container">
-            <a [routerLink]="item.route" 
-            routerLinkActive="active" 
-            [routerLinkActiveOptions]="{ exact: true }">
-           {{ item.label }}
-           <p-divider layout="vertical"></p-divider>
-         </a>
-          </div>
-        </ng-container>
-        <p-divider />
+          <ng-container *ngIf="item.route; else urlRef">
+              <a 
+                  [routerLink]="item.route" 
+                  class="p-menubar-item-link">
+                  <span [class]="item.icon"></span>
+                  <span class="ml-2">{{ item.label }}</span>
+              </a>
+          </ng-container>
+          <ng-template #urlRef>
+              <a *ngIf="item.url; else noLink" [href]="item.url" class="p-menubar-item-link">
+                  <span [class]="item.icon"></span>
+                  <span class="ml-2">{{ item.label }}</span>
+              </a>
+          </ng-template>
+          <ng-template #noLink>
+              <div class="p-menubar-item-link">
+                  <span [class]="item.icon"></span>
+                  <span class="ml-2">{{ item.label }}</span>
+                  <span class="pi pi-fw pi-angle-down ml-2"></span>
+              </div>
+          </ng-template>
       </ng-template>
-    </p-menubar>
+  </p-tabMenu>
+  
+
+    
   </div>
 
   
- 
+  

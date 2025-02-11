@@ -29,7 +29,8 @@ export class UpdatesComponent implements OnInit {
   }
 openImage(url:string):void{
 this.viewImage=true;
-this.imageUrl='https://localhost:7117/'+url;
+this.imageUrl=url;
+
 }
 
 
