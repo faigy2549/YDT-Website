@@ -1,0 +1,66 @@
+<p-card>
+    <p class="headings"> Join Yeshiva's Newsletter 
+    </p>
+    <p class="sub-headings">Subscribe to our weekly newsletter, and receive updates, Divrei Torah, and photos. </p>
+    <form *ngIf="!formSubmitted" (ngSubmit)="addSubscriber()" #joinForm="ngForm" class="p-fluid">
+      <div class="p-field">
+        <label for="firstName">First Name</label>
+        <input
+        id="firstName"
+        type="text"
+        pInputText
+        name="firstName"
+        [(ngModel)]="newSubscriber.firstName"
+        required
+        #firstName="ngModel"
+        [ngClass]="{'invalid-field': firstName.touched && firstName.invalid}"
+      />
+    </div>
+      <div class="p-field">
+        <label for="lastName">Last Name</label>
+        <input
+        id="lastName"
+        type="text"
+        pInputText
+        name="lastName"
+        [(ngModel)]="newSubscriber.lastName"
+        required
+        #lastName="ngModel"
+        [ngClass]="{'invalid-field': lastName.touched && lastName.invalid}"
+      />
+      </div>
+      <div class="p-field">
+        <label for="email">Email</label>
+                 
+      <input
+      id="email"
+      type="email"
+      pInputText
+      name="email"
+      [(ngModel)]="newSubscriber.email"
+      required
+      email
+      #email="ngModel"
+      [ngClass]="{'invalid-field': email.touched && email.invalid}"
+    />
+      </div>
+<br><br>
+<div *ngIf="errorMessage" class="error-message-container">
+<p-message severity="error" [text]="errorMessage"></p-message>
+</div>
+      <!-- Submit Button -->
+      <div class="p-field"  >
+        <button
+          pButton
+          type="submit"
+          label="Subscribe"
+          class="p-button-success"
+          [disabled]="!joinForm.valid"
+        ></button>
+      </div>
+    </form>
+
+    <div *ngIf="formSubmitted" class="success-message-container">
+      <p-message severity="success" text="You have been added successfully!"></p-message>
+    </div>
+  </p-card>

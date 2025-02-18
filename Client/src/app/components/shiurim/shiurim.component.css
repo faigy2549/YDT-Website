@@ -2,8 +2,7 @@
 .div_all_shiurim{
     justify-content: center;
     text-align: center;
-    padding-top:1.6rem;
-    padding-bottom: 0rem;
+    padding-top:2rem;
 }
    .fade-in {
      animation: fadeInUp 0.8s ease forwards; 
@@ -17,6 +16,7 @@
      justify-content: center;
      align-items: center;
      gap: 2rem; 
+     padding: 2rem;
    }
  
    /* Ensure each card takes up equal space */

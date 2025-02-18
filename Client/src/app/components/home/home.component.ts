@@ -9,10 +9,18 @@ import { Router } from '@angular/router';
 export class HomeComponent {
     constructor(private router: Router) {}
     volumeOpen:boolean=false;
+    volume: number = 0;
     navigateToAbout(): void {
-      this.router.navigate(['/about']);
+      this.router.navigate(['/about']).then(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      });
     }
-    volume: number = 0; 
+    navigateToNewsletter(): void {
+      this.router.navigate(['/newsletter']).then(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      });
+    }
+    
 
     adjustVolume(video: HTMLVideoElement, newVolume: number) {
       video.volume = newVolume;

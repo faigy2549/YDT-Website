@@ -97,9 +97,9 @@ border: 2px solid var(--grad, );
  color: #383F5B;
  font-size: 1rem;
  height: auto; 
- background-color: #d9dceb;
+ background-color: #ffff;
  padding: 0.5rem 1rem; 
- min-width:3rem;
+ max-width:3rem;
  font-family: 'FrankRuhlLibre-Medium'; 
  }
  

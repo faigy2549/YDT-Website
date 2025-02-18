@@ -18,6 +18,7 @@
   object-fit: cover; /* Ensures video covers the container */
   transform: translate(-50%, -50%);
 }
+
 .container-row {
   display: flex;
   flex-direction: row;

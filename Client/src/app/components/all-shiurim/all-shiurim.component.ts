@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Rav } from 'src/app/models/Rav.model';
 import { Shiur } from 'src/app/models/Shiur.Model';
 import { Topic } from 'src/app/models/Topic.model';
@@ -10,14 +10,14 @@ import { TopicService } from 'src/app/services/topic.service';
 @Component({
   selector: 'app-all-shiurim',
   templateUrl: './all-shiurim.component.html',
-  styleUrls: ['./all-shiurim.component.css']
+  styleUrls: ['./all-shiurim.component.css'],
 })
 export class AllShiurimComponent implements OnInit {
   shiurim: Shiur[] = [];
   filteredShiurim: Shiur[] = [];
   selectedRav: string = ''; 
   selectedTopic: string = ''; 
-  selectedYear: string = ''; 
+  selectedYear: number | null = null;
   searchQuery: string = '';
   ravList: Rav[] = [];
   topicList: Topic[] = [];
@@ -27,7 +27,6 @@ export class AllShiurimComponent implements OnInit {
     private shiurService: ShiurimService,
     private ravService: RavService,
     private topicService: TopicService,
-    private router: Router,
     private route: ActivatedRoute,
   ) {}
 
@@ -44,10 +43,11 @@ export class AllShiurimComponent implements OnInit {
       this.shiurim = shiurim;
 
       this.ravService.getRebbeim().subscribe((ravs) => {
-        this.ravList = ravs;
+        this.ravList = [{ id:-1, name: 'All',title:'',bio:'' }, ...ravs]; // Include "All"
       });
+  
       this.topicService.getTopics().subscribe((topics) => {
-        this.topicList = topics;
+        this.topicList = [{ id: -1, name: 'All' }, ...topics]; // Include "All"
       });
       this.route.queryParams.subscribe(params => {
         console.log('Rav ID:', params['rav']);
@@ -61,14 +61,13 @@ export class AllShiurimComponent implements OnInit {
     });
     
   }
-
   openAudio(shiurId: number) {
     this.audioVisible[shiurId] = !this.audioVisible[shiurId];
   }
   applyFilters() {
     this.filteredShiurim = this.shiurim.filter(shiur => {
-      const allRavSelected = !this.selectedRav || this.selectedRav === '';
-      const allTopicSelected = !this.selectedTopic || this.selectedTopic === '';
+      const allRavSelected = !this.selectedRav || Number(this.selectedRav) ===-1;
+      const allTopicSelected = !this.selectedTopic || Number(this.selectedTopic) === -1;
   
       const ravMatch = allRavSelected || Number(shiur.ravId) === Number(this.selectedRav);
       const topicMatch = allTopicSelected || Number(shiur.topicId) === Number(this.selectedTopic);
@@ -84,7 +83,7 @@ export class AllShiurimComponent implements OnInit {
     const queryParams = new URLSearchParams();
     if (this.selectedRav) queryParams.set('rav', this.selectedRav);
     if (this.selectedTopic) queryParams.set('topic', this.selectedTopic);
-    if (this.selectedYear) queryParams.set('year', this.selectedYear);
+    if (this.selectedYear) queryParams.set('year', this.selectedYear.toString());
   
     const queryString = queryParams.toString();
     history.replaceState(null, '', `/all-shiurim${queryString ? '?' + queryString : ''}`);

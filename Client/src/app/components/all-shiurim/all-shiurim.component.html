@@ -5,38 +5,62 @@
 <div class="card fade-in flex">
    
     <div class="filters">
-        <p>Rav</p> <i icon="pi pi-plus"></i>
+        <p>Rav</p> 
         <p-divider></p-divider>
-        <select  id="ravFilter"  [(ngModel)]="selectedRav" (change)="applyFilters()">
-            Filter by Rav:
-            <option value="">All</option>
-            <option *ngFor="let rav of ravList" [value]="rav.id">{{ rav.name }}</option>
-        </select>
+        <p-dropdown 
+            [options]="ravList" 
+            id="ravFilter" 
+            placeholder="Filter By Rav" 
+            [(ngModel)]="selectedRav" 
+            optionLabel="name"
+            optionValue="id"
+            (onChange)="applyFilters()">
+        </p-dropdown>
+        
+        <p>Topic</p> 
+        <p-divider></p-divider>
+        <p-dropdown 
+            [options]="topicList" 
+            id="topicFilter" 
+            placeholder="Filter By Topic" 
+            [(ngModel)]="selectedTopic" 
+            optionLabel="name"
+            optionValue="id"
+            (onChange)="applyFilters()">
+        </p-dropdown>
+        
 
-        <p>Topic</p> <i icon="pi pi-plus"></i>
+        <p>Year</p> 
         <p-divider></p-divider>
-        <select id="topicFilter" [(ngModel)]="selectedTopic" (change)="applyFilters()" >
-            <option value="" selected>All</option>
-            <option *ngFor="let topic of topicList" [value]="topic.id">{{ topic.name }}</option>
-        </select>
-        <p>Year</p> <i icon="pi pi-plus"></i>
-        <p-divider></p-divider>
-        <input id="yearFilter" [(ngModel)]="selectedYear" (change)="applyFilters()" type="number" placeholder="Filter by Year" />
+        <p-inputNumber 
+            inputId="yearFilter" 
+            [(ngModel)]="selectedYear" 
+            [min]="2005" 
+            [max]="2050" 
+            [placeholder]="'Filter by Year'"
+            [step]="1" 
+            [useGrouping]="false"
+            [showButtons]="true" 
+            (ngModelChange)="applyFilters()">
+        </p-inputNumber>
     </div>
     <p-divider layout="vertical" />
-     <div class="shiurim-table">
-    <input 
-        id="searchBar" 
-        class="search"
-        type="text" 
-        [(ngModel)]="searchQuery" 
-        (input)="applyFilters()" 
-        placeholder="Search by Title, Topic or Rav" 
-    />
-    <p-table [value]="filteredShiurim" [responsive]="true"  [paginator]="true"
-        [rows]="5"
+<div class="shiurim-table">
 
-        [rowsPerPageOptions]="[5, 10, 20]"
+    <input type="text" 
+    pInputText 
+    id="searchBar" 
+    class="search" 
+    [(ngModel)]="searchQuery" 
+    (ngModelChange)="applyFilters()" 
+    placeholder="Search by Title, Topic or Rav"
+    >
+    
+
+    <p-table [value]="filteredShiurim" 
+        [responsive]="true" [paginator]="true"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 20, 40]"
     >
         <ng-template pTemplate="body" let-shiur let-i="index">
             <tr class="table-row fade-in-row" [style.animation-delay]="i * 0.2 + 's'">
@@ -52,7 +76,7 @@
                 </td>
                 <td class="td">{{ shiur.topic?.name }}</td>
                 <td class="td-audio">
-                    <audio  controls preload="none" class="audio-player">
+                    <audio controls preload="none" class="audio-player">
                         <source src="../../../assets/Chamol Kempeh.mp3" type="audio/mp3">
                         <source src="../../../assets/Chamol Kempeh.mp3" type="audio/ogg">
                         <source src="../../../assets/Chamol Kempeh.mp3" type="audio/wav">
@@ -63,4 +87,5 @@
         </ng-template>
     </p-table>
 </div>
+
 </div>

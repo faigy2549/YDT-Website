@@ -23,7 +23,9 @@
 }
 .shiurim-table{
     width:90rem;
- 
+ display: flex;
+ flex-direction: column;
+align-items: center;
 }
 :host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
     /* background-color:#d9dceb; */
@@ -47,6 +49,7 @@ font-family: 'FrankRuhlLibre-Light';
 :host ::ng-deep  .p-dropdown-panel .p-dropdown-items .p-dropdown-item{
     color:#383F5B;
     font-family: 'FrankRuhlLibre-Light'; 
+    max-width:11rem;
 }
 
     /* Animation delay for rows */
@@ -165,16 +168,18 @@ font-family: 'FrankRuhlLibre-Light';
 
     .search {
         width:20rem; 
-        margin: 0 1rem 1rem 0;
+        margin: 0 0 1rem 0;
         padding: 0.5rem;
         font-size: 1rem;
         border: 2px solid var(--grad, );
         border-image: linear-gradient(to right, #383F5B, #7685C1);
         border-image-slice: 1;
         font-family: 'FrankRuhlLibre-Light';
+        display: flex;
+        justify-content: center;
+        height: 2.8rem;
     }
 
-    .filters select,
     .filters input {
         margin: 0 1rem 1rem 0;
         padding: 0.5rem;
@@ -185,3 +190,55 @@ font-family: 'FrankRuhlLibre-Light';
         width:12rem;
         font-family: 'FrankRuhlLibre-Light';
     }
+   :host ::ng-deep .p-dropdown {
+        font-size: 1rem;
+        border: 2px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+        border-image-slice: 1;
+        width:12rem;
+        font-family: 'FrankRuhlLibre-Light';
+    }
+    :host ::ng-deep .p-dropdown .p-dropdown-label.p-placeholder {
+        color:#383F5B;
+        font-family: 'FrankRuhlLibre-Light';
+    }
+    :host ::ng-deep  .p-dropdown .p-dropdown-label {        
+        color:#383F5B;
+        font-family: 'FrankRuhlLibre-Light';
+    }
+    :host ::ng-deep .p-inputnumber-buttons-stacked .p-inputnumber-input  {
+        font-size: 1rem;
+        border: 2px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+        border-image-slice: 1;
+        width:9rem;
+        font-family: 'FrankRuhlLibre-Light';
+        border-right: none;
+    }
+    ::ng-deep .p-inputtext::placeholder {
+        color:#383F5B; /* Change this to your desired color */
+    }
+    
+    :host ::ng-deep .p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button{
+        background-color: transparent;
+        border: 2px solid var(--grad, );
+        border-image: linear-gradient(to left, #383F5B, #7685C1);
+        border-image-slice: 1;
+        color: #383F5B;
+
+        border-left: none;
+    }
+    :host ::ng-deep .p-inputnumber-buttons-stacked .p-button.p-inputnumber-button-up {
+        border-bottom: none !important;
+
+    }
+    :host ::ng-deep .p-inputnumber-buttons-stacked .p-button.p-inputnumber-button-down {
+        border-top: none !important;
+
+    }
+:host ::ng-deep :enabled:focus{
+box-shadow: none;
+}
+:host ::ng-deep :not(.p-disabled) .p-focus{
+    box-shadow: none;
+}

@@ -13,7 +13,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import {HttpClientModule} from '@angular/common/http';
 import { RavComponent } from './components/rav/rav.component';
 import { DataViewModule } from 'primeng/dataview';
-import { FormsModule } from '@angular/forms';  
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { ButtonModule } from 'primeng/button';  
 import { TagModule } from 'primeng/tag';  
 import {CardModule} from 'primeng/card';
@@ -42,7 +42,10 @@ import { UpdatesComponent } from './components/updates/updates.component';
 import { ApplyComponent } from './components/apply/apply.component';
 import {SliderModule} from 'primeng/slider';
 import {TabMenuModule} from 'primeng/tabmenu';
-import {OverlayPanelModule} from 'primeng/overlaypanel'
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { JoinNewsletterComponent } from './components/join-newsletter/join-newsletter.component';
+
 
 @NgModule({
   declarations: [
@@ -62,6 +65,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel'
     CampaignContentComponent,
     UpdatesComponent,
     ApplyComponent,
+    JoinNewsletterComponent,
   ],
   imports: [
    BrowserModule,
@@ -72,6 +76,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel'
    HttpClientModule,
    DataViewModule,
    FormsModule,  
+   ReactiveFormsModule,
    ButtonModule,  
    TagModule, 
    CardModule,
@@ -92,6 +97,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel'
    SliderModule,
    TabMenuModule,
    OverlayPanelModule,
+   InputNumberModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

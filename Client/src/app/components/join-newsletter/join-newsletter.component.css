@@ -1,0 +1,86 @@
+.join-newsletter {
+    flex: 1 1 25%; /* Takes 1/4 of the width */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Success message container styling */
+  .success-message-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    margin-top: 1rem;        /* Adds margin-top of 1rem */
+    width: 100%;             /* Ensures the container takes full width */
+    text-align: center;      /* Ensures the message text is centered */
+  }
+  .error-message-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    margin-top: 1rem;        /* Adds margin-top of 1rem */
+    width: 100%;             /* Ensures the container takes full width */
+    text-align: center;      /* Ensures the message text is centered */
+  }
+  
+  /* Padding for form fields */
+  .p-field {
+    padding: 0.3rem;
+  }
+  
+  /* Input field styling */
+  .p-inputtext {
+    border: 1px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-light';
+  }
+  /* Styling for the p-card container */
+:host ::ng-deep .p-card {
+    box-shadow: none !important;
+    border: 1px solid #7685C1;
+    border-radius: 0px;
+    background-color: #fafafc;
+    font-family: 'FrankRuhlLibre-Medium';
+    font-size: 1rem;
+    border-top: solid #383F5B 1px;
+    border-bottom: #383F5B solid 1px;
+    border-left: #7685C1 solid 1px;
+    border-right: #7685C1 solid 1px;
+    color: #383F5B;
+    min-height: 35rem;
+    max-height: 35rem;
+  }
+  :host ::ng-deep .p-button {
+    border: 2px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-Medium';
+    font-size: 1.2rem;
+    background-color: #7685C1;
+  }
+  
+  /* Styling for the headings section */
+  .headings {
+    border-top: 1px solid var(--grad, );
+    border-bottom: 1px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-Light';
+    font-size: 1.5rem;
+    text-align: center;
+    position: sticky;
+    top: 0; /* Adjust this to set the sticky offset from the top */
+    z-index: 10; /* Ensures it stays above other content */
+    background-color: #fafafc; /* Matches the background to avoid overlap issues */
+    padding: 0.3rem 0; /* Adjust padding for consistent spacing */
+  }
+  
+  /* Styling for sub-headings section */
+  .sub-headings {
+    font-family: 'FrankRuhlLibre-Light';
+    font-size: 1.1rem;
+    text-align: center;
+    background-color: #fafafc; /* Matches the background to avoid overlap issues */
+  }
+  

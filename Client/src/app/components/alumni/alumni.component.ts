@@ -84,6 +84,8 @@ this.imageUrl='https://localhost:7117/'+url;
   }
 
   navigateToNewslatter(): void {
-    this.router.navigate(['/newsletter']);
+    this.router.navigate(['/newsletter']).then(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' }); 
+    });
   }
 }

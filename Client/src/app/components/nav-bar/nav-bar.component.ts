@@ -89,10 +89,7 @@ export class NavBarComponent {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.urlAfterRedirects;
-        console.log("Current Route:", this.currentRoute);
-  
         this.activeItem = this.items.find(item => `/${item.label?.toLowerCase()}` === this.currentRoute);
-        console.log("Active Item:", this.activeItem);
       }
     });
   }
