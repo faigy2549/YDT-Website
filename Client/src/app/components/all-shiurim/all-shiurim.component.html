@@ -55,37 +55,10 @@
     (ngModelChange)="applyFilters()" 
     placeholder="Search by Title, Topic or Rav"
     >
-    
+    <app-shiurim-table [filteredShiurim]="filteredShiurim" [viewMode]="'full'"></app-shiurim-table>
 
-    <p-table [value]="filteredShiurim" 
-        [responsive]="true" [paginator]="true"
-        [rows]="10"
-        [rowsPerPageOptions]="[10, 20, 40]"
-    >
-        <ng-template pTemplate="body" let-shiur let-i="index">
-            <tr class="table-row fade-in-row" [style.animation-delay]="i * 0.2 + 's'">
-                <td class="td-flex">
-                    <img
-                        [src]="'../../../assets/image.png'"
-                        [alt]="shiur.rav?.name"
-                        class="profile-img"
-                    />
-                    {{ shiur.title }}<br /><br />
-                    {{ shiur.rav?.name }}<br /><br />
-                    {{ shiur.date | date: 'mediumDate' }}
-                </td>
-                <td class="td">{{ shiur.topic?.name }}</td>
-                <td class="td-audio">
-                    <audio controls preload="none" class="audio-player">
-                        <source src="../../../assets/Chamol Kempeh.mp3" type="audio/mp3">
-                        <source src="../../../assets/Chamol Kempeh.mp3" type="audio/ogg">
-                        <source src="../../../assets/Chamol Kempeh.mp3" type="audio/wav">
-                    </audio>
-                </td>
-            </tr>
-            <br>
-        </ng-template>
-    </p-table>
+
+  
 </div>
 
 </div>

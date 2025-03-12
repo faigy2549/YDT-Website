@@ -6,25 +6,25 @@
    <div class="ry-container" >
     <p-fieldset  >
         <p>
-            Joining the R”Y in his sacred task is a supremely devoted and truly unique Hanhalas Hayeshiva. 
+            {{rebbeim[0].bio}}
         </p>
       </p-fieldset>
-    <p-card class="ry-card" [style]="{ width: '50rem', overflow: 'hidden' ,height:'23rem'}">
+    <p-card class="ry-card" [style]="{ width: '50rem', overflow: 'hidden' ,height:'21rem'}">
         <div class="ry-div">
             <p class="image-container">
-                <img alt="Card" class="w-full" src="../../../assets/image.png" [alt]="rebbeim[0]" />
+                <img class="w-full" [src]="rebbeim[0].imageUrl" [alt]="rebbeim[0].imageUrl"  />
             </p>
             <p class="title">
-                R' Menachem Eichenstien
+               {{rebbeim[0].name}}
                 <br>
-                ROSH HAYESHIVA
+                {{rebbeim[0].title}}
             </p>
         </div>
     </p-card>
 </div>
 
 <div class="card-container" >
-    <div *ngFor="let item of rebbeim" class="card">
+    <div *ngFor="let item of rebbeim.slice(1)" class="card">
         <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'30rem'}">
             <ng-template pTemplate="header">
                 <img alt="Card"  class="w-full" src="../../../assets/image.png" [alt]="item.name" />

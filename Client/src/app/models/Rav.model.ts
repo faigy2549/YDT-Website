@@ -5,5 +5,6 @@ export class Rav {
     name: string = "";
     title: string = "";
     bio: string = "";
+    imageUrl:string="";
     shiurim?: Shiur[]; // Optional, as the collection may not always be loaded
   }

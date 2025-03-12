@@ -45,7 +45,10 @@ import {TabMenuModule} from 'primeng/tabmenu';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { JoinNewsletterComponent } from './components/join-newsletter/join-newsletter.component';
-
+import { ShiurimTableComponent } from './components/shiurim-table/shiurim-table.component';
+import { LatestShiurimComponent } from './components/latest-shiurim/latest-shiurim.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import {KnobModule} from 'primeng/knob';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,8 @@ import { JoinNewsletterComponent } from './components/join-newsletter/join-newsl
     UpdatesComponent,
     ApplyComponent,
     JoinNewsletterComponent,
+    ShiurimTableComponent,
+    LatestShiurimComponent,
   ],
   imports: [
    BrowserModule,
@@ -98,6 +103,8 @@ import { JoinNewsletterComponent } from './components/join-newsletter/join-newsl
    TabMenuModule,
    OverlayPanelModule,
    InputNumberModule,
+   MultiSelectModule,
+   KnobModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

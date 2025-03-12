@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Rav } from 'src/app/models/Rav.model';
 import { Shiur } from 'src/app/models/Shiur.Model';
@@ -13,6 +13,8 @@ import { TopicService } from 'src/app/services/topic.service';
   styleUrls: ['./all-shiurim.component.css'],
 })
 export class AllShiurimComponent implements OnInit {
+  @Input() latestOnly: boolean = false;
+  @Input() maxShiurim: number = 4; 
   shiurim: Shiur[] = [];
   filteredShiurim: Shiur[] = [];
   selectedRav: string = ''; 
@@ -22,6 +24,7 @@ export class AllShiurimComponent implements OnInit {
   ravList: Rav[] = [];
   topicList: Topic[] = [];
   audioVisible: { [key: string]: boolean } = {};
+  
 
   constructor(
     private shiurService: ShiurimService,
@@ -41,21 +44,16 @@ export class AllShiurimComponent implements OnInit {
         });
       });
       this.shiurim = shiurim;
-
       this.ravService.getRebbeim().subscribe((ravs) => {
-        this.ravList = [{ id:-1, name: 'All',title:'',bio:'' }, ...ravs]; // Include "All"
+        this.ravList = [{ id:-1, name: 'All',title:'',bio:'',imageUrl:'' }, ...ravs]; 
       });
-  
       this.topicService.getTopics().subscribe((topics) => {
-        this.topicList = [{ id: -1, name: 'All' }, ...topics]; // Include "All"
+        this.topicList = [{ id: -1, name: 'All' }, ...topics]; 
       });
+
       this.route.queryParams.subscribe(params => {
-        console.log('Rav ID:', params['rav']);
-        console.log('Topic ID:', params['topic']);
         this.selectedRav = params['rav'];
         this.selectedTopic = params['topic'];
-        console.log("11111"+this.shiurim);
-        
         this.applyFilters();
       });
     });

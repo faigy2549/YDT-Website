@@ -1,10 +1,4 @@
-.join-newsletter {
-    flex: 1 1 25%; /* Takes 1/4 of the width */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
+
   /* Success message container styling */
   .success-message-container {
     display: flex;
@@ -26,6 +20,17 @@
   /* Padding for form fields */
   .p-field {
     padding: 0.3rem;
+    width:20rem;
+  }
+  :host ::ng-deep .p-multiselect-panel .p-multiselect-header .p-multiselect-close  {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+  }
+  :host ::ng-deep .p-multiselect-panel .p-multiselect-header {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
   }
   
   /* Input field styling */
@@ -34,6 +39,22 @@
     border-image: linear-gradient(to right, #383F5B, #7685C1);
     border-image-slice: 1;
     font-family: 'FrankRuhlLibre-light';
+  }
+  :host ::ng-deep .p-multiselect{
+    border: 1px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-light';
+  }
+  :host ::ng-deep .p-multiselect-panel .p-multiselect-items .p-multiselect-item{
+    font-family: 'FrankRuhlLibre-light';
+  }
+  :host ::ng-deep .p-checkbox .p-checkbox-box {
+border-radius: 0px;
+  }
+  
+  :host ::ng-deep .p-card .p-card-content {
+    padding: 0;
   }
   /* Styling for the p-card container */
 :host ::ng-deep .p-card {
@@ -50,6 +71,7 @@
     color: #383F5B;
     min-height: 35rem;
     max-height: 35rem;
+    width:25rem;
   }
   :host ::ng-deep .p-button {
     border: 2px solid var(--grad, );
@@ -58,6 +80,13 @@
     font-family: 'FrankRuhlLibre-Medium';
     font-size: 1.2rem;
     background-color: #7685C1;
+    margin-top: -2rem;
+  }
+  .form{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
   
   /* Styling for the headings section */
@@ -83,4 +112,5 @@
     text-align: center;
     background-color: #fafafc; /* Matches the background to avoid overlap issues */
   }
+
   

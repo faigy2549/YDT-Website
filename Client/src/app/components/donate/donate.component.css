@@ -1,0 +1,99 @@
+.donation-knob {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    height: 550px;
+    flex-direction: column;
+    flex: 1 1 25%;
+    
+  }
+  
+  .knob-labels {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+  
+  .knob-label {
+    position: absolute;
+    font-size: 15px;
+    font-family: 'FrankRuhlLibre-Light'; 
+    color: #383F5B;
+    transform-origin: center;
+  }
+  .sum-knob-label{
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'FrankRuhlLibre-Light'; 
+    color: #383F5B;
+    transform-origin: center; 
+  }
+  :host ::ng--deep .p-knob {
+    font-family: 'FrankRuhlLibre-Light'; 
+    color: #383F5B;
+    font-size: 0.8rem;
+  }
+  :host ::ng-deep .p-orderlist .p-orderlist-list {
+    height: 20rem;
+    background-color: #fafafc;
+    border: none;
+    font-family: 'FrankRuhlLibre-Light';
+    color: #383F5B;
+  }
+  
+  :host ::ng-deep .p-orderlist .p-orderlist-controls {
+    background-color: #fafafc;
+    padding: 0;
+    width: 0px;
+  }
+  
+  :host ::ng-deep .p-orderlist .p-orderlist-filter-container {
+    background-color: #fafafc;
+    border: none;
+  }
+  
+  :host ::ng-deep .p-orderlist .p-orderlist-filter-container .p-orderlist-filter-input {
+    border-top: 1px solid var(--grad, );
+    border-bottom: 1px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-Light';
+    font-size: 1rem;
+    color: #383F5B;
+  }
+  
+  :host ::ng-deep .p-orderlist .p-orderlist-controls .p-button {
+    background-color: #fafafc;
+    border: none;
+  }
+  :host ::ng-deep .p-card {
+    box-shadow: none !important;
+    border: 1px solid #7685C1;
+    border-radius: 0px;
+    background-color: #fafafc;
+    font-family: 'FrankRuhlLibre-Medium';
+    font-size: 1rem;
+    border-top: solid #383F5B 1px;
+    border-bottom: #383F5B solid 1px;
+    border-left: #7685C1 solid 1px;
+    border-right: #7685C1 solid 1px;
+    color: #383F5B;
+    min-height: 35rem;
+    max-height: 35rem;
+  }
+  .donations-data{
+    display: flex;
+    flex-direction: row;
+    gap:2rem;
+    padding:4rem 8rem;
+  }
+  .donationslist{
+    flex: 1 1 60%; 
+  }

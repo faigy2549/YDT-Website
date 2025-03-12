@@ -27,11 +27,28 @@
   gap: 8rem;
   width: 100%;
   margin: 0 auto;
-  padding-right:8rem;
-  padding-left:8rem;
-  padding-top:4rem;
-  padding-bottom:4rem;
+  padding:4rem 8rem;
   justify-content: center;
+ 
+}
+.container-row-dark {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8rem;
+  width: 100%;
+  margin: 0 auto;
+  padding:4rem 8rem;
+  justify-content: center;
+  background-color: #d9dceb;
+}
+.newsletter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:8rem;
+  align-items: center;
 }
 :host ::ng-deep .p-fieldset{
   font-family: 'FrankRuhlLibre-Medium';
@@ -44,6 +61,22 @@
   color:#383F5B;
   padding:0;
 }
+:host ::ng-deep .p-card {
+  box-shadow: none !important;
+  border:none;
+  border-radius: 0px;
+  background-color: transparent;
+  font-family: 'FrankRuhlLibre-Light';
+  font-size: 1.8rem;
+  text-align: center;
+  color: #383F5B;
+  max-height: 35rem;
+}
+ .arrow{
+  font-size: 1.2rem;
+  color: #383F5B !important;
+  padding-left: 1rem;
+ }
 :host ::ng-deep .p-fieldset .p-fieldset-content {
   padding: 0rem;
 }
@@ -62,7 +95,7 @@
 border-image: linear-gradient(to right, #383F5B, #7685C1);
 border-image-slice: 1;
 color: #383F5B;
-font-size: 1rem;
+font-size: 1.2rem;
 height: auto; 
 background-color: #d9dceb;
 padding: 0.5rem 1rem; 
@@ -110,4 +143,52 @@ i {
 .p-slider {
   width: 120px;
 }
+/* animations */
 
+/* General animated elements */
+.animated {
+  opacity: 0;
+  transform: translateY(60px); /* Move down further */
+  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.animated.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide in from left - More movement */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-120px); /* Move from further left */
+  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide-in-left.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide in from right - More movement */
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(120px); /* Move from further right */
+  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide-in-right.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Extra bounce effect */
+.bounce-in {
+  opacity: 0;
+  transform: scale(0.7); /* Start smaller */
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bounce-in.show {
+  opacity: 1;
+  transform: scale(1);
+}

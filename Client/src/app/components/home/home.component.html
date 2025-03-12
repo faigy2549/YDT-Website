@@ -19,11 +19,11 @@
 
 
 
-  <div class="container-row">
-    <div>
+  <div class="container-row animated">
+    <div class="slide-in-left">
         <p-image src="../../../assets/IMG_2930.JPG" alt="Image" width="500" [preview]="true" />
     </div>
-    <p-fieldset  >
+    <p-fieldset class="slide-in-right" >
         <p>
           At the turn of the century, the leading Roshei Yeshiva in America saw the need for a Yeshiva in Yerushalayim for American Bochurim to grow in Torah with warmth and individualized attention. With the encouragement and Bracha of Harav Elya Svei, Harav Chaim Epstein, and Harav Yitzchock Feigelstock Zichronam Livracha, the Rosh Yeshiva - Harav Menachem Eichenstein Shlit’a opened Yeshivas Dvar Torah - a Makom Torah where each Talmid would grow to their maximum potential.
         </p>
@@ -31,8 +31,42 @@
       <p-button label="Learn more about us" (click)="navigateToAbout()"></p-button>
 
   </div>
-  <div class="container-row">
-<app-join-newsletter></app-join-newsletter>
+  <div class="container-row-dark animated">
+    <div class="newsletter">
+     <p-card>
+      <p>
+        Stay Connected!</p>
+        <p>
+         Join yeshivas newsletter to get the hottest updates, Divrei Torah, Mazal Tovs, Photos and much much more...
+      </p>
+      <p>
+        Join Now 
+        <i class="pi pi-arrow-right pi-arrow-right-animate arrow"></i> 
+        <i class="pi pi-arrow-right pi-arrow-right-animate arrow"></i> 
+     </p>
+     <p>
+      Or check out some of the lattest newsletters
+   </p>
+   <p>
+    <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i>
+    <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i>
+    <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i>
+    <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i>
+  </p>
       <p-button label="View Past Newsletters" (click)="navigateToNewsletter()"></p-button>
-
+    </p-card>   
+      <app-join-newsletter></app-join-newsletter>
+    </div>
+  </div>
+  <div class="container-row animated">
+    <p-card class="slide-in-left"> 
+      <p>
+        Recent 
+        Shiurim
+      </p>
+        <app-latest-shiurim ></app-latest-shiurim>
+    </p-card>
+    <p-card class="slide-in-right">
+      <p-button label="View All Shiurim" (click)="navigateToShiurim()"></p-button>
+  </p-card>
   </div>

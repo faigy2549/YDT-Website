@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    constructor(private router: Router) {}
+    constructor(private router: Router, private el: ElementRef) {}
     volumeOpen:boolean=false;
     volume: number = 0;
     navigateToAbout(): void {
@@ -17,6 +17,11 @@ export class HomeComponent {
     }
     navigateToNewsletter(): void {
       this.router.navigate(['/newsletter']).then(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      });
+    }
+    navigateToShiurim(): void {
+      this.router.navigate(['/all-shiurim']).then(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' }); 
       });
     }
@@ -38,6 +43,24 @@ export class HomeComponent {
     }
     toggleVolume():void{
       this.volumeOpen=!this.volumeOpen;
+    }
+    @HostListener('window:scroll', [])
+    onScroll(): void {
+      const elements = this.el.nativeElement.querySelectorAll('.animated, .slide-in-left, .slide-in-right, .bounce-in');
+      
+      elements.forEach((el: HTMLElement, index: number) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          setTimeout(() => {
+            el.classList.add('show');
+          }, index * 20); 
+        }
+      });
+    }
+    
+  
+    ngAfterViewInit(): void {
+      this.onScroll(); 
     }
     
 }

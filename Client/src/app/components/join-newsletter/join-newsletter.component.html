@@ -2,7 +2,7 @@
     <p class="headings"> Join Yeshiva's Newsletter 
     </p>
     <p class="sub-headings">Subscribe to our weekly newsletter, and receive updates, Divrei Torah, and photos. </p>
-    <form *ngIf="!formSubmitted" (ngSubmit)="addSubscriber()" #joinForm="ngForm" class="p-fluid">
+    <form *ngIf="!formSubmitted" (ngSubmit)="addSubscriber()" #joinForm="ngForm" class="p-fluid form">
       <div class="p-field">
         <label for="firstName">First Name</label>
         <input
@@ -44,12 +44,28 @@
       [ngClass]="{'invalid-field': email.touched && email.invalid}"
     />
       </div>
+      <div class="p-field">
+        <label for="tags">Tags</label>
+        <p-multiSelect 
+        [(ngModel)]="selectedTags"
+        name="tags"
+        [options]="allowedTags"
+        defaultLabel="Select Tags"
+        (onChange)="handleTagSelection()"
+        [showToggleAll]="false"  
+        [filter]="false"
+        appendTo="body"
+        [panelStyle]="{'bottom': '100%', 'top': 'auto'}"
+        class="custom-multiselect">
+      </p-multiSelect>
+      
+      
+      </div>
 <br><br>
 <div *ngIf="errorMessage" class="error-message-container">
 <p-message severity="error" [text]="errorMessage"></p-message>
 </div>
-      <!-- Submit Button -->
-      <div class="p-field"  >
+      <div   >
         <button
           pButton
           type="submit"

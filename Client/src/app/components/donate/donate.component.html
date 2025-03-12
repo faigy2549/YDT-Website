@@ -2,4 +2,62 @@
     <br><br><br> <br><br><br>
     <p class="header-text">DONATE</p>
  </div>
+ <div class="donations-data">
+ <div class="donation-knob">
+    <p-knob 
+      [(ngModel)]="donationAmount" 
+      [min]="0" 
+      [max]="40000" 
+      [step]="1000"
+      [readonly]="true"
+      [valueTemplate]="donationPercentage"
+      [strokeWidth]="1"
+      [textColor]="'#383F5B'"
+      [size]="400"
+      [valueColor]="'#383F5B'"
+      [rangeColor]="'#d9dceb'">
+    </p-knob>
+    <div class="knob-labels">
+      <span
+      class="sum-knob-label"
+      [style.transform]="'rotate(' + 90 + 'deg) translate(200px) rotate(-' + 90 + 'deg)'">
+      {{donationAmount}}$ Donated</span>
+      <span *ngFor="let tick of tickMarks"
+        class="knob-label"
+        [style.transform]="'rotate(' + tick.angle + 'deg) translate(200px) rotate(-' + tick.angle + 'deg)'">
+        {{ tick.label }}
+      </span>
+    </div>
+  </div>
+  <p-card class="donations-list h-full">
+    <p class="headings">
+      Recent Donations
+    </p>
+    <p-orderList
+      [value]="recentDonations"
+      dataKey="id"
+      breakpoint="575px"
+      scrollHeight="calc(100vh - 100px)"
+    >
+      <ng-template let-campaign let-selected="selected" pTemplate="item">
+        <div
+          class="flex justify-between items-center border-b pb-2 mb-2 w-full cursor-pointer"
+        >
+          <div class="flex-1">
+            <span class="font-medium text-lg">{{ campaign.settings.title }}</span>
+            <br />
+            <small class="text-sm">{{ campaign.settings.subject_line }}</small>
+          </div>
+          <div class="flex-shrink-0">
+            <span class="text-sm font-medium">
+              {{ campaign.send_time | date: 'M/d/yyyy' }}
+            </span>
+          </div>
+        </div>
+      </ng-template>
+    </p-orderList>
+  
+  </p-card>
 
+</div>
+  
