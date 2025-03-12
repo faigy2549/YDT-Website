@@ -17,6 +17,7 @@ namespace DTOs
 
         [StringLength(1000, ErrorMessage = "Bio cannot be longer than 1000 characters")]
         public string Bio { get; set; }
+        public int ChashivusLevel { get; set; }
         public string ImageUrl { get; set; }
     }
 }

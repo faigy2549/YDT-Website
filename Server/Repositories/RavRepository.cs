@@ -16,7 +16,10 @@ namespace Repositories
 
         public async Task<IEnumerable<Rav>> GetAllAsync()
         {
-            return await _context.Rabbanim.Include(r => r.Shiurim).ToListAsync();
+            return await _context.Rabbanim
+                .Include(r => r.Shiurim)
+                .OrderBy(r => r.ChashivusLevel)
+                .ToListAsync();
         }
 
         public async Task<Rav> GetByIdAsync(int id)

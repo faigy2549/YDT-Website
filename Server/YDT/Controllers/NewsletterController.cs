@@ -14,25 +14,32 @@ public class NewsletterController : ControllerBase
     {
         _newsletterService = newsletterService;
     }
-
     [HttpPost("add-subscriber")]
-    public async Task<IActionResult> AddSubscriber( MailchimpSubscriberDTO subscriber)
+    public async Task<IActionResult> AddSubscriber([FromBody] MailchimpSubscriberDTO subscriber)
     {
-        if ( subscriber == null)
+        Console.WriteLine("maaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaximmmmmmmmmmmmmot",subscriber.Tags);
+        if (subscriber == null)
         {
-            return BadRequest("List ID and subscriber details are required.");
+            return BadRequest(new { error = "Subscriber details are required." });
+        }
+
+        if (!subscriber.ValidateTags(out string errorMessage))
+        {
+            return BadRequest(new { error = errorMessage });
         }
 
         try
         {
-            await _newsletterService.AddSubscriberToList( subscriber);
-            return Ok("Subscriber added successfully.");
+            await _newsletterService.AddSubscriberToList(subscriber);
+            return Ok(new { message = "Subscriber added successfully." });
         }
         catch (Exception ex)
         {
-            return StatusCode(500, $"An error occurred: {ex.Message}");
+            return StatusCode(500, new { error = "An unexpected error occurred.", details = ex.Message });
         }
     }
+
+
     [HttpGet("campaigns")]
     public async Task<IActionResult> ListCampaigns()
     {

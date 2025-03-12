@@ -33,40 +33,54 @@ namespace Services
                 Convert.ToBase64String(Encoding.ASCII.GetBytes($"anystring:{_apiKey}")));
         }
 
-        public async Task AddSubscriberToList( MailchimpSubscriberDTO subscriber)
+        public async Task AddSubscriberToList(MailchimpSubscriberDTO subscriber)
         {
-            if (string.IsNullOrEmpty(_listId))
-                throw new ArgumentNullException(nameof(_listId));
-            if (subscriber == null)
-                throw new ArgumentNullException(nameof(subscriber));
-
-            var subscriberPayload = new
+            try
             {
-                email_address = subscriber.Email,
-                status = "subscribed",
-                merge_fields = new
+                if (string.IsNullOrEmpty(_listId))
+                    throw new ArgumentNullException(nameof(_listId));
+                if (subscriber == null)
+                    throw new ArgumentNullException(nameof(subscriber));
+
+                var subscriberPayload = new
                 {
-                    FNAME = subscriber.FirstName,
-                    LNAME = subscriber.LastName
+                    email_address = subscriber.Email,
+                    status = "subscribed",
+                    merge_fields = new
+                    {
+                        FNAME = subscriber.FirstName,
+                        LNAME = subscriber.LastName
+                    },
+                    tags = subscriber.Tags 
+                };
+
+                var jsonPayload = JsonSerializer.Serialize(subscriberPayload);
+                var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync($"lists/{_listId}/members", content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorDetails = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Failed to add subscriber: {errorDetails}");
                 }
-            };
 
-            var jsonPayload = JsonSerializer.Serialize(subscriberPayload);
-            var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PostAsync($"lists/{_listId}/members", content);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var errorDetails = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Failed to add subscriber: {errorDetails}");
+                Console.WriteLine($"Subscriber added successfully.");
             }
-
-            var responseBody = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"Subscriber added successfully: {responseBody}");
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Validation Error: {ex.Message}");
+                throw new Exception($"Invalid input: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected Error: {ex.Message}");
+                throw;
+            }
         }
 
-public async Task<string> ListCampaigns()
+
+        public async Task<string> ListCampaigns()
     {
         string fields = "campaigns.id,campaigns.settings.title,campaigns.settings.subject_line,campaigns.send_time";
         string sortField = "send_time";
