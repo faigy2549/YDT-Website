@@ -14,8 +14,12 @@ export class DonateComponent {
     value: i * 5000,
     angle: 125 + (i * 36) }));
 
-  get donationPercentage(): string {
-  return `${Math.round((this.donationAmount / 40000) * 100)}%`;
+    get donationPercentage(): string {
+      const percentage = Math.round((this.donationAmount / 40000) * 100);
+      return `${percentage}% Raised`;
+    }
+openDonationLink() {
+  window.open('https://secure.cardknox.com/yeshivasdvartorah', '_blank');
 }
 }
 //0502758444

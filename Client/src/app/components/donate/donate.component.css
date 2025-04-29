@@ -3,8 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 550px;
-    height: 550px;
+    width: 40rem;
+    height: 30rem;
     flex-direction: column;
     flex: 1 1 25%;
     
@@ -35,12 +35,73 @@
     color: #383F5B;
     transform-origin: center; 
   }
-  :host ::ng--deep .p-knob {
+  :host ::ng-deep .p-knob {
     font-family: 'FrankRuhlLibre-Light'; 
     color: #383F5B;
     font-size: 0.8rem;
   }
-  :host ::ng-deep .p-orderlist .p-orderlist-list {
+  :host ::ng-deep .p-knob-text {
+    font-size: 0.8rem;
+  }
+
+  .donations-data{
+    display: flex;
+    flex-direction: row;
+    gap:5rem;
+    justify-content: center;
+    padding:4rem 12rem;
+    align-items: center;
+  }
+  .donations-list{
+    justify-content: center;
+    display:flex;
+    align-items: center;
+    padding:2rem 12rem;
+  }
+  :host ::ng-deep .p-button {
+    border: 2px solid var(--grad, );
+   border-image: linear-gradient(to right, #383F5B, #7685C1);
+   border-image-slice: 1;
+   color: #383F5B;
+   font-size: 1.2rem;
+   height: auto; 
+   background-color: #d9dceb;
+   padding: 0.5rem 1rem; 
+   min-width:16rem;
+   font-family: 'FrankRuhlLibre-Medium'; 
+   }
+   :host ::ng-deep .p-fieldset{
+    font-family: 'FrankRuhlLibre-Medium';
+    border-top:solid #383F5B  0px;
+    border-bottom: #383F5B solid 0px;
+    border-left: #7685C1 solid 0px;
+    border-right: #7685C1 solid 0px;
+    border-radius: 0px;
+    font-size: 1.5rem;
+    color:#383F5B;
+    text-align: center;
+    padding:0;
+  }
+   :host ::ng-deep .p-fieldset .p-fieldset-content {
+    padding: 0rem;
+  }
+  :host ::ng-deep .p-fieldset .p-fieldset-legend {
+    display: none !important;
+  }
+  :host ::ng-deep .p-image{
+    border-top:solid #383F5B  3px;
+    border-bottom: #383F5B solid 3px;
+    border-left: #7685C1 solid 3px;
+    border-right: #7685C1 solid 3px;
+    border-radius: 0px;
+  }
+   .donation-buttons{
+    display:flex;
+    gap:2rem;
+    justify-content: center;
+   }
+
+   :host ::ng-deep .p-orderlist .p-orderlist-list {
     height: 20rem;
     background-color: #fafafc;
     border: none;
@@ -87,13 +148,5 @@
     color: #383F5B;
     min-height: 35rem;
     max-height: 35rem;
-  }
-  .donations-data{
-    display: flex;
-    flex-direction: row;
-    gap:2rem;
-    padding:4rem 8rem;
-  }
-  .donationslist{
-    flex: 1 1 60%; 
+    width:30rem;
   }
