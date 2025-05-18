@@ -49,6 +49,7 @@ import { ShiurimTableComponent } from './components/shiurim-table/shiurim-table.
 import { LatestShiurimComponent } from './components/latest-shiurim/latest-shiurim.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import {KnobModule} from 'primeng/knob';
+import {SidebarModule} from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import {KnobModule} from 'primeng/knob';
    InputNumberModule,
    MultiSelectModule,
    KnobModule,
+   SidebarModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]
