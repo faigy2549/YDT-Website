@@ -4,23 +4,23 @@
  </div>
 
    <div class="ry-container" >
+    <p-card class="ry-card" [style]="{ }">
+        <ng-template pTemplate="header">
+            <img alt="Card" class="w-full"  [src]="rebbeim[0].imageUrl" [alt]="rebbeim[0].imageUrl"/>
+        </ng-template>
+        <ng-template pTemplate="title">
+            {{rebbeim[0].name}}
+        </ng-template>
+        <ng-template pTemplate="subtitle">
+            {{rebbeim[0].title}}
+        </ng-template>
+        <p class="bio">{{rebbeim[0].bio}}</p>
+    </p-card>
     <p-fieldset  >
         <p>
-            {{rebbeim[0].bio}}
+            Joining the R”Y in his sacred task is a supremely devoted and truly unique Hanhalas Hayeshiva.
         </p>
       </p-fieldset>
-    <p-card class="ry-card" [style]="{ width: '50rem', overflow: 'hidden' ,height:'21rem'}">
-        <div class="ry-div">
-            <p class="image-container">
-                <img class="w-full" [src]="rebbeim[0].imageUrl" [alt]="rebbeim[0].imageUrl"  />
-            </p>
-            <p class="title">
-               {{rebbeim[0].name}}
-                <br>
-                {{rebbeim[0].title}}
-            </p>
-        </div>
-    </p-card>
 </div>
 
 <div class="card-container" >
