@@ -137,4 +137,10 @@
     transform: translateX(0);
   }
   
-  
+  @media (max-width: 768px) {
+    .container-row {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      overflow-x: hidden;
+    }
+  }
