@@ -139,3 +139,59 @@ align-items: center;
         grid-template-columns: 1fr; /* Single column on small screens */
     }
 }
+
+
+@media (max-width: 670px) {
+    /* Main row styles */
+    ::ng-deep .p-table .p-datatable-tbody > tr {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+ 
+    /* Description row layout */
+    .table-row {
+      border-top: 1px solid #7685C1;
+      border-bottom: none;
+      /* flex-wrap: wrap; */
+      padding: 1rem ;
+    }
+  
+    .td-flex {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      border-bottom: none !important;
+      align-items: center;
+      justify-content: left;
+      font-size: 1rem;
+      width: 100%;
+    }
+  
+    .td {
+      border-top: none !important;
+      width: 100%;
+      padding-top: 0.5rem;
+    }
+  
+    .td-audio.empty-cell {
+      display: none;
+    }
+  
+    /* Audio row */
+    .audio-row {
+      border-bottom: 1px solid #7685C1;
+      padding: 0.5rem 0;
+    }
+  
+    .audio-row .td-audio {
+      border-top: none !important;
+      width: 100%;
+      padding: 0;
+    }
+
+  }
+  
+  

@@ -2,9 +2,53 @@
     <br><br><br> <br><br><br>
     <p class="header-text">SHIURIM</p>
  </div>
+
+ <p-sidebar [(visible)]="filterSidebarVisible" position="left" class="filter-sidebar" [modal]="true">
+     <div class="filters">
+         <p>Rav</p> 
+         <p-divider></p-divider>
+         <p-dropdown 
+             [options]="ravList" 
+             id="ravFilter" 
+             placeholder="Filter By Rav" 
+             [(ngModel)]="selectedRav" 
+             optionLabel="name"
+             optionValue="id"
+             (onChange)="applyFilters()">
+         </p-dropdown>
+         
+         <p>Topic</p> 
+         <p-divider></p-divider>
+         <p-dropdown 
+             [options]="topicList" 
+             id="topicFilter" 
+             placeholder="Filter By Topic" 
+             [(ngModel)]="selectedTopic" 
+             optionLabel="name"
+             optionValue="id"
+             (onChange)="applyFilters()">
+         </p-dropdown>
+         
+ 
+         <p>Year</p> 
+         <p-divider></p-divider>
+         <p-inputNumber 
+             inputId="yearFilter" 
+             [(ngModel)]="selectedYear" 
+             [min]="2005" 
+             [max]="2050" 
+             [placeholder]="'Filter by Year'"
+             [step]="1" 
+             [useGrouping]="false"
+             [showButtons]="true" 
+             (ngModelChange)="applyFilters()">
+         </p-inputNumber>
+     </div>
+ </p-sidebar>
+
+
 <div class="card fade-in flex">
-   
-    <div class="filters">
+    <div class="filters desktop-only">
         <p>Rav</p> 
         <p-divider></p-divider>
         <p-dropdown 
@@ -44,9 +88,11 @@
             (ngModelChange)="applyFilters()">
         </p-inputNumber>
     </div>
-    <p-divider layout="vertical" />
-<div class="shiurim-table">
+    <p-divider layout="vertical" class="desktop-only" />
 
+<div class="shiurim-table">
+    <div class="tableFiltersAndSearch">
+    <p-button class="mobile-filter-btn" (click)="filterSidebarVisible = true">Filter</p-button>
     <input type="text" 
     pInputText 
     id="searchBar" 
@@ -55,6 +101,7 @@
     (ngModelChange)="applyFilters()" 
     placeholder="Search by Title, Topic or Rav"
     >
+</div>
     <app-shiurim-table [filteredShiurim]="filteredShiurim" [viewMode]="'full'"></app-shiurim-table>
 
 

@@ -24,7 +24,8 @@ export class AllShiurimComponent implements OnInit {
   ravList: Rav[] = [];
   topicList: Topic[] = [];
   audioVisible: { [key: string]: boolean } = {};
-  
+  filterSidebarVisible: boolean = false;
+
 
   constructor(
     private shiurService: ShiurimService,

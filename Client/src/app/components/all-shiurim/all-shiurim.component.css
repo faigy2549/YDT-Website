@@ -21,14 +21,78 @@
     padding:4rem 8rem;
     padding-top: 2rem;
 }
-.shiurim-table{
-    width:90rem;
- display: flex;
- flex-direction: column;
-align-items: center;
-}
+.shiurim-table {
+    width: 100%;
+    max-width: 90rem; /* allow max size on desktop */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
+  .tableFiltersAndSearch{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:1rem;
+  }
+  :host ::ng-deep .p-button {
+    border: 2px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-Light';
+    font-size: 1rem;
+    background-color: #d9dceb;
+    color: #383F5B;
+    padding: 0.66rem;
+    width:6rem;
+    display:flex;
+    justify-content: center;
+    }
+  @media (max-width: 580px) {
+    .tableFiltersAndSearch{
+        display: flex;
+        flex-direction: row;
+        gap:0.5rem;
+        align-items: center;
+        justify-content: center;
+        margin-bottom:0.5rem;
+      }
+      :host ::ng-deep .p-button {
+        font-size: 1rem;
+        height: 2.8rem;
+        padding: 0.5rem;
+        width:4rem;
+        }  
+    .search {
+        max-width:10rem; 
+        width:10rem;
+        padding: 0.3rem;
+    }
+   ::ng-deep p-table {
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+    }
+    ::ng-deep .p-datatable-wrapper {
+      overflow-x: auto;
+    }
+    ::ng-deep .p-datatable-tbody > tr > td,
+    ::ng-deep .p-datatable-thead > tr > th {
+      white-space: normal; 
+      padding: 0.5rem;    
+      font-size: 0.8rem;
+    }
+  
+    ::ng-deep .p-datatable .p-column-title {
+      display: block;
+    }
+  }
+  body {
+    overflow-x: hidden;
+  } 
 :host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
-    /* background-color:#d9dceb; */
    border-radius: 0px;
     color:#383F5B;
     font-family: 'FrankRuhlLibre-Light';
@@ -130,8 +194,8 @@ font-family: 'FrankRuhlLibre-Light';
     }
 
     .search {
-        width:20rem; 
-        margin: 0 0 1rem 0;
+        max-width:30rem; 
+        width:15rem;
         padding: 0.5rem;
         font-size: 1rem;
         border: 2px solid var(--grad, );
@@ -174,7 +238,8 @@ font-family: 'FrankRuhlLibre-Light';
         border: 2px solid var(--grad, );
         border-image: linear-gradient(to right, #383F5B, #7685C1);
         border-image-slice: 1;
-        width:9rem;
+        width:6rem;
+        height:3rem;
         font-family: 'FrankRuhlLibre-Light';
         border-right: none;
     }
@@ -188,15 +253,18 @@ font-family: 'FrankRuhlLibre-Light';
         border-image: linear-gradient(to left, #383F5B, #7685C1);
         border-image-slice: 1;
         color: #383F5B;
-
+        width:6rem;
         border-left: none;
     }
     :host ::ng-deep .p-inputnumber-buttons-stacked .p-button.p-inputnumber-button-up {
         border-bottom: none !important;
-
+        width:6rem;
+        height:1.5rem;
     }
     :host ::ng-deep .p-inputnumber-buttons-stacked .p-button.p-inputnumber-button-down {
         border-top: none !important;
+        width:6rem;
+        height:1.5rem;
 
     }
 :host ::ng-deep :enabled:focus{
@@ -205,3 +273,49 @@ box-shadow: none;
 :host ::ng-deep :not(.p-disabled) .p-focus{
     box-shadow: none;
 }
+
+.desktop-only {
+    display: block;
+  }
+
+  .mobile-filter-btn {
+    display: none;
+  }
+  
+  /* Sidebar style (optional) */
+  ::ng-deep .filter-sidebar {
+    width: 80vw;
+    max-width: 22rem;
+    overflow-x: hidden;
+    scrollbar-width: 0px;
+  }
+  :host ::ng-deep .p-sidebar .p-sidebar-content{
+    overflow-x: hidden;
+    padding:2rem;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 1400px) {
+    .flex {
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1rem;
+    }
+  
+    .desktop-only {
+      display: none !important;
+    }
+  
+    .mobile-filter-btn {
+      display: block;
+    }
+  
+    .shiurim-table {
+      width: 100%;
+      padding: 0 1rem;
+    }
+  
+    .search {
+      max-width: 100%;
+    }
+  }
