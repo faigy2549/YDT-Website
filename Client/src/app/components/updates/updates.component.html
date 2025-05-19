@@ -20,52 +20,36 @@
   </p-dialog>
   
       <div class="event-container">
-        <p-carousel  
-        [value]="events" 
-        [numVisible]="3" 
-        [numScroll]="1" 
-        [circular]="true" 
-        [autoplayInterval]="8000"
-        [showIndicators]="false">
-      
-        <ng-template pTemplate="item" let-item>
-          <div >
-            <!-- Card Header -->
-            <div class="header flex items-center gap-4  event-header">
-              <!-- Event Name -->
-              <div class="flex items-center gap-2">
-                <i class="pi pi-calendar text-blue-500"></i>
-                <span class="font-bold text-m">{{ item.eventName }}</span>
-              </div>
-              <!-- Event Location -->
-              <div class="flex items-center gap-2">
-                <i class="pi pi-map-marker text-red-500"></i>
-                <span class="font-bold text-m">{{ item.eventLocation }}</span>
-              </div>
-              <!-- Event Date -->
-              <div class="flex items-center gap-2">
-                <i class="pi pi-clock text-green-500"></i>
-                <span class="font-bold text-m">{{ item.eventDate | date: 'mediumDate' }}</span>
-              </div>
-            </div>
-      
-            <!-- Event Details or Ad -->
-            <div class="mb-4">
-              <!-- Check if the item has an event ad -->
-                <div class="event-image" *ngIf="item.eventAd" (click)="openImage(item.eventAd)">
-                  <p-image [src]="item.eventAd" [alt]="item.eventName"  [preview]="false"   />
-                </div>
-              <!-- Event Details -->
-              <div *ngIf="!item.eventAd">
-                <p class="event-text">
-                  {{ item.eventDetails }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </p-carousel>
-      
+      <p-carousel  
+  [value]="events" 
+  [numVisible]="3" 
+  [numScroll]="1" 
+  [circular]="true" 
+  [autoplayInterval]="8000"
+  [showIndicators]="false"
+  [responsiveOptions]="[
+    { breakpoint: '1024px', numVisible: 2, numScroll: 1 },
+    { breakpoint: '768px', numVisible: 1, numScroll: 1 }
+  ]"
+>
+  <ng-template pTemplate="item" let-item>
+    <div class="event-card">
+      <div class="event-header">
+        <div><i class="pi pi-calendar text-blue-500"></i> {{ item.eventName }}</div>
+        <div><i class="pi pi-map-marker text-red-500"></i> {{ item.eventLocation }}</div>
+        <div><i class="pi pi-clock text-green-500"></i> {{ item.eventDate | date: 'mediumDate' }}</div>
+      </div>
+
+      <div class="event-content">
+        <div *ngIf="item.eventAd" class="event-image" (click)="openImage(item.eventAd)">
+          <p-image [src]="item.eventAd" [alt]="item.eventName" [preview]="false" />
+        </div>
+        <p *ngIf="!item.eventAd" class="event-text">{{ item.eventDetails }}</p>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>
+
       </div>
     </p-card>
   </div>

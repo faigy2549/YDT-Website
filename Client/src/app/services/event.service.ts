@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Event } from '../models/Event.model';
+import { local } from '../base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
-  private apiUrl = 'https://localhost:7117/api/events'; 
-
+  private apiUrl = `${local}/events`; 
   constructor(private http: HttpClient) {}
 
   // Get all events
