@@ -5,11 +5,12 @@ body, html {
 
 p {
     font-family: 'FrankRuhlLibre-Medium';
+    margin-bottom: 0;
 }
 
 .bio {
     font-family: 'FrankRuhlLibre-Medium';
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding-top: 0;
     margin-top: 0;
 }
@@ -32,7 +33,7 @@ p {
     gap: 2rem;
     flex-direction: row;
     width: 100%;
-    padding: 2rem 8rem;
+    padding: 2rem 6rem;
     overflow-x: hidden;
 }
 
@@ -100,7 +101,7 @@ p {
     border-right: none;
     font-family: 'FrankRuhlLibre-Bold';
     font-size: 1.5rem;
-    width:50rem;
+    width:80rem;
     overflow: hidden;
 }
 :host ::ng-deep .p-fieldset {
@@ -109,6 +110,8 @@ p {
     font-size: 1.5rem;
     text-align: center;
     color: #383F5B;
+    padding-bottom: 0;
+    padding-top:0.2rem;
 }
 
 :host ::ng-deep .p-fieldset .p-fieldset-legend {
@@ -143,15 +146,20 @@ p {
         width:30rem;
         height: auto;
     }
+    :host ::ng-deep .p-fieldset .p-fieldset-content{
+        padding:0px;
+    }
 }
 
 @media (max-width: 768px) {
     .ry-container,  .card-container {
         flex-direction: column;
-        padding: 1rem;
-        gap: 1rem;
+        padding: 1rem 1rem;
+        gap: 1.5rem;
     }
-
+    :host ::ng-deep .p-fieldset .p-fieldset-content{
+        padding:0px;
+    }
     .card {
         flex: 0 1 100%; 
         height: auto;
