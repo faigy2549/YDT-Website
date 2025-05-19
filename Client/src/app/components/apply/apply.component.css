@@ -1,34 +1,74 @@
-:host ::ng-deep .p-fieldset{
+  :host ::ng-deep .p-fieldset {
     font-family: 'FrankRuhlLibre-Medium';
-    border-top:solid #383F5B  1px;
-    border-bottom: #383F5B solid 1px;
-    border-left: #7685C1 solid 1px;
-    border-right: #7685C1 solid 1px;
-    border-radius: 0px;
-    color:#383F5B;
-    padding:2rem;
-    min-width:40rem;
-}
-:host ::ng-deep .p-fieldset .p-fieldset-legend {
-    font-family: 'FrankRuhlLibre-Medium';
-    border-top:solid #7685C1  1px;
-    border-bottom: #7685C1 solid 1px;
-    border-left: #383F5B solid 1px;
-    border-right: #383F5B solid 1px;
-    border-radius: 0px;
-    color:#383F5B;
-}
-.contact-fieldset {
-    display:flex;
-    flex-direction: row;
-    gap:8rem;
-    justify-content: center;
+    border: 1px solid #7685C1;
+    border-top-color: #383F5B;
+    border-bottom-color: #383F5B;
+    border-radius: 0;
+    color: #383F5B;
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px; /* or whatever max you want */
+    box-sizing: border-box;
   }
   
-.contact-container {
-    padding: 2rem 8rem;
-    display:flex;
-    flex-direction: row;
-    gap:2rem;
-    justify-content: center;
+  :host ::ng-deep .p-fieldset .p-fieldset-legend {
+    font-family: 'FrankRuhlLibre-Medium';
+    border: 1px solid #383F5B;
+    border-top-color: #7685C1;
+    border-bottom-color: #7685C1;
+    border-radius: 0;
+    color: #383F5B;
   }
+  
+  .contact-container {
+    padding: 2rem 8rem;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  .contact-fieldset {
+    display: flex;
+    flex-direction: row;
+    gap: 8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Responsive Tweaks */
+  @media (max-width: 1024px) {
+    .contact-container {
+      padding: 2rem 4rem;
+    }
+  
+    .contact-fieldset {
+      gap: 4rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .contact-container {
+      padding: 1rem 2rem;
+    }
+  
+    .contact-fieldset {
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-container {
+      padding: 1rem;
+    }
+  
+    :host ::ng-deep .p-fieldset {
+      padding: 1rem;
+    }
+  }
+  
