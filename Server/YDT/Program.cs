@@ -32,7 +32,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CorsPolicy",
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200", "development web site")
+            builder.WithOrigins("http://localhost:4200", "https://ydtwebsite-001-site1.mtempurl.com", "http://ydtwebsite-001-site1.mtempurl.com")
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
@@ -94,7 +94,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("CorsPolicy");
+app.UseDefaultFiles();
 app.UseStaticFiles();
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

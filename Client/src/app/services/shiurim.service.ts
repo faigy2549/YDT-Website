@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Shiur } from '../models/Shiur.Model';
+import { local } from '../base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShiurimService {
-  private baseUrl = 'https://localhost:7117/api/Shiur'; 
+  private baseUrl = `${local}/Shiur`; 
 
   constructor(private httpClient: HttpClient) {}
 

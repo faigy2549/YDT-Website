@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Subscriber } from '../models/Subscriber.model';
+import { local } from '../base';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsletterService {
-  private baseUrl = 'https://localhost:7117/api/newsletter';
+  private baseUrl = `${local}/newsletter`;
 
   constructor(private http: HttpClient) {}
 

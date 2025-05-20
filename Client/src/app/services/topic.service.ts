@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Topic } from '../models/Topic.model';
+import { local } from '../base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TopicService {
-  private baseUrl = 'https://localhost:7117/api/Topic'; // Base URL for the API
+  private baseUrl = `${local}/Topic`; // Base URL for the API
 
   constructor(private httpClient: HttpClient) {}
 

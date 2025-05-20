@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Occasion } from '../models/Occasion.model';
+import { local } from '../base';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class OccasionService {
-  private apiUrl = 'https://localhost:7117/api/occasion'; 
+  private apiUrl = `${local}/occasion`; 
 
   constructor(private http: HttpClient) {}
 
