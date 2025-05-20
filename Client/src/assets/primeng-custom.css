@@ -1,0 +1,14 @@
+
+:host ::ng-deep .p-button{
+    width: 100% !important;
+    height:100% !important;
+    border: 2px solid var(--grad) !important;
+    border-image: linear-gradient(to right, #383F5B, #7685C1) !important;
+    border-image-slice: 1 !important;
+    font-family: 'FrankRuhlLibre-Medium' !important;
+    background-color: #7685C1 !important;
+    color: #fff !important;
+    text-align: center !important;
+    padding: 0.5rem !important;
+  }
+  
