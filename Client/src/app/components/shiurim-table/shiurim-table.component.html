@@ -6,29 +6,7 @@
   [rows]="10"
   [rowsPerPageOptions]="[10, 20, 40]"
 >
-  <!-- <ng-template pTemplate="body" let-shiur let-i="index">
-      <tr class="table-row fade-in-row" [style.animation-delay]="i * 0.2 + 's'">
-          <td class="td-flex">
-              <img
-                  [src]="'../../../assets/image.png'"
-                  [alt]="shiur.rav?.name"
-                  class="profile-img"
-              />
-              {{ shiur.title }}<br /><br />
-              {{ shiur.rav?.name }}<br /><br />
-              {{ shiur.date | date: 'mediumDate' }}
-          </td>
-          <td class="td">{{ shiur.topic?.name }}</td>
-          <td class="td-audio">
-              <audio controls preload="none" class="audio-player">
-                  <source src="../../../assets/Chamol Kempeh.mp3" type="audio/mp3">
-              </audio>
-          </td>
-      </tr>
-      <br>
-  </ng-template> -->
   <ng-template pTemplate="body" let-shiur let-i="index">
-    <!-- Desktop layout (1 row) -->
     <tr
       *ngIf="windowWidth > 670"
       class="table-row fade-in-row"

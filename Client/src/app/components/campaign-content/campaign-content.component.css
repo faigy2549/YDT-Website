@@ -6,7 +6,8 @@
     border: 2px solid var(--grad, );
     border-image: linear-gradient(to right, #383F5B, #7685C1);
     border-image-slice: 1;
-  
+    overflow-x: hidden;
+ 
   }
   :host ::ng-deep .p-card .p-card-body{
     padding:0px;
@@ -16,7 +17,7 @@
   }
   .campaign-content{
     padding: 2rem 8rem;
-
+    overflow-x: hidden;
   }
   :host ::ng-deep .p-button {
     border: 2px solid var(--grad, );
@@ -42,3 +43,36 @@
       }
       
       
+      html, body {
+        overflow-x: hidden;
+        width:100%;
+        margin: 0;
+      } 
+
+      @media (max-width: 1024px) {
+        .campaign-content {
+          padding: 2rem 4rem;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .campaign-content {
+          padding: 1.5rem 2rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .campaign-content {
+          padding: 1rem;
+        }
+      
+        .header-text {
+          font-size: 1.5rem;
+          text-align: center;
+        }
+      
+        .back-button {
+          top: 0.5rem;
+          left: 0.5rem;
+        }
+      }

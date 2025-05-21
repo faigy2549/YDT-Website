@@ -1,116 +1,149 @@
+/* Shared container styles */
+.success-message-container,
+.error-message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+}
 
-  /* Success message container styling */
-  .success-message-container {
-    display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center;     /* Centers vertically */
-    margin-top: 1rem;        /* Adds margin-top of 1rem */
-    width: 100%;             /* Ensures the container takes full width */
-    text-align: center;      /* Ensures the message text is centered */
-  }
-  .error-message-container {
-    display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center;     /* Centers vertically */
-    margin-top: 1rem;        /* Adds margin-top of 1rem */
-    width: 100%;             /* Ensures the container takes full width */
-    text-align: center;      /* Ensures the message text is centered */
-  }
-  
-  /* Padding for form fields */
-  .p-field {
-    padding: 0.3rem;
-    width:20rem;
-  }
-  :host ::ng-deep .p-multiselect-panel .p-multiselect-header .p-multiselect-close  {
-    display: none !important;
-    visibility: hidden !important;
-    width: 0 !important;
-  }
-  :host ::ng-deep .p-multiselect-panel .p-multiselect-header {
-    display: none !important;
-    visibility: hidden !important;
-    width: 0 !important;
-  }
-  
-  /* Input field styling */
-  .p-inputtext {
-    border: 1px solid var(--grad, );
-    border-image: linear-gradient(to right, #383F5B, #7685C1);
-    border-image-slice: 1;
-    font-family: 'FrankRuhlLibre-light';
-  }
-  :host ::ng-deep .p-multiselect{
-    border: 1px solid var(--grad, );
-    border-image: linear-gradient(to right, #383F5B, #7685C1);
-    border-image-slice: 1;
-    font-family: 'FrankRuhlLibre-light';
-  }
-  :host ::ng-deep .p-multiselect-panel .p-multiselect-items .p-multiselect-item{
-    font-family: 'FrankRuhlLibre-light';
-  }
-  :host ::ng-deep .p-checkbox .p-checkbox-box {
-border-radius: 0px;
-  }
-  
-  :host ::ng-deep .p-card .p-card-content {
-    padding: 0;
-  }
-  /* Styling for the p-card container */
+.p-field {
+  padding: 0.3rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Remove multiselect header close button */
+:host ::ng-deep .p-multiselect-panel .p-multiselect-header,
+:host ::ng-deep .p-multiselect-close {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+}
+
+/* Inputs and multiselect design */
+.p-inputtext,
+:host ::ng-deep .p-multiselect {
+  border: 1px solid transparent;
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  font-family: 'FrankRuhlLibre-light';
+  width: 100%;
+  box-sizing: border-box;
+}
+
+:host ::ng-deep .p-multiselect-panel .p-multiselect-items .p-multiselect-item {
+  font-family: 'FrankRuhlLibre-light';
+}
+
+:host ::ng-deep .p-checkbox .p-checkbox-box {
+  border-radius: 0;
+}
+
+/* p-card styling */
 :host ::ng-deep .p-card {
-    box-shadow: none !important;
-    border: 1px solid #7685C1;
-    border-radius: 0px;
-    background-color: #fafafc;
-    font-family: 'FrankRuhlLibre-Medium';
-    font-size: 1rem;
-    border-top: solid #383F5B 1px;
-    border-bottom: #383F5B solid 1px;
-    border-left: #7685C1 solid 1px;
-    border-right: #7685C1 solid 1px;
-    color: #383F5B;
-    min-height: 35rem;
-    max-height: 35rem;
-    width:25rem;
-  }
-  :host ::ng-deep .p-button {
-    border: 2px solid var(--grad, );
-    border-image: linear-gradient(to right, #383F5B, #7685C1);
-    border-image-slice: 1;
-    font-family: 'FrankRuhlLibre-Medium';
-    font-size: 1.2rem;
-    background-color: #7685C1;
-    margin-top: -2rem;
-  }
-  .form{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Styling for the headings section */
-  .headings {
-    border-top: 1px solid var(--grad, );
-    border-bottom: 1px solid var(--grad, );
-    border-image: linear-gradient(to right, #383F5B, #7685C1);
-    border-image-slice: 1;
-    font-family: 'FrankRuhlLibre-Light';
-    font-size: 1.5rem;
-    text-align: center;
-    position: sticky;
-    top: 0; /* Adjust this to set the sticky offset from the top */
-    z-index: 10; /* Ensures it stays above other content */
-    background-color: #fafafc; /* Matches the background to avoid overlap issues */
-    padding: 0.3rem 0; /* Adjust padding for consistent spacing */
-  }
-  
-  /* Styling for sub-headings section */
-  .sub-headings {
-    font-family: 'FrankRuhlLibre-Light';
-    font-size: 1.1rem;
-    text-align: center;
-    background-color: #fafafc; /* Matches the background to avoid overlap issues */
+  box-shadow: none !important;
+  border: 1px solid #7685C1;
+  border-radius: 0;
+  background-color: #fafafc;
+  font-family: 'FrankRuhlLibre-Medium';
+  font-size: 1rem;
+  color: #383F5B;
+  width: 100%;
+  min-height: 35rem;
+  max-height: 100%;
+  border-top: 1px solid #383F5B;
+  border-bottom: 1px solid #383F5B;
+  border-left: 1px solid #7685C1;
+  border-right: 1px solid #7685C1;
+}
+
+:host ::ng-deep .p-card .p-card-content {
+  padding: 1.5rem;
+}
+
+/* Form styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+:host ::ng-deep .p-button {
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  font-family: 'FrankRuhlLibre-Medium';
+  font-size: 1.2rem;
+  background-color: #7685C1;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 200px;
+  align-self: center;
+}
+
+/* Heading styles */
+.headings {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  font-family: 'FrankRuhlLibre-Light';
+  font-size: 1.5rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fafafc;
+  padding: 0.5rem 0;
+}
+
+.sub-headings {
+  font-family: 'FrankRuhlLibre-Light';
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: #fafafc;
+}
+
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  :host ::ng-deep .p-card {
+    width: 100%;
   }
 
-  
+  .form {
+    padding: 1rem 0.5rem;
+  }
+
+  :host ::ng-deep .p-button {
+    max-width: 100%;
+  }
+
+  .headings {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .headings {
+    font-size: 1.2rem;
+  }
+
+  .sub-headings {
+    font-size: 1rem;
+  }
+
+  .form {
+    padding: 0.5rem;
+  }
+}

@@ -1,8 +1,8 @@
 <div class="header-img">
     <br><br><br> <br><br><br>
     <p class="header-text">SHIURIM</p>
+  
  </div>
-
  <p-sidebar [(visible)]="filterSidebarVisible" position="left" class="filter-sidebar" [modal]="true">
      <div class="filters">
          <p>Rav</p> 
@@ -101,7 +101,7 @@
     (ngModelChange)="applyFilters()" 
     placeholder="Search by Title, Topic or Rav"
     >
-</div>
+     </div>
     <app-shiurim-table [filteredShiurim]="filteredShiurim" [viewMode]="'full'"></app-shiurim-table>
 
 

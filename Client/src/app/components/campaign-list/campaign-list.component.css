@@ -3,15 +3,10 @@
   display: flex;
   flex-direction: row;
   padding: 2rem 8rem 2rem  8rem; /* 8rem padding on the sides and 2rem padding on top */
-  gap: 2rem; /* Adds a gap of 4rem between the form and list sections */
+  gap: 2rem;
+  overflow-x:hidden;
 }
 
-.join-newsletter {
-  flex: 1 1 25%; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
  
 /* Styling for the p-card container */
 :host ::ng-deep .p-card {
@@ -26,8 +21,8 @@
   border-left: #7685C1 solid 1px;
   border-right: #7685C1 solid 1px;
   color: #383F5B;
-  min-height: 35rem;
-  max-height: 35rem;
+  /* min-height: 35rem;
+  max-height: 35rem; */
 }
 
 /* Button styling */
@@ -66,7 +61,7 @@
 
 /* Styling for the order list container */
 :host ::ng-deep .p-orderlist .p-orderlist-list {
-  height: 20rem;
+  height: 25.8rem;
   background-color: #fafafc;
   border: none;
   font-family: 'FrankRuhlLibre-Light';
@@ -119,4 +114,40 @@
   background-color: #555;
 }
 
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+
+  .newsletter-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem 2rem  4rem; /* 8rem padding on the sides and 2rem padding on top */
+    gap: 2rem; /* Adds a gap of 4rem between the form and list sections */
+    align-items: center;
+    justify-content: center;
+  }
   
+}
+  
+@media (max-width: 768px) {
+
+  .newsletter-container {
+    display: flex;
+    flex-direction: column;
+    padding:2rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+}
