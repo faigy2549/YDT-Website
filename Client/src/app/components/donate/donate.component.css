@@ -1,4 +1,4 @@
-.donation-knob {
+/* .donation-knob {
     position: relative;
     display: flex;
     justify-content: center;
@@ -42,22 +42,34 @@
   }
   :host ::ng-deep .p-knob-text {
     font-size: 0.8rem;
-  }
+  } */
 
-  .donations-data{
+  /* .donations-data{
     display: flex;
     flex-direction: row;
     gap:5rem;
     justify-content: center;
     padding:4rem 12rem;
     align-items: center;
+    width:100%;
+  } */
+  .donations-data {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 4rem 5vw; /* responsive side padding */
+    box-sizing: border-box;
+    width: 100%;
   }
-  .donations-list{
+  /* .donations-list{
     justify-content: center;
     display:flex;
     align-items: center;
     padding:2rem 12rem;
-  }
+  } */
   :host ::ng-deep .p-button {
     border: 2px solid var(--grad, );
    border-image: linear-gradient(to right, #383F5B, #7685C1);
@@ -80,7 +92,6 @@
     font-size: 1.5rem;
     color:#383F5B;
     text-align: center;
-    padding:0;
   }
    :host ::ng-deep .p-fieldset .p-fieldset-content {
     padding: 0rem;
@@ -101,7 +112,7 @@
     justify-content: center;
    }
 
-   :host ::ng-deep .p-orderlist .p-orderlist-list {
+   /* :host ::ng-deep .p-orderlist .p-orderlist-list {
     height: 20rem;
     background-color: #fafafc;
     border: none;
@@ -133,8 +144,8 @@
   :host ::ng-deep .p-orderlist .p-orderlist-controls .p-button {
     background-color: #fafafc;
     border: none;
-  }
-  :host ::ng-deep .p-card {
+  } */
+  /* :host ::ng-deep .p-card {
     box-shadow: none !important;
     border: 1px solid #7685C1;
     border-radius: 0px;
@@ -149,4 +160,40 @@
     min-height: 35rem;
     max-height: 35rem;
     width:30rem;
+  } */
+  :host {
+    display: block;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .donations-data {
+      flex-direction: column;
+      padding: 2rem 1rem;
+      gap: 2rem;
+    }
+  
+    .donation-buttons {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    :host ::ng-deep .p-button {
+      width: 18rem;
+      min-width: auto;
+    }
+  
+    :host ::ng-deep .p-card {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  

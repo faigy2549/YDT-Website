@@ -31,8 +31,9 @@
       <p-button label="Learn more about us" (click)="navigateToAbout()"></p-button>
 
   </div>
+
   <div class="container-row-dark animated">
-    <div class="newsletter">
+    <div class="newsletter-desktop">
      <p-card>
       <p>
         Stay Connected!</p>
@@ -57,16 +58,48 @@
     </p-card>   
       <app-join-newsletter></app-join-newsletter>
     </div>
+    <div class="newsletter-mobile">
+      <p-card>
+       <p>
+         Stay Connected!</p>
+         <p>
+          Join yeshivas newsletter to get the hottest updates, Divrei Torah, Mazal Tovs, Photos and much much more...
+       </p>
+       <p>
+         Join Now 
+         <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i> 
+         <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i> 
+      </p>
+      <app-join-newsletter></app-join-newsletter>
+      <p>
+       Or check out some of the lattest newsletters
+    </p>
+    <p>
+     <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i>
+     <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i>
+     <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i>
+     <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i>
+   </p>
+       <p-button label="View Past Newsletters" (click)="navigateToNewsletter()"></p-button>
+     </p-card>   
+      
+     </div>
   </div>
+
+
   <div class="container-row animated">
     <p-card class="slide-in-left"> 
       <p>
         Recent 
         Shiurim
       </p>
+      <div class="mobile-button"  >
+      <p-button class="mobile-button" label="View All Shiurim" (click)="navigateToShiurim()"></p-button>
+      <br><br>
+    </div>
         <app-latest-shiurim ></app-latest-shiurim>
     </p-card>
-    <p-card class="slide-in-right">
-      <p-button label="View All Shiurim" (click)="navigateToShiurim()"></p-button>
+    <p-card class="desktop-button"  class="slide-in-right-2">
+      <p-button class="desktop-button"  label="View All Shiurim" (click)="navigateToShiurim()"></p-button>
   </p-card>
   </div>
