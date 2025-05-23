@@ -51,7 +51,7 @@
   align-items: center;
 }
 :host ::ng-deep .p-fieldset{
-  font-family: 'FrankRuhlLibre-Medium';
+  font-family: 'FrankRuhlLibre-Light';
   border-top:solid #383F5B  0px;
   border-bottom: #383F5B solid 0px;
   border-left: #7685C1 solid 0px;
@@ -224,20 +224,39 @@ body, html {
   }
 .mobile-button{
   display:inline !important;
+  text-align: center !important;
+  margin:0;
+}
+:host ::ng-deep .p-fieldset .p-fieldset-content {
+  padding: 0rem;
+}
+:host ::ng-deep .p-card .p-card-content {
+  padding:0rem;
+}
+:host ::ng-deep  .p-card .p-card-body {
+  padding: 0rem;
 }
 .desktop-button{
   display:none !important;
 }
+p{
+  margin:2rem;
+}
 .slide-in-right2{
   display:none !important;
+}
+.slide-in-right{
+  text-align: center;
 }
   .container-row,
   .container-row-dark {
     flex-direction: column;
-    padding: 2rem 1rem;
-    gap: 0rem;
+    padding: 2rem;
+    gap: 2rem;
   }
-
+.shiurim{
+  gap:0rem !important;
+}
   .newsletter-desktop {
     display:none !important;
   }
@@ -258,7 +277,7 @@ body, html {
   }
 
   :host ::ng-deep .p-card {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 0rem;
     max-height: none;
   }
@@ -274,4 +293,6 @@ body, html {
 .slide-in-left p-image {
   max-width: 100%;
   height: auto;
+  overflow-x: hidden;
+  width: 100%;
 }
