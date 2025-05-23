@@ -1,0 +1,44 @@
+.scroll-to-top {
+    display: none;
+  }
+  
+  @media (max-width: 1424px) {
+    .scroll-to-top {
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.2rem;
+      bottom: 1rem;
+      right: 1rem;
+      position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    }
+  }
+  :host ::ng-deep .p-button {
+    border: 2px solid var(--grad, );
+    border-image: linear-gradient(to right, #383F5B, #7685C1);
+    border-image-slice: 1;
+    font-family: 'FrankRuhlLibre-Medium';
+    background-color:  #9fa9d1;
+    color: white;
+    width:4rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 4rem;
+    min-width: 4rem;
+    }
+    :host ::ng-deep .p-button:focus {
+        box-shadow: none;
+        border: 3px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+       border-image-slice: 1;
+       background-color:#7685C1;
+      }

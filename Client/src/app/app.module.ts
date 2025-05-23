@@ -50,6 +50,7 @@ import { LatestShiurimComponent } from './components/latest-shiurim/latest-shiur
 import { MultiSelectModule } from 'primeng/multiselect';
 import {KnobModule} from 'primeng/knob';
 import {SidebarModule} from 'primeng/sidebar';
+import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import {SidebarModule} from 'primeng/sidebar';
     JoinNewsletterComponent,
     ShiurimTableComponent,
     LatestShiurimComponent,
+    ScrollToTopComponent,
   ],
   imports: [
    BrowserModule,
