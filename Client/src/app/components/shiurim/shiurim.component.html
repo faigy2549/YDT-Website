@@ -17,7 +17,6 @@
     <div
       *ngFor="let item of rabbanimWithTopics; let i = index"
       class="card fade-in rebbi-card"
-      [style.animation-delay]="i * 0.2 + 's'"
       (click)="navigateToAllShiurim(item.rav.id)">
       <p-card [style]="{ width: '20rem', overflow: 'hidden', height: '30rem' }">
         <ng-template pTemplate="header">
