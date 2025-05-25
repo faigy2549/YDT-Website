@@ -1,5 +1,4 @@
  <div class="header-img">
-    <br><br><br> <br><br><br>
     <p class="header-text">SHIURIM</p>
  </div>
  <div class="div_all_shiurim">
@@ -20,7 +19,7 @@
       (click)="navigateToAllShiurim(item.rav.id)">
       <p-card [style]="{ width: '20rem', overflow: 'hidden', height: '30rem' }">
         <ng-template pTemplate="header">
-          <img alt="Card" class="w-full" src="../../../assets/image.png" [alt]="item.rav.name" />
+          <img alt="Card" class="w-full" [src]="item.rav.imageUrl" [alt]="item.rav.name" />
         </ng-template>
         <ng-template pTemplate="title">
           {{ item.rav.name }}

@@ -93,7 +93,14 @@
   background-color: #fafafc;
   border: none;
 }
-
+:host ::ng-deep .p-progress-spinner{
+  text-align: center !important;
+  display: flex;
+  justify-content: center;
+}
+:host ::ng-deep .p-progress-spinner-circle {
+  stroke:#383F5B !important;
+}
 .campaign-list {
   flex: 1 1 60%; /* Takes 3/4 of the width */
 }

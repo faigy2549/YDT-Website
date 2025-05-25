@@ -10,5 +10,6 @@ export class Shiur {
     topic?: Topic; 
     ravId: number = 0;
     rav?: Rav; 
+    audioUrl:string="";
   }
   

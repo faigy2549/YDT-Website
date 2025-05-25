@@ -1,5 +1,4 @@
  <div class="header-img">
-    <br><br><br> <br><br><br>
     <p class="header-text">HANHALA</p>
  </div>
 
@@ -25,18 +24,18 @@
 </div>
 
 <div class="card-container" >
-    <div *ngFor="let item of rebbeim.slice(1)" class="card">
+    <div *ngFor="let rav of rebbeim.slice(1)" class="card">
         <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'30rem'}">
             <ng-template pTemplate="header">
-                <img alt="Card"  class="w-full" src="../../../assets/image.png" [alt]="item.name" />
+                <img alt="Card"  class="w-full" [src]="rav.imageUrl" [alt]="rav.name" />
             </ng-template>
             <ng-template pTemplate="title">
-                {{ item.name }}
+                {{ rav.name }}
             </ng-template>
             <ng-template pTemplate="subtitle">
-                {{ item.title }}
+                {{ rav.title }}
             </ng-template>
-            <p class="bio">{{item.bio}}</p>
+            <p class="bio">{{rav.bio}}</p>
         </p-card>
     </div>
 </div>

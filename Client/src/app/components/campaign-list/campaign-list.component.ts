@@ -10,20 +10,22 @@ import { NewsletterService } from 'src/app/services/newsletter.service';
 })
 export class CampaignListComponent implements OnInit {
   campaigns: any[] = [];
-
+   loading:boolean=true;
 
   constructor(private newsletterService: NewsletterService, private router: Router) {}
+ngOnInit(): void {
+  this.newsletterService.getAllCampaigns().subscribe(
+    (data) => {
+      this.campaigns = data.campaigns;
+      this.loading = false;
+    },
+    (error) => {
+      console.error('Error fetching campaigns:', error);
+      this.loading = false;
+    }
+  );
+}
 
-  ngOnInit(): void {
-    this.newsletterService.getAllCampaigns().subscribe(
-      (data) => {
-        this.campaigns = data.campaigns; // Adjust based on API response structure
-      },
-      (error) => {
-        console.error('Error fetching campaigns:', error);
-      }
-    );
-  }
 
   viewCampaignContent(campaignId: string): void {
     this.router.navigate(['/newsletter', campaignId]);

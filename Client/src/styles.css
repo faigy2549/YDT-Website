@@ -4,7 +4,18 @@
 background-size: cover; 
 background-repeat: no-repeat; 
 background-position: center; 
-height: 28em;
+height: 20em;
+position: relative;
+}
+.header-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(3px); 
+  z-index: 1;
 }
 .header-text{
   text-align: center;
@@ -12,7 +23,14 @@ height: 28em;
   color:rgb(245, 244, 236);
   margin:0px;
   font-family: 'FrankRuhlLibre-Bold';
+  position: relative;
+  z-index: 2;  
+  color: white;
+  text-align: center;
+  padding: 2rem; 
+  padding-top:7rem;
 }
+
 
 html, body {
   height: 100%;
@@ -163,4 +181,13 @@ footer {
 /* Link text color */
 .p-overlaypanel .p-overlaypanel-content .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
   color: #383F5B;
+}
+@media (max-width: 1424px) {
+ .header-img{
+  height: 12em;
+ }
+ .header-text{
+  font-size: 4rem;
+  padding-top: 4rem;
+ }
 }

@@ -4,6 +4,9 @@
       <p class="headings">
         Newsletter Archives
       </p>
+      <p-progressSpinner 
+      *ngIf="loading" />
+
       <p-orderList
         [value]="campaigns"
         dataKey="id"
@@ -11,6 +14,7 @@
         scrollHeight="calc(100vh - 100px)"
         [filterBy]="'settings.title,settings.subject_line,send_time'"
         filter
+        *ngIf="!loading"
       >
         <ng-template let-campaign let-selected="selected" pTemplate="item">
           <div

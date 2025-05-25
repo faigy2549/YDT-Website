@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { Shiur } from 'src/app/models/Shiur.Model';
 
 @Component({
@@ -10,7 +10,11 @@ export class ShiurimTableComponent {
 
 @Input() filteredShiurim:Shiur[]=[];
 @Input() viewMode: 'full' | 'compact' = 'full';
+ @ViewChild('tableRef') tableRef!: ElementRef;
 
+onPageChange(): void {
+  window.scrollTo({ top: 200, behavior: 'smooth' });
+}
 windowWidth = window.innerWidth;
 
 @HostListener('window:resize', ['$event'])

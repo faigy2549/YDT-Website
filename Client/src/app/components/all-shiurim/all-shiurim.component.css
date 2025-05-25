@@ -260,7 +260,9 @@ box-shadow: none;
     overflow-x: hidden;
     padding:2rem;
   }
-  
+  :host ::ng-deep .p-paginator .p-paginator-first ,:host ::ng-deep .p-paginator .p-paginator-last  {
+    display: none;
+  }
   /* Responsive layout */
   @media (max-width: 1400px) {
     .flex {
