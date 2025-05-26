@@ -51,7 +51,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import {KnobModule} from 'primeng/knob';
 import {SidebarModule} from 'primeng/sidebar';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
-
+import {CheckboxModule} from 'primeng/checkbox'
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,6 +109,7 @@ import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.c
    MultiSelectModule,
    KnobModule,
    SidebarModule,
+   CheckboxModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

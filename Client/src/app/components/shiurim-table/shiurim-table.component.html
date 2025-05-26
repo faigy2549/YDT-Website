@@ -1,3 +1,9 @@
+ <div *ngIf="filteredShiurim.length === 0 && shiurim.length!==0" class="no-results">
+  No shiurim match the selected filters.
+</div>
+ <div *ngIf="filteredShiurim.length === 0 && shiurim.length===0" class="no-results">
+  Loading Shiurim
+</div>
 <p-table 
   *ngIf="viewMode === 'full'"
   [value]="filteredShiurim" 
@@ -47,7 +53,6 @@
           {{ shiur.date | date: 'mediumDate' }}
         </td>
       </tr>
-      <!-- Row 2: Audio -->
       <tr class="audio-row fade-in-row" [style.animation-delay]="i * 0.2 + 's'">
         <td class="td-audio" >
           <audio controls preload="none" class="audio-player">
@@ -56,11 +61,9 @@
         </td>
       </tr>
     </ng-container>
-  </ng-template>
-  
+  </ng-template>  
 </p-table>
 
-<!-- Grid Layout (Homepage) -->
 <div *ngIf="viewMode === 'compact'" class="shiurim-grid">
   <div *ngFor="let shiur of filteredShiurim" class="shiur-card fade-in">
     <div class="shiur-rav-profile">

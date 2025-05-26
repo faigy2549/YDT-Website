@@ -157,7 +157,8 @@ font-family: 'FrankRuhlLibre-Light';
        width:35rem;
        text-align: left;
        font-family: 'FrankRuhlLibre-Light';
-       font-size: 1.2rem;
+       font-size: 1rem;
+      color: #383F5B;
     }
 
     .search {
@@ -263,6 +264,54 @@ box-shadow: none;
   :host ::ng-deep .p-paginator .p-paginator-first ,:host ::ng-deep .p-paginator .p-paginator-last  {
     display: none;
   }
+ :host ::ng-deep .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
+      border: 2px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+        border-image-slice: 1;
+    background:#7685C1;
+    color: #ffffff;
+}
+ :host ::ng-deep  .p-checkbox .p-checkbox-box.p-highlight {
+   border: 2px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+        border-image-slice: 1;
+    background:#7685C1;
+}
+ :host ::ng-deep .p-checkbox .p-checkbox-box {
+   border: 2px solid var(--grad, );
+        border-image: linear-gradient(to right, #383F5B, #7685C1);
+        border-image-slice: 1;
+ }
+:host ::ng-deep p-checkbox {
+    padding: 0.1rem;
+}
+
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.filter-chip {
+  background:#d9dceb;
+  border: 2px solid var(--grad, );
+  border-image: linear-gradient(to right, #383F5B, #7685C1);
+  border-image-slice: 1;
+  padding: 0.3rem 0.6rem;
+  display: flex;
+  align-items: center;
+}
+.filter-chip button {
+  background: transparent;
+  border: none;
+  margin-left: 0.4rem;
+  cursor: pointer;
+}
+.clear-all {
+  margin-left: auto;
+  cursor: pointer;
+}
+
   /* Responsive layout */
   @media (max-width: 1400px) {
     .flex {

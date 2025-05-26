@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { Shiur } from 'src/app/models/Shiur.Model';
 
 @Component({
@@ -9,6 +9,7 @@ import { Shiur } from 'src/app/models/Shiur.Model';
 export class ShiurimTableComponent {
 
 @Input() filteredShiurim:Shiur[]=[];
+@Input() shiurim:Shiur[]=[];
 @Input() viewMode: 'full' | 'compact' = 'full';
  @ViewChild('tableRef') tableRef!: ElementRef;
 

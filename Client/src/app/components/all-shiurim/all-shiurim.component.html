@@ -3,31 +3,45 @@
   
  </div>
  <p-sidebar [(visible)]="filterSidebarVisible" position="left" class="filter-sidebar" [modal]="true">
+    <div class="active-filters" *ngIf="hasAnyFilter()">
+  <span *ngFor="let ravId of selectedRavIds" class="filter-chip">
+    {{ getRavName(ravId) }}
+    <button (click)="removeRav(ravId)">×</button>
+  </span>
+  <span *ngFor="let topicId of selectedTopicIds" class="filter-chip">
+    {{ getTopicName(topicId) }}
+    <button (click)="removeTopic(topicId)">×</button>
+  </span>
+  <span *ngIf="selectedYear" class="filter-chip">
+    {{ selectedYear }}
+    <button (click)="removeYear()">×</button>
+  </span>
+  <button class="clear-all" (click)="clearAll()">Clear All</button>
+</div>
      <div class="filters">
          <p>Rav</p> 
          <p-divider></p-divider>
-         <p-dropdown 
-             [options]="ravList" 
-             id="ravFilter" 
-             placeholder="Filter By Rav" 
-             [(ngModel)]="selectedRav" 
-             optionLabel="name"
-             optionValue="id"
-             (onChange)="applyFilters()">
-         </p-dropdown>
+         <div *ngFor="let rav of ravList">
+  <p-checkbox
+    [label]="rav.name"
+    [value]="rav.id"
+    [(ngModel)]="selectedRavIds"
+    [disabled]="!enabledRavIds.includes(rav.id)"
+    (onChange)="applyFilters()">
+  </p-checkbox>
+</div>
          
          <p>Topic</p> 
          <p-divider></p-divider>
-         <p-dropdown 
-             [options]="topicList" 
-             id="topicFilter" 
-             placeholder="Filter By Topic" 
-             [(ngModel)]="selectedTopic" 
-             optionLabel="name"
-             optionValue="id"
-             (onChange)="applyFilters()">
-         </p-dropdown>
-         
+      <div *ngFor="let topic of topicList">
+  <p-checkbox
+    [label]="topic.name"
+    [value]="topic.id"
+    [(ngModel)]="selectedTopicIds"
+    [disabled]="!enabledTopicIds.includes(topic.id)"
+    (onChange)="applyFilters()">
+  </p-checkbox>
+</div>   
  
          <p>Year</p> 
          <p-divider></p-divider>
@@ -48,29 +62,43 @@
 
 <div class="card fade-in flex">
     <div class="filters desktop-only">
+        <div class="active-filters" *ngIf="hasAnyFilter()">
+  <span *ngFor="let ravId of selectedRavIds" class="filter-chip">
+    {{ getRavName(ravId) }}
+    <button (click)="removeRav(ravId)">×</button>
+  </span>
+  <span *ngFor="let topicId of selectedTopicIds" class="filter-chip">
+    {{ getTopicName(topicId) }}
+    <button (click)="removeTopic(topicId)">×</button>
+  </span>
+  <span *ngIf="selectedYear" class="filter-chip">
+    {{ selectedYear }}
+    <button (click)="removeYear()">×</button>
+  </span>
+  <p-button class="clear-all" (click)="clearAll()">Clear All</p-button>
+</div>
         <p>Rav</p> 
         <p-divider></p-divider>
-        <p-dropdown 
-            [options]="ravList" 
-            id="ravFilter" 
-            placeholder="Filter By Rav" 
-            [(ngModel)]="selectedRav" 
-            optionLabel="name"
-            optionValue="id"
-            (onChange)="applyFilters()">
-        </p-dropdown>
-        
-        <p>Topic</p> 
-        <p-divider></p-divider>
-        <p-dropdown 
-            [options]="topicList" 
-            id="topicFilter" 
-            placeholder="Filter By Topic" 
-            [(ngModel)]="selectedTopic" 
-            optionLabel="name"
-            optionValue="id"
-            (onChange)="applyFilters()">
-        </p-dropdown>
+        <div *ngFor="let rav of ravList">
+  <p-checkbox
+    [label]="rav.name"
+    [value]="rav.id"
+    [(ngModel)]="selectedRavIds"
+    [disabled]="!enabledRavIds.includes(rav.id)"
+    (onChange)="applyFilters()">
+  </p-checkbox>
+</div>
+      <p>Topic</p> 
+        <p-divider></p-divider>    
+      <div *ngFor="let topic of topicList">
+  <p-checkbox
+    [label]="topic.name"
+    [value]="topic.id"
+    [(ngModel)]="selectedTopicIds"
+    [disabled]="!enabledTopicIds.includes(topic.id)"
+    (onChange)="applyFilters()">
+  </p-checkbox>
+</div>  
         
 
         <p>Year</p> 
@@ -101,7 +129,7 @@
     placeholder="Search by Title, Topic or Rav"
     >
      </div>
-    <app-shiurim-table [filteredShiurim]="filteredShiurim" [viewMode]="'full'"></app-shiurim-table>
+    <app-shiurim-table [filteredShiurim]="filteredShiurim" [shiurim]="shiurim" [viewMode]="'full'"></app-shiurim-table>
 
 
   

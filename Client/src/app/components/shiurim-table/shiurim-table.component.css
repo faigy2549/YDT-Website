@@ -133,7 +133,9 @@ align-items: center;
     width: 200px;
 }
 
-
+.no-results{
+  padding:1rem;
+}
 
 @media (max-width: 670px) {
     /* Main row styles */
