@@ -88,7 +88,6 @@
   font-family: 'FrankRuhlLibre-Medium';
   font-size: 1rem;
   color:#383F5B;
-  min-height:35rem;
   max-height: 35rem;
 }
 :host ::ng-deep .p-card .p-card-content {
@@ -97,6 +96,9 @@
 :host ::ng-deep  .p-card .p-card-body {
     padding: 1.25rem;
     padding-bottom: 0rem;
+}
+:host ::ng-deep .p-card .p-card-content {
+    padding:0;
 }
 .p-inputtext{
 border: 1px solid var(--grad, );
@@ -248,7 +250,11 @@ body{
     overflow-x: hidden;
     align-items: stretch;
   }
-
+.mazal-tov-list-container {
+  max-height: 100rem; 
+}
+:host ::ng-deep .p-card{
+  max-height: 100rem;}
   .redirect-to-newsletter-container,
   .mazal-tov-list-container,
   .mazal-tov-form-container {
@@ -256,7 +262,6 @@ body{
     flex: 1 1 100% !important;
     padding: 1rem !important;
   }
-
   /* Optional: add margin-bottom to separate stacked cards */
   .redirect-to-newsletter-container,
   .mazal-tov-list-container {

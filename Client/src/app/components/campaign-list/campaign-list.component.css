@@ -21,8 +21,6 @@
   border-left: #7685C1 solid 1px;
   border-right: #7685C1 solid 1px;
   color: #383F5B;
-  /* min-height: 35rem;
-  max-height: 35rem; */
 }
 
 /* Button styling */
@@ -61,6 +59,13 @@
 
 /* Styling for the order list container */
 :host ::ng-deep .p-orderlist .p-orderlist-list {
+  height: 25.8rem;
+  background-color: #fafafc;
+  border: none;
+  font-family: 'FrankRuhlLibre-Light';
+  color: #383F5B;
+}
+.loading-container{
   height: 25.8rem;
   background-color: #fafafc;
   border: none;

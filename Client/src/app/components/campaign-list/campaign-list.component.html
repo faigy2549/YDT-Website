@@ -4,9 +4,10 @@
       <p class="headings">
         Newsletter Archives
       </p>
+      <div class="loading-container"  *ngIf="loading">
       <p-progressSpinner 
-      *ngIf="loading" />
-
+      />
+</div>
       <p-orderList
         [value]="campaigns"
         dataKey="id"
