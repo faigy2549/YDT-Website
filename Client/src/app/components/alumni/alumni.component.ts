@@ -70,10 +70,6 @@ export class AlumniComponent implements OnInit {
       this.events = data;
     });
   }
-openImage(url:string):void{
-this.viewImage=true;
-this.imageUrl='https://localhost:7117/'+url;
-}
 
   resetForm(): void {
     console.log("in reset");

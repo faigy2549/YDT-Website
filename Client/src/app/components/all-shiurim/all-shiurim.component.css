@@ -206,7 +206,7 @@ font-family: 'FrankRuhlLibre-Light';
         border: 2px solid var(--grad, );
         border-image: linear-gradient(to right, #383F5B, #7685C1);
         border-image-slice: 1;
-        width:6rem;
+        width:8rem;
         height:3rem;
         font-family: 'FrankRuhlLibre-Light';
         border-right: none;
