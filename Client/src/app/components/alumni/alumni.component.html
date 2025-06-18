@@ -10,16 +10,24 @@
   NEWSLETTER
 </p>
       <p class="newsletter-text-header">
-        Stay connected to Yeshivas Dvar Torah!</p>
+        Stay connected to
+        <br> Yeshivas Dvar Torah!</p>
         <p class="newsletter-text">
          Join our weekly newsletter to receive updates, inspiring Divrei Torah, and memorable photos.
       </p>
       <ng-template pTemplate="footer">
-      <p-button 
+        <div class="buttons">
+             <p-button 
         class="newsletter-button" 
-        label="Subscribe or View Past Newsletters" 
+        label="Subscribe" 
         (click)="navigateToNewslatter()">
       </p-button>
+      <p-button 
+        class="newsletter-button" 
+        label="View Past Newsletters" 
+        (click)="navigateToNewslatter()">
+      </p-button>
+   </div>
     </ng-template>
     </p-card>
   </div>
@@ -85,7 +93,7 @@
             optionLabel="eventName"
             optionValue="id"
             placeholder="Select an Occasion"
-            [scrollHeight]="'100px'"
+            [scrollHeight]="'200px'"
             [required]="true"
             #occasionId="ngModel"
           ></p-dropdown>

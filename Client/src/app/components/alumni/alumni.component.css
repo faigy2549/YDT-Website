@@ -17,14 +17,14 @@
   min-width: 24rem !important;
 }
 .headings{
-  border-top: 1px solid var(--grad, );
+  /* border-top: 1px solid var(--grad, );
   border-bottom: 1px solid var(--grad, );
   border-image: linear-gradient(to right, #383F5B, #7685C1);
-  border-image-slice: 1;
+  border-image-slice: 1; */
   font-family: 'FrankRuhlLibre-Light';
   font-size: 1.5rem;
   text-align: center;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   z-index: 10; 
   background-color: #fafafc; 
@@ -37,21 +37,19 @@
   flex: 1 1 30%; 
   max-width: 30%; 
   min-width: 280px; 
-  box-sizing: border-box; 
-  border-top:solid #383F5B  2px;
-  border-bottom: #383F5B solid 2px;
-  border-left: #7685C1 solid 2px;
-  border-right: #7685C1 solid 2px;
 }
 .newsletter-text-header{
-  font-size: 2rem;
+  font-size: 1.3rem;
   color: #383F5B;
   text-align:center;
+  font-weight: bold;
+  padding:1rem;
 }
 .newsletter-text{
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: #383F5B;
   text-align:center;
+  padding:1rem;
 }
 .newsletter-button{
   font-size: 1.5rem;
@@ -135,13 +133,20 @@ font-family: 'FrankRuhlLibre-Medium';
   color:#383F5B; 
   text-decoration: underline;
 }
-
+.buttons{
+  display: flex;
+  gap:0.5rem;
+  justify-content: center;
+  padding-top:2rem;
+}
 :host ::ng-deep .p-button {
-border: 2px solid var(--grad, );
+border: 2px; 
+/* //solid var(--grad, ); */
+border-radius: 0px;
 border-image: linear-gradient(to right, #383F5B, #7685C1);
 border-image-slice: 1;
 font-family: 'FrankRuhlLibre-Medium';
-font-size: 1.2rem;
+font-size: 1rem;
 margin-top:1rem;
 background-color: #7685C1;
 color: #fff;
@@ -212,12 +217,12 @@ body{
   max-width: 30%;
   min-width: 280px;
   padding: 1rem;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   border: 2px solid transparent;
-  border-top-color: #383F5B;
+  /* border-top-color: #383F5B;
   border-bottom-color: #383F5B;
   border-left-color: #7685C1;
-  border-right-color: #7685C1;
+  border-right-color: #7685C1; */
   background-color: #fafafc;
 }
 
@@ -240,9 +245,13 @@ body{
   flex-grow: 1;
 }
 
-
+@media (max-width: 1590px) {
+  .buttons{
+padding: 0;
+  }
+}
 /* Responsive styles for tablet & mobile */
-@media (max-width: 1540px) {
+@media (max-width: 1290px) {
   .mazal-tov-row {
     flex-direction: column;
     padding: 2rem;
@@ -254,7 +263,9 @@ body{
   max-height: 100rem; 
 }
 :host ::ng-deep .p-card{
-  max-height: 100rem;}
+  max-height: 100rem;
+  border:none;
+}
   .redirect-to-newsletter-container,
   .mazal-tov-list-container,
   .mazal-tov-form-container {
