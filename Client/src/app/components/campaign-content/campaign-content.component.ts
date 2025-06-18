@@ -23,8 +23,7 @@ export class CampaignContentComponent implements OnInit {
     this.campaignId=this.route.snapshot.paramMap.get('campaignId');
     if (this.campaignId) {
       this.newsletterUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-       `https://IonosDemohost:7117/api/newsletter/campaigns/${this.campaignId}/html-content`
-        //`http://ydtwebsite-001-site1.mtempurl.com/api/newsletter/campaigns/${this.campaignId}/html-content`
+       `https://yeshivadvartorah.com/api/newsletter/campaigns/${this.campaignId}/html-content`
       );      
     }
   }
