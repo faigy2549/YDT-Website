@@ -4,20 +4,21 @@
         UPCOMING EVENTS
       </p>
       <p-dialog 
-    [(visible)]="viewImage" 
-    [modal]="true" 
-    [style]="{ width: '80vw', height: '80vh' }" 
-    [dismissableMask]="true"
-    [baseZIndex]="10000"
-  >
-    <div class="dialog-content">
-      <img 
-        [src]="imageUrl" 
-        alt="imageUrl" 
-        style="width: 100%; height: 100%; object-fit: contain;"
-      />
-    </div>
-  </p-dialog>
+  [(visible)]="viewImage" 
+  [modal]="true" 
+  [style]="{ height: '100vh' ,width:'60vh' }" 
+  [dismissableMask]="true"
+  [baseZIndex]="10000"
+>
+  <div class="dialog-content">
+    <img 
+      [src]="imageUrl" 
+      alt="imageUrl" 
+      class="dialog-image"
+    />
+  </div>
+</p-dialog>
+
   
       <div class="event-container">
       <p-carousel  
@@ -35,11 +36,11 @@
   <ng-template pTemplate="item" let-item>
     <div class="event-card">
       <div class="event-header">
-        <div><i class="pi pi-calendar text-blue-500"></i> {{ item.eventName }}</div>
-        <div><i class="pi pi-map-marker text-red-500"></i> {{ item.eventLocation }}</div>
-        <div><i class="pi pi-clock text-green-500"></i> {{ item.eventDate | date: 'mediumDate' }}</div>
+        <div><i class="pi pi-calendar text-white-500"></i> {{ item.eventName }}</div>
+        <div><i class="pi pi-map-marker text-white-500"></i> {{ item.eventLocation }}</div>
+        <div><i class="pi pi-clock text-white-500"></i> {{ item.eventDate | date: 'mediumDate' }}</div>
       </div>
-
+<br>
       <div class="event-content">
         <div *ngIf="item.eventAd" class="event-image" (click)="openImage(item.eventAd)">
           <p-image [src]="item.eventAd" [alt]="item.eventName" [preview]="false" />
