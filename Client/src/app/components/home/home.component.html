@@ -1,5 +1,9 @@
+
+
+
+
 <div class="header-vid">
-  <video #videoPlayer src="https://d2r2w1ytriaiek.cloudfront.net/Videos/vid.mp4" autoplay [volume]="0" loop playsinline></video>
+  <video #videoPlayer loading="lazy" src="https://d2r2w1ytriaiek.cloudfront.net/Videos/vid.mp4" autoplay [volume]="0" loop playsinline></video>
 
   <div class="controls">
 
@@ -26,7 +30,7 @@
       </p>
     </p-fieldset>
     <div class="slide-in-left">
-      <p-image src="https://d2r2w1ytriaiek.cloudfront.net/Photos/chabura-klahr.JPG" width="100%" alt="Image"  [preview]="true" />
+      <p-image src="https://d2r2w1ytriaiek.cloudfront.net/Photos/chabura-klahr.webp" width="100%" alt="Image"  [preview]="true" />
     </div>
     <p-fieldset class="slide-in-right" class="desktop-button" >
         <p>
@@ -43,7 +47,7 @@
       <p>
         Stay Connected!</p>
         <p>
-         Join yeshivas newsletter to get the hottest updates, Divrei Torah, Mazal Tovs, Photos and much much more...
+         Join yeshivas newsletter to get the latest updates, Divrei Torah, Mazal Tovs, Photos and more...
       </p>
       <p>
         Join Now 
@@ -51,7 +55,7 @@
         <i class="pi pi-arrow-right pi-arrow-right-animate arrow"></i> 
      </p>
      <p>
-      Or check out some of the lattest newsletters
+    Click here for the latest newsletters
    </p>
    <p>
     <i class="pi pi-arrow-down pi-arrow-down-animate arrow"></i>
@@ -61,7 +65,7 @@
   </p>
       <p-button label="View Past Newsletters" (click)="navigateToNewsletter()"></p-button>
     </p-card>   
-      <app-join-newsletter></app-join-newsletter>
+      <app-join-newsletter *ngIf="showNewsletter"></app-join-newsletter>
     </div>
     <div class="newsletter-mobile">
       <p-card>

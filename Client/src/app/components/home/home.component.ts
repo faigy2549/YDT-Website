@@ -7,6 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  showNewsletter:boolean=false;
+  @HostListener('window:scroll')
+checkScroll() {
+  this.showNewsletter = window.scrollY > 500;
+}
     constructor(private router: Router, private el: ElementRef) {}
     volumeOpen:boolean=false;
     volume: number = 0;

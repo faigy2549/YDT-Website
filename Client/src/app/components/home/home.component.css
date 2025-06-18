@@ -31,6 +31,9 @@
   justify-content: center;
  
 }
+.header-img{
+height: 30em;
+}
 .container-row-dark {
   display: flex;
   flex-direction: row;
@@ -97,7 +100,7 @@ height: auto;
 background-color: #d9dceb;
 padding: 0.5rem 1rem; 
 min-width:8rem;
-font-family: 'FrankRuhlLibre-Medium'; 
+font-family: 'FrankRuhlLibre-Light'; 
 }
 
 :host ::ng-deep .p-button:hover {
@@ -296,3 +299,8 @@ p{
   overflow-x: hidden;
   width: 100%;
 }
+@media (max-width: 768px) {
+  :host ::ng-deep .p-fieldset{
+font-size: 1rem;;
+padding: 1rem;;
+  }}
