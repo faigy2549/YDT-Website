@@ -51,7 +51,10 @@
     display:flex;
     justify-content: center;
     }
-
+:host ::ng-deep .p-button:hover {
+  background-color: white;
+  color: #383F5B;
+}
   body {
     overflow-x: hidden;
   } 

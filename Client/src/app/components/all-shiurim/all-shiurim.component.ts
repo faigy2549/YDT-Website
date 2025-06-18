@@ -72,6 +72,7 @@ ngOnInit(): void {
 
     this.applyFilters(); 
   });
+     window.scrollTo({ top: 0, behavior: 'smooth' }); 
 }
 
 
