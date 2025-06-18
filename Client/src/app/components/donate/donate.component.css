@@ -82,6 +82,10 @@
    min-width:16rem;
    font-family: 'FrankRuhlLibre-Medium'; 
    }
+   :host ::ng-deep .p-button:hover {
+  background-color: white;
+  color: #383F5B;
+}
    :host ::ng-deep .p-fieldset{
     font-family: 'FrankRuhlLibre-Medium';
     border-top:solid #383F5B  0px;
