@@ -17,19 +17,17 @@ footer {
   footer .links {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 60px;
+    justify-content: center;
+    gap: 100px;
     text-align: left;
     align-items: center;
-    text-align: center;
   }
   
   footer .links > div {
     flex: 1;
     min-width: 250px;
     margin-bottom: 20px;
- 
+ text-align: left;
   }
   
   footer .subscribe form {

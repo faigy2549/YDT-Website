@@ -30,13 +30,6 @@ export class NavBarComponent {
         }
       },
       {
-        label: 'About',
-        route: '/about',
-        command: () => {
-          this.router.navigate(['/about']);
-        }
-      },
-      {
         label: 'Hanhala',
         route: '/hanhala',
         command: () => {
