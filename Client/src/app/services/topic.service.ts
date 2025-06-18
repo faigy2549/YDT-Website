@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Topic } from '../models/Topic.model';
-import { local } from '../base';
+import { TopicDTO } from '../models/TopicDTO.model';
+import {LiveDomain} from '../base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TopicService {
-  private baseUrl = `${local}/Topic`; // Base URL for the API
+  private baseUrl = `${LiveDomain}/Topic`; // Base URL for the API
 
   constructor(private httpClient: HttpClient) {}
 
@@ -28,7 +29,7 @@ export class TopicService {
   }
 
   // Add a new topic
-  addTopic(topic: Topic): Observable<Topic> {
+  addTopic(topic: TopicDTO): Observable<Topic> {
     return this.httpClient.post<Topic>(this.baseUrl, topic);
   }
 

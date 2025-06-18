@@ -1,2 +1,3 @@
 export const local:string='https://localhost:7117/api';
-export const liveDemo:string='http://ydtwebsite-001-site1.mtempurl.com/api';
+export const IonosSystemDomain:string='http://s1052095951.onlinehome.us/api';
+export const LiveDomain:string='https://yeshivadvartorah.com/api'

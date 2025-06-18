@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Alumni } from '../models/Alumni.model';
-import {local} from '../base';
+import {LiveDomain} from '../base';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlumniService {
-  private apiUrl = `${local}/alumni`; 
+  private apiUrl = `${LiveDomain}/alumni`; 
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Alumni[]> {

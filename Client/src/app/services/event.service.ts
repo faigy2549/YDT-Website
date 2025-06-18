@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Event } from '../models/Event.model';
-import { local } from '../base';
+import {LiveDomain} from '../base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
-  private apiUrl = `${local}/events`; 
+  private apiUrl = `${LiveDomain}/events`; 
   constructor(private http: HttpClient) {}
 
   // Get all events

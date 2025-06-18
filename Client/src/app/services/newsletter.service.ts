@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, tap } from 'rxjs';
 import { Subscriber } from '../models/Subscriber.model';
-import { local } from '../base';
+import { LiveDomain } from '../base';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsletterService {
-  private baseUrl = `${local}/newsletter`;
+  private baseUrl = `${LiveDomain}/newsletter`;
   private campaignCache: any = null; // in-memory cache
 
   constructor(private http: HttpClient) {}

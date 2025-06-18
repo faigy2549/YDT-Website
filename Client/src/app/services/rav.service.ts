@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Rav } from '../models/Rav.model';
 import { RavDTO } from '../models/RavDTO.model';
-import { local } from '../base';
+import {LiveDomain } from '../base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RavService {
-  private baseUrl = `${local}/Rav`;
+  private baseUrl = `${LiveDomain}/Rav`;
   
   private reloadRebbeimSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   reloadRebbeim$: Observable<boolean> = this.reloadRebbeimSubject.asObservable();

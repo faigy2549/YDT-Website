@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import {LiveDomain} from '../base';
 import { Shiur } from '../models/Shiur.Model';
-import { local } from '../base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShiurimService {
-  private baseUrl = `${local}/Shiur`; 
+  private baseUrl = `${LiveDomain}/Shiur`; 
 
   constructor(private httpClient: HttpClient) {}
 
@@ -51,8 +51,8 @@ export class ShiurimService {
   }
 
   // Update an existing Shiur
-  updateShiur(id: number, shiur: Shiur): Observable<void> {
-    const url = `${this.baseUrl}/`+id;
+  updateShiur(shiur: Shiur): Observable<void> {
+    const url = `${this.baseUrl}/`+shiur.id;
     return this.httpClient.put<void>(url, shiur);
   }
 

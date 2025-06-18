@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MazalTov } from '../models/MazalTov.model';
-import { local } from '../base';
+import {LiveDomain} from '../base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MazalTovService {
-  private apiUrl = `${local}/mazaltov`;
+  private apiUrl = `${LiveDomain}/mazaltov`;
 
   constructor(private http: HttpClient) {}
 

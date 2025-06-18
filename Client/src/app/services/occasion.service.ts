@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Occasion } from '../models/Occasion.model';
-import { local } from '../base';
+import {LiveDomain} from '../base';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class OccasionService {
-  private apiUrl = `${local}/occasion`; 
+  private apiUrl = `${LiveDomain}/occasion`; 
 
   constructor(private http: HttpClient) {}
 
