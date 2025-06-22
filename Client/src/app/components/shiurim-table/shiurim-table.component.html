@@ -9,8 +9,7 @@
   [value]="filteredShiurim" 
   [responsive]="true" 
   [paginator]="true"
-  [rows]="10"
-  [rowsPerPageOptions]="[10, 20, 40]"
+  [rows]="20"
    (onPage)="onPageChange()"
 >
   <ng-template pTemplate="body" let-shiur let-i="index">
@@ -72,13 +71,15 @@
           [alt]="shiur.rav?.name"
           class="profile-img"
       />
-      <p class="shiur-rav">{{ shiur.rav?.name }}</p>
+  
       </div>
       <div class="shiur-info">
         <div class="shiur-text">
           <div class="shiur-mobile">
+             <p class="shiur-date">{{ shiur.rav?.name }}</p>
           <p class="shiur-title">{{ shiur.title }}</p>
-          <p class="shiur-date">{{ shiur.date | date: 'MM/dd/yy' }}</p>
+         
+          <!-- <p class="shiur-date">{{ shiur.date | date: 'MM/dd/yy' }}</p> -->
           </div>
           <audio controls preload="none" class="audio-player">
             <source [attr.src]="shiur.audioUrl" type="audio/mpeg">
