@@ -38,7 +38,7 @@ isVideo(url: string): boolean {
       this.events=[{id:1,eventName:"Yarchei Kallah Day 1",eventAd:"https://d2r2w1ytriaiek.cloudfront.net/Photos/d1yc.mov",eventDate:new Date(),eventLocation:"Jerusalem",eventDetails:""},
         {id:1,eventName:"Yarchei Kallah 2025 Day 1",eventAd:"https://d2r2w1ytriaiek.cloudfront.net/Photos/d2yc.mov",eventDate:new Date(),eventLocation:"Jerusalem",eventDetails:""},
         {id:1,eventName:"Yarchei Kallah 2025 Day 2",eventAd:"https://d2r2w1ytriaiek.cloudfront.net/Photos/d3yc.mov",eventDate:new Date(),eventLocation:"Jerusalem",eventDetails:""},
-        {id:1,eventName:"Yarchei Kallah 2025 Day 3",eventAd:"https://d2r2w1ytriaiek.cloudfront.net/Photos/bm-back.JPG",eventDate:new Date(),eventLocation:"Jerusalem",eventDetails:""}
+        {id:1,eventName:"Yarchei Kallah 2025 Day 3",eventAd:"https://d2r2w1ytriaiek.cloudfront.net/Photos/bm-back.webp",eventDate:new Date(),eventLocation:"Jerusalem",eventDetails:""}
       ]
     // });
   }

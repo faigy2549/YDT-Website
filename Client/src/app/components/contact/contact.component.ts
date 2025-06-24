@@ -27,28 +27,56 @@ export class ContactComponent {
       this.errorMessage = '';
       this.validationErrors = [];
 
-      this.contactService.sendContactForm(contactForm).subscribe({
-        next: (response) => {
-          console.log('Form submission successful:', response);
-          this.formSubmitted = true;
-          this.isSubmitting = false;
-          form.reset();
-        },
-        error: (error) => {
-          console.error('Error submitting form:', error);
-          this.isSubmitting = false;
+      // this.contactService.sendContactForm(contactForm).subscribe({
+      //   next: (response) => {
+      //     console.log('Form submission successful:', response);
+      //     this.formSubmitted = true;
+      //     this.isSubmitting = false;
+      //     form.reset();
+      //   },
+      //   error: (error) => {
+      //     console.error('Error submitting form:', error);
+      //     this.isSubmitting = false;
 
-          if (error.status === 400 && error.error?.errors) {
-            const errors = error.error.errors;
-            this.validationErrors = Object.keys(errors).reduce((acc, key) => {
-              return acc.concat(errors[key]);
-            }, []);
-          } else {
-            this.errorMessage =
-              'There was a problem submitting the form. Please try again later.';
-          }
-        },
-      });
+      //     if (error.status === 400 && error.error?.errors) {
+      //       const errors = error.error.errors;
+      //       this.validationErrors = Object.keys(errors).reduce((acc, key) => {
+      //         return acc.concat(errors[key]);
+      //       }, []);
+      //     } else {
+      //       this.errorMessage =
+      //         'There was a problem submitting the form. Please try again later.';
+      //     }
+      //   },
+      // });
+      this.contactService.sendContactForm(contactForm).subscribe({
+  next: (responseText) => {
+    try {
+      console.log('Form submission successful:', responseText);
+      this.formSubmitted = true;
+      this.isSubmitting = false;
+      form.reset();
+    } catch (err) {
+      console.error('Failed to parse response:', err, responseText);
+      this.errorMessage = 'Unexpected response format from server.';
+      this.isSubmitting = false;
+    }
+  },
+  error: (error) => {
+    console.error('Error submitting form:', error);
+    this.isSubmitting = false;
+
+    if (error.status === 400 && error.error?.errors) {
+      const errors = error.error.errors;
+      this.validationErrors = Object.keys(errors).reduce((acc, key) => {
+        return acc.concat(errors[key]);
+      }, []);
+    } else {
+      this.errorMessage = 'There was a problem submitting the form. Please try again later.';
+    }
+  }
+});
+
     }
   }
 }

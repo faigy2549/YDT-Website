@@ -6,7 +6,7 @@
   }
   
   :host ::ng-deep .p-card {
-    border: 1px solid #7685C1;
+    /* border: 1px solid #7685C1; */
     background-color: #fafafc;
     font-family: 'FrankRuhlLibre-Medium';
     color: #383F5B;
@@ -23,7 +23,7 @@
     font-family: 'FrankRuhlLibre-Light';
     font-size: 1.5rem;
     text-align: center;
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     z-index: 10;
     background-color: #fafafc;
@@ -50,7 +50,7 @@
         height: 25rem;
         align-items: center;
     box-sizing: border-box;
-    border:1px solid #7685C1;
+    /* border:1px solid #7685C1; */
   
   }
   

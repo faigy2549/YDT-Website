@@ -1,41 +1,64 @@
- <div class="header-img">
-    <p class="header-text">HANHALA</p>
- </div>
 
-   <div class="ry-container" >
-    <p-card class="ry-card" [style]="{ }">
-        <ng-template pTemplate="header">
-            <img alt="Card" class="w-full"  [src]="rebbeim[0].imageUrl" [alt]="rebbeim[0].imageUrl"/>
-        </ng-template>
-        <ng-template pTemplate="title">
-            {{rebbeim[0].name}}
-        </ng-template>
-        <ng-template pTemplate="subtitle">
-            {{rebbeim[0].title}}
-        </ng-template>
-       
-    </p-card>
-    <p-fieldset  >
-        <p class="bio">{{rebbeim[0].bio}}</p>
-        <p>
-            Joining the R”Y in his sacred task is a supremely devoted and truly unique Hanhalas Hayeshiva.
-        </p>
-      </p-fieldset>
+<div class="header-img">
+  <p class="header-text">HANHALA</p>
 </div>
+<div>
+  <div class="ry-container">
+        <p-fieldset>
+      <p>{{ rebbeim[0].bio || 'Loading bio...' }}</p>
+          </p-fieldset>
+    <p-card class="ry-card">
+      <ng-template pTemplate="header">
+        <div class="image-wrapper">
+          <ng-container *ngIf="!loading && rebbeim.length > 0; else skeletonHeader">
+            <img [src]="rebbeim[0].imageUrl" [alt]="rebbeim[0].name" loading="eager" />
+          </ng-container>
+          <ng-template #skeletonHeader>
+           <div class="skeleton-wrapper">
+          <p-skeleton></p-skeleton>
+          </div>
+          </ng-template>
+        </div>
+      </ng-template>
 
-<div class="card-container" >
+      <ng-template pTemplate="title">
+        {{ rebbeim[0].name || 'Loading...' }}
+      </ng-template>
+
+      <ng-template pTemplate="subtitle">
+        {{ rebbeim[0].title || '' }}
+      </ng-template>
+
+</p-card>
+  </div>
+
+  <p class="joining">
+  {{joiningtext}}
+  </p>
+
+  <div class="card-container">
     <div *ngFor="let rav of rebbeim.slice(1)" class="card">
-        <p-card [style]="{ width: '20rem', overflow: 'hidden' ,height:'30rem'}">
-            <ng-template pTemplate="header">
-                <img alt="Card"  class="w-full" [src]="rav.imageUrl" [alt]="rav.name" />
-            </ng-template>
-            <ng-template pTemplate="title">
-                {{ rav.name }}
-            </ng-template>
-            <ng-template pTemplate="subtitle">
-                {{ rav.title }}
-            </ng-template>
-            <p class="bio">{{rav.bio}}</p>
-        </p-card>
+      <p-card [style]="{ width: '20rem', height: '32rem', overflow: 'hidden' }">
+        <ng-template pTemplate="header">
+          <div class="image-wrapper">
+            <img [src]="rav.imageUrl" [alt]="rav.name" loading="eager" />
+          </div>
+        </ng-template>
+
+        <ng-template pTemplate="title">
+          {{ rav.name }}
+        </ng-template>
+
+        <ng-template pTemplate="subtitle">
+          {{ rav.title }}
+        </ng-template>
+
+        <ng-template pTemplate="content">
+  <div class="bio-scroll">
+    <p class="bio">{{ rav.bio }}</p>
+  </div>
+</ng-template>
+      </p-card>
     </div>
+  </div>
 </div>

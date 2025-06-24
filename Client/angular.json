@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            
             "outputPath": "dist/ca",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -32,25 +33,29 @@
               "src/assets/primeng-custom.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
-            "production": {
-             "budgets": [
-  {
-    "type": "initial",
-    "maximumWarning": "1mb",
-    "maximumError": "2mb"
-  },
-  {
-    "type": "anyComponentStyle",
-    "maximumWarning": "8kb",
-    "maximumError": "10kb"
-  }
-],
-              "outputHashing": "all"
-            },
+           "production": {
+  "budgets": [
+    {
+      "type": "initial",
+      "maximumWarning": "1mb",
+      "maximumError": "2mb"
+    },
+    {
+      "type": "anyComponentStyle",
+      "maximumWarning": "8kb",
+      "maximumError": "10kb"
+    }
+  ],
+  "optimization": true,
+  "buildOptimizer": true,
+  "sourceMap": false,
+  "extractLicenses": true,
+  "vendorChunk": false,
+  "outputHashing": "all"
+},
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -97,13 +102,10 @@
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeflex/primeflex.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css",
               "src/assets/primeng-custom.css"
             ],
             "scripts": [
-              "./node_modules/bootstrap/dist/js/bootstrap.js",
-              "./node_modules/jquery/dist/jquery.js"
             ]
           }
         }

@@ -3,14 +3,10 @@ body, html {
     height: 100%;
 }
 
-p {
-    font-family: 'FrankRuhlLibre-Medium';
-    margin-bottom: 0;
-}
 
 .bio {
-    font-family: 'FrankRuhlLibre-Medium';
-    font-size: 1.2rem;
+    font-family: 'FrankRuhlLibre-Light';
+    font-size: 1rem;
     padding-top: 0;
     margin-top: 0;
 }
@@ -28,11 +24,10 @@ p {
 .ry-container, .rav-container {
     display: flex;
     text-align: center;
-    align-items: center;
+    align-items:center;
     justify-content: center;
     gap: 2rem;
     flex-direction: row;
-    width: 100%;
     padding: 2rem 6rem;
     overflow-x: hidden;
 }
@@ -41,10 +36,10 @@ p {
     display: flex;
     text-align: center;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content:space-between;
     align-items: center;
     gap: 2rem;
-    padding-bottom: 2rem;
+    padding: 2rem 6rem;
     min-height: 100vh;
     width: 100%;
     overflow-x: hidden;
@@ -81,11 +76,10 @@ p {
     padding: 0rem 0;
 }
 
-.rebbi-card img,
-.p-card img {
-    height: 12rem;
-    object-fit: cover;
-    display: block;
+
+:host ::ng-deep .p-card-header img {
+    width: 80%;
+    padding-top: 2rem;
 }
 .image-container {
     width: 20rem;
@@ -99,19 +93,28 @@ p {
 .ry-card {
     border-left: none;
     border-right: none;
-    font-family: 'FrankRuhlLibre-Bold';
     font-size: 1.5rem;
-    width:80rem;
+    width:78rem;
     overflow: hidden;
 }
+.joining{
+    text-align: center;
+    padding: 2rem;
+    margin-top:0rem;
+    font-size:1.5rem;
+ color: #383F5B;
+ background-color:#fafafc;
+ margin-left:6rem;
+ margin-right:6rem;
+    margin-bottom: 0;
+}
 :host ::ng-deep .p-fieldset {
-    font-family: 'FrankRuhlLibre-Medium';
+    font-family: 'FrankRuhlLibre-Light';
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     text-align: center;
     color: #383F5B;
     padding-bottom: 0;
-    padding-top:0.2rem;
 }
 
 :host ::ng-deep .p-fieldset .p-fieldset-legend {
@@ -126,6 +129,16 @@ p {
 
 .subtitle {
     font-size: 1.5rem;
+}
+.skeleton-wrapper {
+  height: 12rem;
+  width: 100%;
+}
+
+:host ::ng-deep .p-skeleton {
+  height: 100% !important;
+  width: 100% !important;
+  background-color: #d3d3d3 !important; /* make it visible */
 }
 
 @media (max-width: 1024px) {
@@ -156,6 +169,7 @@ p {
         flex-direction: column;
         padding: 1rem 1rem;
         gap: 1.5rem;
+        align-items: center;
     }
     :host ::ng-deep .p-fieldset .p-fieldset-content{
         padding:0px;

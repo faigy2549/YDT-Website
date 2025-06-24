@@ -22,7 +22,14 @@
   visibility: hidden !important;
   width: 0 !important;
 }
-
+:host ::ng-deep .p-multiselect-header {
+  display: none;
+}
+:host ::ng-deep .p-multiselect-header {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+}
 /* Inputs and multiselect design */
 .p-inputtext,
 :host ::ng-deep .p-multiselect {
@@ -76,8 +83,7 @@
 
 :host ::ng-deep .p-button {
   border: 2px solid transparent;
-  border-image: linear-gradient(to right, #383F5B, #7685C1);
-  border-image-slice: 1;
+  border-radius: 0px;
   font-family: 'FrankRuhlLibre-Medium';
   font-size: 1.2rem;
   background-color: #7685C1;
@@ -96,7 +102,6 @@
   font-family: 'FrankRuhlLibre-Light';
   font-size: 1.5rem;
   text-align: center;
-  position: sticky;
   top: 0;
   z-index: 10;
   background-color: #fafafc;

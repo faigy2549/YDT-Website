@@ -1,6 +1,6 @@
 @import 'assets/primeng-custom.css';
 .header-img{
-  background-image: url("/assets/IMG_2930.JPG");
+background-image: url("https://d2r2w1ytriaiek.cloudfront.net/Photos/bm-front.webp");
 background-size: cover; 
 background-repeat: no-repeat; 
 background-position: center; 
@@ -20,9 +20,8 @@ position: relative;
 .header-text{
   text-align: center;
   font-size: 5rem;
-  color:rgb(245, 244, 236);
   margin:0px;
-  font-family: 'FrankRuhlLibre-Bold';
+  font-family: 'FrankRuhlLibre-Medium';
   position: relative;
   z-index: 2;  
   color: white;
@@ -49,16 +48,6 @@ main {
 footer {
   flex-shrink: 0; 
   margin-top: auto; 
-}
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 .animated {
@@ -132,20 +121,15 @@ footer {
   src: url('/assets/fonts/FrankRuhlLibre-Light.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+   font-display: swap;
 }
 @font-face {
   font-family: 'FrankRuhlLibre-Medium';
   src: url('/assets/fonts/FrankRuhlLibre-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+   font-display: swap;
 }
-@font-face {
-  font-family: 'FrankRuhlLibre-Bold';
-  src: url('/assets/fonts/FrankRuhlLibre-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .p-overlaypanel .p-overlaypanel-content .p-tabmenu {
   width: fit-content !important;
   margin: 0 auto !important;
