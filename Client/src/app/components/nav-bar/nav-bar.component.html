@@ -1,5 +1,5 @@
 <div class="menu-wrapper">
-    <div class="menubar-section">
+    <div class="menubar-section" (click)="navToHome()">
         <img class="logo" width="700" height="150" decoding="async" loading="eager" src="https://d2r2w1ytriaiek.cloudfront.net/Photos/logo.svg" alt="Logo">
       </div>
       <button *ngIf="isMobile" pButton type="button" icon="pi pi-bars" (click)="menu.toggle($event)" class="menu-button"></button>

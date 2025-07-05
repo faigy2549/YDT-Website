@@ -2,6 +2,8 @@ import { Component, HostListener, ViewChild } from '@angular/core';
 import {  NavigationEnd, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { OverlayPanel } from 'primeng/overlaypanel';
+import { Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,10 +16,15 @@ export class NavBarComponent {
   activeItem: MenuItem | undefined;
   @ViewChild('menu') menu!: OverlayPanel;
   isMobile = false;
-  constructor(private router: Router) {}
+   constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
   @HostListener('window:resize', ['$event'])
   checkScreenSize() {
-    this.isMobile = window.innerWidth < 768;
+   if (isPlatformBrowser(this.platformId)) {
+      this.isMobile = window.innerWidth < 768;
+    }
   }
   ngOnInit() {
     this.checkScreenSize();
@@ -88,6 +95,9 @@ export class NavBarComponent {
   }
 onActiveItemChange(event: MenuItem) {
   this.activeItem = event;
+}
+navToHome() {
+  this.router.navigate(['/home']);
 }
 
 }

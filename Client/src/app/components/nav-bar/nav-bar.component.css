@@ -12,6 +12,7 @@
 /* Center align the menubar */
 .menubar-section {
   text-align: center;
+    cursor: pointer;
 }
 
 .logo {
