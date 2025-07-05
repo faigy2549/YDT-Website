@@ -1,39 +1,38 @@
-
 <div class="header-img">
   <p class="header-text">HANHALA</p>
 </div>
-<div>
+
+<div *ngIf="rebbeim$ | async as rebbeim;">
   <div class="ry-container">
-        <p-fieldset>
-      <p>{{ rebbeim[0].bio || 'Loading bio...' }}</p>
-          </p-fieldset>
+    <p-fieldset>
+      <p >
+     For twenty-five years, the Rosh Yeshiva has lovingly transmitted the Mesorah he drew from the Gedolim of yesteryear. As a close talmid of Rav Shach Zt"l and with a personal connection to Rav Shmuel Auerbach Zt”l, and Reb Yisroel Elya Weintraub zt”l, the Rosh Yeshiva imbued the Bochurim with the Torah and Yiras Shmayaim he received from the previous generation.
+      </p>
+    </p-fieldset>
+
     <p-card class="ry-card">
       <ng-template pTemplate="header">
         <div class="image-wrapper">
-          <ng-container *ngIf="!loading && rebbeim.length > 0; else skeletonHeader">
-            <img [src]="rebbeim[0].imageUrl" [alt]="rebbeim[0].name" loading="eager" />
+          <ng-container *ngIf="rebbeim.length > 0">
+            <img [src]="'https://d2r2w1ytriaiek.cloudfront.net/Photos/roshyeshiva.webp'"
+                 [alt]="'R Menachem Eichenstien'"
+                 loading="eager" />
           </ng-container>
-          <ng-template #skeletonHeader>
-           <div class="skeleton-wrapper">
-          <p-skeleton></p-skeleton>
-          </div>
-          </ng-template>
         </div>
       </ng-template>
 
       <ng-template pTemplate="title">
-        {{ rebbeim[0].name || 'Loading...' }}
+      R' Menachem Eichenstien
       </ng-template>
 
       <ng-template pTemplate="subtitle">
-        {{ rebbeim[0].title || '' }}
+      Rosh Hayeshiva
       </ng-template>
-
-</p-card>
+    </p-card>
   </div>
 
   <p class="joining">
-  {{joiningtext}}
+    {{ joiningtext }}
   </p>
 
   <div class="card-container">
@@ -54,10 +53,10 @@
         </ng-template>
 
         <ng-template pTemplate="content">
-  <div class="bio-scroll">
-    <p class="bio">{{ rav.bio }}</p>
-  </div>
-</ng-template>
+          <div class="bio-scroll">
+            <p class="bio" *ngIf="rav.bio">{{ rav.bio }}</p>
+          </div>
+        </ng-template>
       </p-card>
     </div>
   </div>

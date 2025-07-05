@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Rav } from 'src/app/models/Rav.model';
 import { RavService } from 'src/app/services/rav.service';
 
@@ -8,19 +9,12 @@ import { RavService } from 'src/app/services/rav.service';
   styleUrls: ['./rav.component.css']
 })
 export class RavComponent implements OnInit {
-  rebbeim: Rav[] = [];
-  loading = true;
-  joiningtext:string = "";
+ rebbeim$!: Observable<Rav[]>;
+  joiningtext = "Joining the R”Y in his sacred task is a supremely devoted and truly unique Hanhalas Hayeshiva.";
+
   constructor(public ravService: RavService) {}
 
   ngOnInit() {
-    this.ravService.reloadRebbeim$.subscribe(() => {
-      this.loading = true;
-      this.ravService.getRebbeim().subscribe(data => {
-        this.rebbeim = data;
-        this.loading = false;
-        this.joiningtext = "Joining the R”Y in his sacred task is a supremely devoted and truly unique Hanhalas Hayeshiva.";
-      });
-    });
+    this.rebbeim$ = this.ravService.getRebbeim();
   }
 }

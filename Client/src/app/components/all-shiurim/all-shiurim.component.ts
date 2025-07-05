@@ -6,6 +6,8 @@ import { Topic } from 'src/app/models/Topic.model';
 import { RavService } from 'src/app/services/rav.service';
 import { ShiurimService } from 'src/app/services/shiurim.service';
 import { TopicService } from 'src/app/services/topic.service';
+import { Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-all-shiurim',
@@ -28,12 +30,13 @@ export class AllShiurimComponent implements OnInit {
   audioVisible: { [key: string]: boolean } = {};
   filterSidebarVisible: boolean = false;
 
-  constructor(
-    private shiurService: ShiurimService,
-    private ravService: RavService,
-    private topicService: TopicService,
-    private route: ActivatedRoute,
-  ) {}
+constructor(
+  private shiurService: ShiurimService,
+  private ravService: RavService,
+  private topicService: TopicService,
+  private route: ActivatedRoute,
+  @Inject(PLATFORM_ID) private platformId: Object
+) {}
 
 ngOnInit(): void {
   // Get query params early
@@ -72,7 +75,9 @@ ngOnInit(): void {
 
     this.applyFilters(); 
   });
-     window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }
 
 

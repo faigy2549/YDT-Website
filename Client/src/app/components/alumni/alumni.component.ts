@@ -6,6 +6,8 @@ import { Event } from 'src/app/models/Event.model';
 import { MazalTovService } from 'src/app/services/mazaltov.service';
 import { EventService } from 'src/app/services/event.service'; // Import the service
 import { OccasionService } from 'src/app/services/occasion.service';
+import { Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-mazal-tov',
@@ -30,6 +32,7 @@ export class AlumniComponent implements OnInit {
     private occasionService: OccasionService,
     private cdr: ChangeDetectorRef,
     private router: Router,
+      @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
@@ -81,7 +84,9 @@ export class AlumniComponent implements OnInit {
 
   navigateToNewslatter(): void {
     this.router.navigate(['/newsletter']).then(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     });
   }
 }
